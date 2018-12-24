@@ -13,19 +13,30 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-    $role_employee = Role::where('name', 'rider')->first();
-    $role_manager  = Role::where('name', 'manager')->first();
-    $employee = new User();
-    $employee->name = 'Rider Name';
-    $employee->email = 'rider@example.com';
-    $employee->password = bcrypt('secret');
-    $employee->save();
-    $employee->roles()->attach($role_employee);
-    $manager = new User();
-    $manager->name = 'Manager Name';
-    $manager->email = 'manager@example.com';
-    $manager->password = bcrypt('secret');
-    $manager->save();
-    $manager->roles()->attach($role_manager);
+    
+    $role_user = Role::where('name', 'user')->first();
+    $role_rider = Role::where('name', 'rider')->first();
+    $role_admin  = Role::where('name', 'admin')->first();
+
+    $user = new User();
+    $user->name = 'user Name';
+    $user->email = 'user@example.com';
+    $user->password = bcrypt('secret');
+    $user->save();
+    $user->roles()->attach($role_user);
+
+    $rider = new User();
+    $rider->name = 'Rider Name';
+    $rider->email = 'rider@example.com';
+    $rider->password = bcrypt('secret');
+    $rider->save();
+    $rider->roles()->attach($role_rider);
+
+    $admin = new User();
+    $admin->name = 'admin Name';
+    $admin->email = 'admin@example.com';
+    $admin->password = bcrypt('secret');
+    $admin->save();
+    $admin->roles()->attach($role_admin);
     }
 }
