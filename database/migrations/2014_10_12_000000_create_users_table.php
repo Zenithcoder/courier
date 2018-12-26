@@ -20,11 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('address')->nullable();
             $table->string('city')->nullable();
+            $table->unsignedInteger('lga_id');
             $table->tinyInteger('status')->default(1);
             $table->string('pic')->nullable();
             $table->string('country')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign("lga_id")->references("id")->on("lgas");
         });
     }
 

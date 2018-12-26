@@ -14,9 +14,11 @@ class CreateOrderUserTable extends Migration
     public function up()
     {
         Schema::create('order_user', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->integer('user_id')->unsigned();
+
+            $table->foreign("order_id")->references('id')->on("orders");
+            $table->foreign("user_id")->references('id')->on("users");
           });
     }
 

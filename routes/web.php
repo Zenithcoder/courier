@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(["auth", "auth.rider.admin"])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
