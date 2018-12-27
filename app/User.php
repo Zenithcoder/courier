@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'address', 'city', 'status', 'pic', 'country'
+        'name', 'email', 'password', 'address', 'city', 'status', 'pic', 'country', 'lga_id'
     ];
 
     /**
@@ -68,5 +68,9 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function setPasswordAttribute($value) {
+        $this->attributes["password"] = bcrypt($value);
     }
 }
