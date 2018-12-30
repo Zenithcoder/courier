@@ -12,13 +12,23 @@ f<?php
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return view('index');
 });
+
+// where the user is redirected to after login or request for pickup
+Route::get('/dashboard', function () {
+return view('dashboard');
+});
+// pickupform from signed in user
+Route::get('/pickupform', 'OrderController@index')->middleware('auth');
+Route::POST('/pickupform', 'OrderController@create')->middleware('auth');
+Route::resource('order', 'OrderController');
 
 Auth::routes();
 
 Route::middleware(["auth", "auth.rider.admin"])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+
 });
 
 Route::resource('users', 'UserController');

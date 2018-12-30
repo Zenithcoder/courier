@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Lga;
+use App\State;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +14,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View()->composer('*', function($view){
+            $local= Lga::all();
+
+            $view->with(compact('local'));
+        });
+        View()->composer('*', function($view){
+            $states= State::all();
+
+            $view->with(compact('states'));
+        });
     }
 
     /**

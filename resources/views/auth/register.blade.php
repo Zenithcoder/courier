@@ -6,6 +6,13 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
+                  <p>@if($message =Session::get('success'))
+    <div class="alert alert-success">
+  <p>
+    {{$message}}
+  </p>
+</div>
+@endif</p>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -38,7 +45,48 @@
                                 @endif
                             </div>
                         </div>
+                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="phone_num" class="col-md-4 control-label">Phone Number</label>
 
+                            <div class="col-md-6">
+                                <input id="phone_num" type="number" class="form-control" name="phone_num" value="{{ old('phone_num') }}" required>
+
+                                @if ($errors->has('phone_num'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_num') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('lga_id') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">LGA</label>
+
+                            <div class="col-md-6">
+                              <select class="form-control" name="lga_id">
+                              @foreach($local as $key=>$lga) 
+                                <option value="{{$lga->id}}">{{$lga->name}}</option>
+                                @endforeach</select>
+                                @if ($errors->has('lga_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lga_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

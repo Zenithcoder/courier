@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! <a href="/pickupform"><button class="alert-success"> Request Pickup</button></a>
                 </div>
             </div>
         </div>

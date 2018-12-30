@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('lga_id')->default(1);
             $table->tinyInteger('status')->default(1);
             $table->string('pic')->nullable();
-            $table->string('country')->nullable();
+            $table->string('phone_num')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
