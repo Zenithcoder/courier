@@ -1,4 +1,4 @@
-<?php
+f<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +20,9 @@ Auth::routes();
 Route::middleware(["auth", "auth.rider.admin"])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
+Route::resource('users', 'UserController');
+
+Route::resource('roles', 'RoleController');
+
+Route::resource('permissions', 'PermissionController');
