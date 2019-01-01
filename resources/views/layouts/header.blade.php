@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -34,9 +36,46 @@
     <script src="https://use.fontawesome.com/9712be8772.js"></script>
 </head>
 <body>
-        @yield('content')
+
+        <div id="portrait_mode_detector"></div>
+
+        <div id="layout-container">
+            <div class="page-title">
+                <div class="menu-switch"><i class="fa fa-bars"></i></div>
+                <i class="fa fa-list-alt"></i>
+                <span>Web Forms</span>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (null !==(auth::user()))
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >
+                                <button class="btn btn-info">{{Auth::user()->name}}</button>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        @include('layouts.sidebar')
+
+
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
+        </div>
 </body>
 <!-- JavaScript Library -->
+
 <script src="/dashcss/js/library/modernizr-2.6.2.min.js"></script>
 <script src="/dashcss/js/library/jquery-1.10.1.min.js"></script>
 <script src="/dashcss/js/library/jquery-ui-1.10.3.custom.min.js"></script>

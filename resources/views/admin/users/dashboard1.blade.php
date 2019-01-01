@@ -96,7 +96,7 @@
     </div>
     <!-- End -->
     <!-- Page Container -->
-    <div id=">
+    <div id="">
         <div class="page-title">
             <div class="menu-switch"><i class="fa fa-bars"></i></div>
             <i class="fa fa-list-alt"></i>
