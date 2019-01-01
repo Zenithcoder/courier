@@ -27,7 +27,7 @@ class UserController extends Controller {
     public function index() {
         //Get all users and pass it to the view
         $users = User::all();
-        return view('admin.users.index')->with('users', $users);
+        return view('admin.users.dashboard')->with('users', $users);
     }
 
     /**
@@ -55,7 +55,7 @@ class UserController extends Controller {
             'password'=>'required|min:6|confirmed'
         ]);
 
-        $user = User::create($request->only('email', 'name', 'password')); //Retrieving only the email and password data
+        $user = User::create($request->only('email', 'name', 'password', 'address', 'city', 'pic', 'phone_num')); //Retrieving only the email and password data
 
         $roles = $request['roles']; //Retrieving the roles field
         //Checking if a role was selected

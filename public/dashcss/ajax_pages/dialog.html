@@ -1,0 +1,146 @@
+<div class="page-title">
+    <div class="menu-switch"><i class="fa fa-bars"></i></div>
+    <i class="fa fa-folder-o"></i>
+    <span>Modal Dialog</span>
+</div>
+<div class="margin-container">
+    <div class="dashboard-widget">
+        <div class="title">
+            <i class="fa fa-users"></i> Message
+            <button class="toggle" title="Close"><i class="fa fa-chevron-down"></i></button>
+        </div>
+        <div class="content">
+<pre class="prettyprint linenums">
+App.dialog.open({
+    width:     500,
+    title:     'Hello There',
+    content:   'Lorem Ipsum is simply...',
+    theme:     'block'
+});
+</pre>
+            <div class="divider"></div>
+            <div class="button-group-row message">
+                <button class="btn btn-small btn-block"><i class="fa fa-plus-circle"></i> Open Dialog</button>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dashboard-widget">
+        <div class="title">
+            <i class="fa fa-users"></i> Buttons
+            <button class="toggle" title="Close"><i class="fa fa-chevron-down"></i></button>
+        </div>
+        <div class="content">
+<pre class="prettyprint linenums">
+App.dialog.open({
+    width:     500,
+    title:     'Hello There',
+    content:   'Lorem Ipsum is simply...',
+    theme:     'error',
+    buttons:   [
+        {
+            text:      'Cancel',
+            icon:      'fa fa-times',
+            onClick:   function(evt, btn) {
+                App.dialog.close();
+            }
+        },
+        {
+            text:      'Save',
+            icon:      'fa fa-floppy-o',
+            onClick:   function(evt, btn) {
+                ...
+                App.dialog.close();
+            }
+        }
+    ];
+});
+</pre>
+            <div class="divider"></div>
+            <div class="button-group-row">
+                <button class="btn btn-small btn-error"><i class="fa fa-plus-circle"></i> Open Dialog</button>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dashboard-widget">
+        <div class="title">
+            <i class="fa fa-users"></i> Countdown
+            <button class="toggle" title="Close"><i class="fa fa-chevron-down"></i></button>
+        </div>
+        <div class="content">
+<pre class="prettyprint linenums">
+App.dialog.open({
+    width:     500,
+    title:     'Hello There',
+    content:   'Lorem Ipsum is simply...',
+    theme:     'info',
+    buttons:   [
+        {
+            text:      'Cancel',
+            icon:      'fa fa-times',
+            onClick:   function(evt, btn) {
+                App.dialog.close();
+            }
+        },
+        {
+            text:      'Save',
+            icon:      'fa fa-floppy-o',
+            countdown: 5,
+            onClick:   function(evt, btn) {
+                ...
+                App.dialog.close();
+            }
+        }
+    ];
+});
+</pre>
+            <div class="divider"></div>
+            <div class="button-group-row countdown">
+                <button class="btn btn-small btn-info"><i class="fa fa-plus-circle"></i> Open Dialog</button>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="dashboard-widget">
+        <div class="title">
+            <i class="fa fa-users"></i> Draggable
+            <button class="toggle" title="Close"><i class="fa fa-chevron-down"></i></button>
+        </div>
+        <div class="content">
+<pre class="prettyprint linenums">
+App.dialog.open({
+    width:     500,
+    title:     'Hello There',
+    content:   'Lorem Ipsum is simply...',
+    theme:     'success',
+    draggable:  true,
+    buttons:   [
+        {
+            text:      'Cancel',
+            icon:      'fa fa-times',
+            onClick:   function(evt, btn) {
+                App.dialog.close();
+            }
+        },
+        {
+            text:      'Save',
+            icon:      'fa fa-floppy-o',
+            onClick:   function(evt, btn) {
+                ...
+                App.dialog.close();
+            }
+        }
+    ];
+});
+</pre>
+            <div class="divider"></div>
+            <div class="button-group-row draggable">
+                <button class="btn btn-small btn-success"><i class="fa fa-plus-circle"></i> Open Dialog</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    dialogPage();
+</script>

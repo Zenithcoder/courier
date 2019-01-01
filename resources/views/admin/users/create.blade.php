@@ -41,6 +41,26 @@
 
         </div>
 
+        <div class="form-group">
+            {{ Form::label('address', 'Address') }}
+            {{ Form::text('address', '', array('class' => 'form-control')) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('city', 'City') }}
+            {{ Form::text('city', '', array('class' => 'form-control')) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('pic', 'Profile Photo') }}
+            {{ Form::file('pic') }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('phone_num', 'Phone Number') }}
+            {{ Form::text('phone_num', '', array('class' => 'form-control')) }}
+        </div>
+
         {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

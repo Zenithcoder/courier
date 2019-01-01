@@ -25,6 +25,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(User $user){
+
         return view('/user.pickupform', compact("user"));
     }
 
@@ -35,7 +36,6 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,User $user ){
-        $order= new Order;
         $this->validate($request,[
             'pickup'=>'required',
             'dropoff'=>'required',
@@ -46,7 +46,7 @@ class OrderController extends Controller
             'type'=>'required',
            
         ]);
-        
+        $order= new Order;
         $order->pickup=$request->pickup;
         $order->dropoff=$request->dropoff;
         $order->recipient_name=$request->recipient_name;
@@ -57,7 +57,13 @@ class OrderController extends Controller
         $order->user_id=auth()->user()->id;
         
         $order->save();
-        return redirect('/dashboard')->with('success','YOu have successfully requested for a pickup');
+
+        $rider = new Rider;
+        $rider->rider_id = $request->rider_id;
+        $rider->order_id = $order->id;
+        $rider->save();
+
+        return redirect('/dashboard')->with('success','You have successfully requested for a pickup');
 
     }  
     /**
