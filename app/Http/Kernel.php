@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         // custom
-        'auth.rider.admin' => \App\Http\Middleware\Custom\Auth\RiderAdmin::class
+        'auth.rider.admin' => \App\Http\Middleware\Custom\Auth\RiderAdmin::class,
+        'auth.customer' => \App\Http\Middleware\Custom\Auth\Customer::class,
     ];
 }

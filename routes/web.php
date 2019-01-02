@@ -21,8 +21,11 @@ Route::get('/dashboard', function () {
 });
 // pickupform from signed in user
 Route::get('/pickupform', 'OrderController@index');
-Route::POST('/pickupform', 'OrderController@create')->middleware('auth');
-Route::resource('order', 'OrderController');
+Route::post('/pickupform', 'OrderController@create')->middleware('auth');
+
+Route::middleware(['auth', 'auth.customer'])->prefix('customers')->namespace('customer')->group(function () {
+    Route::resource('orders', 'OrderController');
+});
 
 Auth::routes();
 

@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->double('amount');
             $table->enum('status', ['PENDING', 'EN_ROUTE', 'DELIVERED', 'CANCELLED',])->default('PENDING');
             $table->text('description');
-            $table->double('weight')->comment('weight in KG');
+            $table->double('weight')->nullable()->comment('weight in KG');
             $table->string('recipient_name', 80);
             $table->string('recipient_phone_number', 15);
             $table->enum('payment_status', ['PAID' , 'FAIL'])->nullable();

@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $lga = Lga::get()->random();
-        $role_user = Role::where('name', 'user')->first();
+        $role_user = Role::where('name', 'customer')->first();
         $role_rider = Role::where('name', 'rider')->first();
         $role_admin  = Role::where('name', 'admin')->first();
 
