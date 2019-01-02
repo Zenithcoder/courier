@@ -16,7 +16,7 @@ class OrderController extends Controller
     public function index(User $user)
     {
         $order= $user->order;
-       return view('/user.pickupform',compact('order'));
+        return view('/user.pickupform',compact('order'));
     }
 
     /**
@@ -44,9 +44,9 @@ class OrderController extends Controller
             'lga_id'=>'required',
             'state_id'=>'required',
             'type'=>'required',
-           
+
         ]);
-        
+
         $order->pickup=$request->pickup;
         $order->dropoff=$request->dropoff;
         $order->recipient_name=$request->recipient_name;
@@ -55,11 +55,11 @@ class OrderController extends Controller
         $order->state_id=$request->state_id;
         $order->type=$request->type;
         $order->user_id=auth()->user()->id;
-        
+
         $order->save();
         return redirect('/dashboard')->with('success','YOu have successfully requested for a pickup');
 
-    }  
+    }
     /**
      * Display the specified resource.
      *
@@ -68,7 +68,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+//
     }
 
     /**
@@ -79,7 +79,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+//
     }
 
     /**
@@ -91,7 +91,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//
     }
 
     /**
@@ -102,6 +102,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+//
     }
 }

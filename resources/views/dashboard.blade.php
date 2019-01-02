@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap Css -->
-        <!-- Bootstrap Css -->
         <link rel="stylesheet" type="text/css" href="/homecss/plugins/bootstrap-3.3.6/css/bootstrap.min.css">        
         <!-- Bootstrap Select Css -->
         <link rel="stylesheet" type="text/css" href="/homecss/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css">
@@ -14,9 +13,7 @@
         <link rel="stylesheet" type="text/css" href="/homecss/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="/homecss/plugins/font-elegant/elegant.css">
         <!-- OwlCarousel2 Slider Css -->
-        <link rel="stylesheet" type="text/css" href="/homecss/plugins/owl.carousel.2/assets/owl.carousel.css">
-
-
+        <link rel="stylesheet" type="text/css" href="/homecss/plugins/owl.carousel.2/assets/owl.carousel./homecss/
         <!-- Animate Css -->       
         <link rel="stylesheet" type="text/css" href="/homecss/css/animate.css">
 
@@ -98,8 +95,10 @@
                                             </ul>
                                         </li>
                                         <li> <a href="about-us.html">about</a> </li>
+                                        <li> <a href="about-us.html">about</a> </li>
                                         <li class="active"> <a href="tracking.html"> tracking </a> </li>
-                                        <li> <a href="pricing-plans.html"> pricing </a> </li>
+                                        <li> <a href="pricing-plans.html"> Get Rates </a> </li>
+                                        <li> <a href="about-us.html">Schedule Pickup</a> </li>
                                         <li> <a href="contact-us.html"> contact </a> </li>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Blog</a>
@@ -109,25 +108,16 @@
                                                 <li><a href="single-blog.html">Single Post</a></li>                                    
                                             </ul>
                                         </li>
-                                        <!-- if the user is signed in display his name and logout option -->
-                                        @if (null !==(auth::user()))
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >
-                                                <button class="btn btn-info">{{Auth::user()->name}}</button>
-                                            </a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >pages </a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">Logout
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    {{ csrf_field() }}
-                                                    </form> 
-                                                </li>
+                                                <li><a href="get-quote.html"> Quote Page </a></li> 
+                                                <li><a href="contact-us-2.html"> Contact-2 Page </a></li>
+                                                <li><a href="404.html"> Error Page </a></li>
+                                                <li><a href="coming-soon.html"> Coming Soon Page </a></li>
                                             </ul>
-                                        </li> 
-                                        @endif 
+                                        </li>  
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
-
                                     </ul>                                                      
                                 </div>
                             </div>
@@ -147,14 +137,13 @@
                         <div class="row">
                             <div class="col-sm-8 pull-left">
                                 <div class="title-wrap">
-                                    <h2 class="section-title no-margin"> product tracking </h2>
+                                    <h2 class="section-title no-margin"> ID: <strong>1452DDRYykhfr78H798TW93</strong> </h2>
                                     <p class="fs-16 no-margin"> Track your product & see the current condition </p>
                                 </div>
                             </div>
                             <div class="col-sm-4">                        
                                 <ol class="breadcrumb-menubar list-inline">
-                                    <li><a href="#" class="gray-clr">Home</a></li>                                   
-                                    <li class="active">Track</li>
+                                    <li><a href="#" class="gray-clr">Hello {{auth::user()->name}}</a></li>
                                 </ol>
                             </div>  
                         </div>
@@ -181,26 +170,11 @@
                                             </div>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>    
                         </div>
-                        <div class="row">
-                            <div class="col-md-7 pad-30 wow fadeInLeft" data-wow-offset="50" data-wow-delay=".30s"> 
-                                <img alt="" src="assets/img/block/product-1.jpg" />
-                            </div>
-                            <div class="col-md-5 pad-30 wow fadeInRight" data-wow-offset="50" data-wow-delay=".30s"> 
-                                <div class="prod-info white-clr">
-                                    <ul>
-                                        <li> <span class="title-2">Product Name:</span> <span class="fs-16">iPhone 6 Boxed</span> </li>
-                                        <li> <span class="title-2">Product id:</span> <span class="fs-16">9034215</span> </li>
-                                        <li> <span class="title-2">order date:</span> <span class="fs-16">21st Feb, 2016</span> </li>
-                                        <li> <span class="title-2">order status:</span> <span class="fs-16 theme-clr">On Process</span> </li>
-                                        <li> <span class="title-2">weight (kg):</span> <span class="fs-16">0.85 KG</span> </li>
-                                        <li> <span class="title-2">order type:</span> <span class="fs-16">Basic ($50)</span> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- tracking status -->
                         <div class="progress-wrap">
                             <div class="progress-status">
                                 <span class="border-left"></span>
@@ -230,6 +204,51 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- tracking status -->
+                        <!-- order hostory history -->
+                        <div class="row">
+                            <table class="table table-striped">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th class="col-lg-3">Date/Time </th>
+                                    <th class="col-lg-6">Activity</th>
+                                    <th class="col-lg-3">location</th>
+                                  </tr>
+                                </thead>
+                               
+                                <tbody>
+                                  <tr>
+                                    <th scope="row"><h4>Pickup / Delivery History </h4></th>.
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">11:24 pm</th>
+                                    <td>delivered</td>
+                                    <td>London SA</td>      
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">11:24 pm</th>
+                                    <td>Bootstrap table has been designed to reduce development time </td>
+                                    <td>London SA</td>      
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">11:24 pm</th>
+                                    <td>Bootstrap  to reduce development time </td>
+                                    <td>London SA</td>      
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">11:24 pm</th>
+                                    <td> table has been  to reduce development time </td>
+                                    <td>London SA</td>      
+                                  </tr>
+                                  <hr>                       
+                                </tbody>
+                            </table>
+                        </div>
+                       <!-- order hostory history end -->   
+                                               
                     </div>
                 </section>
                 <!-- /.Tracking -->
@@ -347,25 +366,24 @@
         </div>
         <!-- / Search Popup -->
 
-       <script src="/homecss//js/jquery-2.2.4.min.js" type="text/javascript"></script>        
+        <!-- Main Jquery JS -->
+        <script src="/homecss/js/jquery-2.2.4.min.js" type="text/javascript"></script>        
         <!-- Bootstrap JS -->
-        <script src="/homecss//plugins/bootstrap-3.3.6/js/bootstrap.min.js" type="text/javascript"></script>    
+        <script src="/homecss/plugins/bootstrap-3.3.6/js/bootstrap.min.js" type="text/javascript"></script>    
         <!-- Bootstrap Select JS -->
-        <script src="/homecss//plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js" type="text/javascript"></script>    
+        <script src="/homecss/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js" type="text/javascript"></script>    
         <!-- OwlCarousel2 Slider JS -->
-        <script src="/homecss//plugins/owl.carousel.2/owl.carousel.min.js" type="text/javascript"></script>   
+        <script src="/homecss/plugins/owl.carousel.2/owl.carousel.min.js" type="text/javascript"></script>   
         <!-- Sticky Header -->
-        <script src="/homecss//js/jquery.sticky.js"></script>
+        <script src="/homecss/js/jquery.sticky.js"></script>
         <!-- Wow JS -->
-        <script src="/homecss//plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>
-        <!-- Data binder -->
-        <script src="/homecss//plugins/data.binder.js/data.binder.js" type="text/javascript"></script>
+        <script src="/homecss/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>   
 
         <!-- Slider JS -->        
 
 
         <!-- Theme JS -->
-        <script src="/homecss//js/theme.js" type="text/javascript"></script>
+        <script src="/homecss/js/theme.js" type="text/javascript"></script>
 
     </body>
 </html>
