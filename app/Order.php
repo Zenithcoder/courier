@@ -10,7 +10,6 @@ class Order extends Model
         'pickup_address', 'pickup_lga_id', 'drop_off_address', 'drop_off_lga_id', 'description', 'recipient_name', 'recipient_phone_number'
     ];
 
-
     public function customer() {
         return $this->belongsTo(User::class, 'customer_id');
     }
@@ -26,5 +25,15 @@ class Order extends Model
     public function drop_off_lga(){
         return $this->belongsTo(Lga::class, 'drop_off_lga_id');
     }
+
+
+    /*public function User() {
+         return $this->belongsTo(User::class, 'user_id');
+     }*/
+
+    /* protected function Rider()
+     {
+         return $this->belongsTo(Rider::class);
+     }*/
 
 }
