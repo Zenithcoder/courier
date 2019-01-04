@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use Auth;
 use App\User;
+
 class OrderController extends Controller
 {
     /**
@@ -15,8 +16,12 @@ class OrderController extends Controller
      */
     public function index(User $user)
     {
-        $order= $user->order;
-       return view('/user.pickupform',compact('order'));
+        $order = $user->order;
+        if (Auth::user()->role_id == 3) {
+            return view('/admin.orders.index',compact('order'));
+        } else {
+            return view('/user.pickupform',compact('order'));
+        }
     }
 
     /**
@@ -35,7 +40,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,User $user ){
+    public function store(Request $request, User $user ){
         $this->validate($request,[
             'pickup'=>'required',
             'dropoff'=>'required',
@@ -58,10 +63,10 @@ class OrderController extends Controller
         
         $order->save();
 
-        $rider = new Rider;
-        $rider->rider_id = $request->rider_id;
-        $rider->order_id = $order->id;
-        $rider->save();
+        $riders = new Rider;
+        $riders->rider_id = $request->rider_id;
+        $riders->order_id = $order->id;
+        $riders->save();
 
         return redirect('/dashboard')->with('success','You have successfully requested for a pickup');
 

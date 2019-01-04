@@ -55,7 +55,7 @@ class UserController extends Controller {
             'password'=>'required|min:6|confirmed'
         ]);
 
-        $user = User::create($request->only('email', 'name', 'password', 'address', 'city', 'pic', 'phone_num')); //Retrieving only the email and password data
+        $user = User::create($request->only('email', 'name', 'password', 'address', 'city', 'pic', 'phone_num'));
 
         $roles = $request['roles']; //Retrieving the roles field
         //Checking if a role was selected

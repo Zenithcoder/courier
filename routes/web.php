@@ -1,4 +1,4 @@
-f<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 
 Route::resource('roles', 'RoleController');
+
+Route::resource('orders', 'OrderController');
 
 Route::resource('permissions', 'PermissionController');
