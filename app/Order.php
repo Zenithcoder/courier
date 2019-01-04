@@ -35,6 +35,10 @@ class Order extends Model
         return $this->belongsTo(Lga::class, 'drop_off_lga_id');
     }
 
+    public function order_activities(){
+        return $this->hasMany(OrderActivity::class);
+    }
+
     private static function generateUniqueTrackingNumber() {
         do {
 

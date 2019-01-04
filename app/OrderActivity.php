@@ -12,4 +12,7 @@ class OrderActivity extends Model
     public function getTransitDurationAttribute() {
         return Carbon::parse($this->attributes["expected_delivery_date"])->diffForHumans();
     }
+    public function order() {
+        return $this->belongsTo(Order::class);
+    }
 }

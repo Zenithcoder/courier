@@ -16,12 +16,14 @@ Route::get('/', function () {
 });
 
 // where the user is redirected to after login or request for pickup
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
+ Route::get('/dashboard', 'Customer\OrderController@index')->middleware('auth');
+Route::get('/order_tracking', 'Customer\OrderActivityController@index')->middleware('auth');
+Route::get('/orders_tracking/{order_activity}', 'Customer\OrderActivityController@show')->middleware('auth');
+
 // pickupform from signed in user
-Route::get('/pickupform', 'OrderController@index');
-Route::post('/pickupform', 'OrderController@create')->middleware('auth');
+Route::get('/pickupform', 'Customer\OrderController@pickup');
+Route::post('/pickupform', 'Customer\OrderController@create')->middleware('auth');
 
 Route::middleware(['auth', 'auth.customer'])->prefix('customers')->namespace('customer')->group(function () {
     Route::resource('orders', 'OrderController');
