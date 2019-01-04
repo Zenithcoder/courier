@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 // where the user is redirected to after login or request for pickup
 
- Route::get('/dashboard', 'Customer\OrderController@index')->middleware('auth');
+
+Route::get('/users/orders/search/', 'Customer\OrderController@search')->name('user.order.search');
+Route::get('/dashboard', 'Customer\OrderController@index')->middleware('auth');
+
 Route::get('/order_tracking', 'Customer\OrderActivityController@index')->middleware('auth');
 Route::get('/orders_tracking/{order_activity}', 'Customer\OrderActivityController@show')->middleware('auth');
 

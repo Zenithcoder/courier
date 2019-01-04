@@ -42,6 +42,12 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function search (Request $request ) {
+        $orders=  Order::whereTrackingNumber($request->get('tracking_number'))->first();
+        dd($orders);
+
+
+    }
     public function store(Request $request,User $user ){
         $order= new Order;
         $this->validate($request,[
