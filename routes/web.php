@@ -14,6 +14,9 @@ f<?php
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/pickupform', function () {
+    return view('/user/pickupform');
+});
 
 // where the user is redirected to after login or request for pickup
 Route::get('/dashboard', function () {

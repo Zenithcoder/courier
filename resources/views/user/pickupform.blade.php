@@ -190,7 +190,7 @@
               </div>
             <div class="col-md-6 mb-3">
                 <label for="lastName">Recipient Phone Number</label>
-                <input type="number" class="form-control" id="recipient_phone_num" placeholder="" name="recipient_phone_num" value="" required>
+                <input type="number" class="form-control" id="recipient_phone_num" placeholder="" name="recipient_phone_number" value="" required>
                 <div class="invalid-feedback">
                   Valid Recipient Phone Number is required.
                 </div>
@@ -208,36 +208,50 @@
 
             <div class="mb-3">
               <label for="address"> Your Address <span class="text-muted">(if different from registered address)</span></label>
-              <input type="text" name="pickup" class="form-control" id="address" placeholder="your address" required>
+              <input type="text" name="pickup_address" class="form-control" id="address" placeholder="your address" required>
               <div class="invalid-feedback">
                 Please enter your pickup address.
               </div>
             </div>
 
+              <div class="col-md-4 mb-3">
+                  <label for="state">Lga</label>
+                  <select class="custom-select d-block w-100" name="pickup_lga_id" id="lga" required>
+                      <option value="">Choose...</option>
+                      @foreach($local as $key=>$lga)
+                          <option value="{{$lga->id}}">{{$lga->name}}</option>
+                      @endforeach</select>
+
+                  <div class="invalid-feedback">
+                      Please provide a valid lga.
+                  </div>
+              </div>
+        </div>
+
             <div class="mb-3">
               <label for="address"> Recipient Address</label>
-              <input type="text" name="dropoff" class="form-control" id="address" placeholder="1234 Main St" required>
+              <input type="text" name="drop_off_address" class="form-control" id="address" placeholder="1234 Main St" required>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">State</label>
-                <select class="custom-select d-block w-100" id="country" name="state_id" required>
-                  <option value="">Choose...</option>
-                    @foreach($states as $key=>$state) 
-                    <option value="{{$state->id}}">{{$state->name}}</option>
-                    @endforeach</select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
+            {{--<div class="row">--}}
+              {{--<div class="col-md-5 mb-3">--}}
+                {{--<label for="country">State</label>--}}
+                {{--<select class="custom-select d-block w-100" id="country" name="state_id" required>--}}
+                  {{--<option value="">Choose...</option>--}}
+                    {{--@foreach($states as $key=>$state) --}}
+                    {{--<option value="{{$state->id}}">{{$state->name}}</option>--}}
+                    {{--@endforeach</select>--}}
+                {{--<div class="invalid-feedback">--}}
+                  {{--Please select a valid country.--}}
+                {{--</div>--}}
+              {{--</div>--}}
 
               <div class="col-md-4 mb-3">
                 <label for="state">Lga</label>
-                <select class="custom-select d-block w-100" name="lga_id" id="lga" required>
+                <select class="custom-select d-block w-100" name="drop_off_lga_id" id="lga" required>
                   <option value="">Choose...</option>
                   @foreach($local as $key=>$lga) 
                     <option value="{{$lga->id}}">{{$lga->name}}</option>
@@ -250,7 +264,7 @@
             </div>
              <div class="mb-3">
               <label for="address"> Item Description</label>
-              <textarea name="type" class="form-control">   </textarea>
+              <textarea name="description" class="form-control">   </textarea>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
