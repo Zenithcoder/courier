@@ -9,19 +9,37 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      *
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
+    {
+        $orders = User::consumer()->findOrFail($id)
+            ->customer_orders()
+            ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
+            ->paginate(getPaginateSize());
+
+        return view('admin.customers.order', compact("orders"));
+    }
+
+    /**
+     * Display a listing of the order for logged in customer.
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function index2()
     {
         $orders = auth()->user()->customer_orders()
             ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
-            ->paginate('5'); // returns the logged in user's (customer) orders
+            ->paginate(getPaginateSize());
 
-        return view('/user/dashboard', compact("orders"));
+        return view('dashboard', compact("orders"));
     }
+
     public function pickup()
     {
         return view('/user/pickupform');

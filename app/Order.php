@@ -39,6 +39,39 @@ class Order extends Model
         return $this->hasMany(OrderActivity::class);
     }
 
+    public function scopePending($query) {
+        return $query->whereStatus('PENDING');
+
+    }
+
+    public function scopeEnRoute($query) {
+        return $query->whereStatus('EN_ROUTE');
+    }
+
+    public function scopeDelivered($query) {
+        return $query->whereStatus('DELIVERED');
+    }
+
+    public function scopeCancelled($query) {
+        return $query->whereStatus('CANCELLED');
+    }
+
+    public function isPending() {
+        return $this->status == 'PENDING';
+    }
+
+    public function isEnRoute() {
+        return $this->status == 'EN_ROUTE';
+    }
+
+    public function isDelivered() {
+        return $this->status == 'DELIVERED';
+    }
+
+    public function isCancelled() {
+        return $this->status == 'CANCELLED';
+    }
+
     private static function generateUniqueTrackingNumber() {
         do {
 

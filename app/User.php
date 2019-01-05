@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -10,6 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +41,32 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'rider_id');
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->whereName('admin');
+        });
+    }
+
+    public function scopeCustomer($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->whereName('customer');
+        });
+    }
+
+    public function scopeRider($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->whereName('rider');
+        });
+    }
+
     /**
      * @param string
      * ring|array $roles
@@ -60,11 +88,6 @@ class User extends Authenticatable
     public function hasAnyRole($roles)
     {
         return null !== $this->roles()->whereIn('name', $roles)->first();
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
     }
 
     /**

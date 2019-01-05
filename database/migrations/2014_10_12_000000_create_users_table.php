@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign("lga_id")->references("id")->on("lgas");
         });
