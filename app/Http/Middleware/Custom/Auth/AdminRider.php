@@ -17,7 +17,7 @@ class AdminRider
     {
         $user = $request->user();
         $user->authorizeRoles(['admin', 'rider']);
-        if($user->isCustomer()) $request->attributes->add(['customer' => $user]);
+        if($user->isRider()) $request->attributes->add(['rider' => $user]);
         else $request->attributes->add(['admin' => $user]);
         return $next($request);
     }
