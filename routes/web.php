@@ -145,7 +145,7 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
         Route::put('orders/{order}/assign', 'OrderController@assign')->name('orders.assign');
     });
 
-    Route::prefix('orders')->middleware('auth.rider')->name('orders')->group(function () {
+    Route::prefix('orders')->middleware('auth.rider')->name('orders.')->group(function () {
         Route::get('', 'OrderController@index2')->name('index2');
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
         Route::put('{order}', 'OrderController@update')->name('update');
@@ -158,18 +158,20 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
 Route::prefix('orders')->middleware('auth')->name('orders.')->namespace('Order')->group(function () {
 
     // Order Activity sub module
-    Route::prefix('{id}/activities')->group(function () {
-        Route::get('', 'ActivityController@index')->name('activities.index')->middleware('auth.admin.customer');
+    Route::name('activities.')->group(function () {
+        Route::prefix('{id}/activities')->group(function () {
+            Route::get('', 'ActivityController@index')->name('index')->middleware('auth.admin.customer');
 
-        Route::middleware('auth.admin')->group(function () {
-            Route::get('create', 'ActivityController@create')->name('create');
-            Route::post('', 'ActivityController@store')->name('store');
+            Route::middleware('auth.admin')->group(function () {
+                Route::get('create', 'ActivityController@create')->name('create');
+                Route::post('', 'ActivityController@store')->name('store');
+            });
         });
-    });
 
-    Route::prefix('activities/{id}')->middleware('auth.admin')->group(function () {
-        Route::get('edit', 'ActivityController@edit')->name('edit');
-        Route::put('', 'ActivityController@update')->name('update');
+        Route::prefix('activities/{id}')->middleware('auth.admin')->group(function () {
+            Route::get('edit', 'ActivityController@edit')->name('edit');
+            Route::put('', 'ActivityController@update')->name('update');
+        });
     });
 
 
