@@ -177,7 +177,7 @@
         </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Parcle Pickup Request</h4>
-          <form class="form-horizontal" method="POST" action="{{ route('order.store') }}">
+          <form class="form-horizontal" method="POST" action="{{ route('orders.store') }}">
                         {{ csrf_field() }}
          
             <div class="row">

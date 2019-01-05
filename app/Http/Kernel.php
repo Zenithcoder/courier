@@ -61,6 +61,6 @@ class Kernel extends HttpKernel
         // custom
         'auth.rider.admin' => \App\Http\Middleware\Custom\Auth\RiderAdmin::class,
         'isAdmin' => \App\Http\Middleware\Custom\Auth\AdminMiddleware::class,
-
+        'auth.customer' => \App\Http\Middleware\Custom\Auth\Customer::class,
     ];
 }

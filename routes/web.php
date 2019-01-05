@@ -12,22 +12,40 @@
 */
 
 Route::get('/', function () {
-return view('index');
+    return view('index');
 });
 
 // where the user is redirected to after login or request for pickup
-Route::get('/dashboard', function () {
-return view('dashboard');
-});
+
+
+Route::get('/users/orders/search/', 'Customer\OrderController@search')->name('user.order.search');
+Route::get('/dashboard', 'Customer\OrderController@index')->middleware('auth');
+
+Route::get('/order_tracking', 'Customer\OrderActivityController@index')->middleware('auth');
+Route::get('/orders_tracking/{order_activity}', 'Customer\OrderActivityController@show')->middleware('auth');
+
 // pickupform from signed in user
-Route::get('/pickupform', 'OrderController@index')->middleware('auth');
-Route::POST('/pickupform', 'OrderController@create')->middleware('auth');
-Route::resource('order', 'OrderController');
+Route::get('/pickupform', 'Customer\OrderController@pickup');
+Route::post('/pickupform', 'Customer\OrderController@create')->middleware('auth');
+
+
+// user module
+Route::prefix('user')->namespace('user')->group(function () {
+
+});
+
+
+// customer module
+Route::prefix('customers')->namespace('customer')->group(function () {
+    Route::middleware(['auth', 'auth.customer'])->group(function () {
+        Route::resource('orders', 'OrderController');
+    });
+});
 
 Auth::routes();
 
 Route::middleware(["auth", "auth.rider.admin"])->group(function () {
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
 });
 

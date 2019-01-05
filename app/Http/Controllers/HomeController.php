@@ -17,6 +17,10 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function dashboard() {
+
+    }
+
     /*
     public function someAdminStuff(Request $request)
     {

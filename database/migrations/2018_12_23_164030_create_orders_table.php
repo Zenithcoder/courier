@@ -15,19 +15,27 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pickup');
-            $table->string('dropoff');
-            $table->float('amount');
-            $table->tinyInteger('status')->default(1);
-            $table->string('type');
-            $table->string('city');
-            $table->string('weight');
-            $table->string('payment_status');
-            $table->string('assign')->default(0);
-            $table->integer('user_id')->unsigned();
+            $table->text('pickup_address');
+            $table->unsignedInteger('pickup_lga_id');
+            $table->text('drop_off_address');
+            $table->unsignedInteger('drop_off_lga_id');
+            $table->double('amount');
+            $table->enum('status', ['PENDING', 'EN_ROUTE', 'DELIVERED', 'CANCELLED'])->default('PENDING');
+            $table->text('description');
+            $table->double('weight')->nullable()->comment('weight in KG');
+            $table->string('tracking_number')->unique()->nullable();
+            $table->string('recipient_name', 80);
+            $table->string('recipient_phone_number', 15);
+            $table->enum('payment_status', ['PAID' , 'FAIL'])->nullable();
+            $table->unsignedInteger('rider_id')->nullable()->comment('A rider user with role - rider');
+            $table->unsignedInteger('customer_id')->comment('A customer user with role - customer');;
+            $table->date("expected_delivery_date")->nullable();
             $table->timestamps();
 
-            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("rider_id")->references("id")->on("users");
+            $table->foreign("customer_id")->references("id")->on("users");
+            $table->foreign("pickup_lga_id")->references("id")->on("lgas");
+            $table->foreign("drop_off_lga_id")->references("id")->on("lgas");
         });
     }
 

@@ -29,13 +29,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function orders()
+    public function customer_orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'customer_id');
+    }
+
+    public function rider_orders()
+    {
+        return $this->hasMany(Order::class, 'rider_id');
     }
 
     /**
-     * @param st
+     * @param string
      * ring|array $roles
      * @return bool
      */
