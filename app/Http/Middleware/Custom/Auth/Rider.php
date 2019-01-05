@@ -4,7 +4,7 @@ namespace App\Http\Middleware\Custom\Auth;
 
 use Closure;
 
-class Customer
+class Rider
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,8 @@ class Customer
      */
     public function handle($request, Closure $next)
     {
-        $request->user()->authorizeRoles('customer');
-        $request->attributes->add(['customer' => $request->user()]);
+        $request->user()->authorizeRoles('rider');
+        $request->attributes->add(['rider' => $request->user()]);
         return $next($request);
     }
 }

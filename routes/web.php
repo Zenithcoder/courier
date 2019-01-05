@@ -111,15 +111,15 @@ Route::prefix('administrators')->name('administrators.')->namespace('Administrat
 
 
 // customer Module
-Route::prefix('customers')->name('customers.')->namespace('Customer')->group(function () {
+Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {
 
     // Order sub module
-    Route::prefix('orders')->middleware(['auth', 'auth.admin'])->name('orders.')->group(function () {
+    Route::prefix('orders')->middleware('auth.admin')->name('orders.')->group(function () {
         Route::get('{id}/orders', 'OrderController@index')->name('index');
     });
 
     Route::prefix('orders')->name('orders.')->group(function () {
-        Route::middleware(['auth', 'auth.customer'])->group(function () {
+        Route::middleware('auth.customer')->group(function () {
             Route::get('', 'OrderController@index2')->name('index2');
             Route::get('create', 'OrderController@create')->name('create');
             Route::post('', 'OrderController@store')->name('store');
@@ -128,7 +128,7 @@ Route::prefix('customers')->name('customers.')->namespace('Customer')->group(fun
             Route::put('{order}/cancel', 'OrderController@cancel')->name('cancel');
         });
 
-        Route::middleware(['auth', 'auth.admin.customer'])->group(function () {
+        Route::middleware('auth.admin.customer')->group(function () {
             Route::get('{id}', 'OrderController@show')->name('show');
         });
 
@@ -155,19 +155,19 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
 
 
 // Order Module
-Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () {
+Route::prefix('orders')->middleware('auth')->name('orders.')->namespace('Order')->group(function () {
 
     // Order Activity sub module
     Route::prefix('{id}/activities')->group(function () {
-        Route::get('', 'ActivityController@index')->name('activities.index')->middleware(['auth', 'auth.admin.customer']);
+        Route::get('', 'ActivityController@index')->name('activities.index')->middleware('auth.admin.customer');
 
-        Route::middleware(['auth', 'auth.admin'])->group(function () {
+        Route::middleware('auth.admin')->group(function () {
             Route::get('create', 'ActivityController@create')->name('create');
             Route::post('', 'ActivityController@store')->name('store');
         });
     });
 
-    Route::prefix('activities/{id}')->middleware(['auth', 'auth.admin'])->group(function () {
+    Route::prefix('activities/{id}')->middleware('auth.admin')->group(function () {
         Route::get('edit', 'ActivityController@edit')->name('edit');
         Route::put('', 'ActivityController@update')->name('update');
     });

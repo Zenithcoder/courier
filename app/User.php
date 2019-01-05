@@ -67,6 +67,21 @@ class User extends Authenticatable
         });
     }
 
+    public function isAdmin()
+    {
+        return $this->roles()->whereName('admin')->exists();
+    }
+
+    public function isCustomer()
+    {
+        return $this->roles()->whereName('customer')->exists();
+    }
+
+    public function isRider()
+    {
+        return $this->roles()->whereName('rider')->exists();
+    }
+
     /**
      * @param string
      * ring|array $roles

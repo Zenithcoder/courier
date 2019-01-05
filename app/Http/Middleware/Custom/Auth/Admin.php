@@ -3,8 +3,11 @@
 namespace App\Http\Middleware\Custom\Auth;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
-class RiderAdmin
+
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -15,7 +18,9 @@ class RiderAdmin
      */
     public function handle($request, Closure $next)
     {
-        $request->user()->authorizeRoles(['rider', 'admin']);
+        $request->user()->authorizeRoles('admin');
+        $request->attributes->add(['admin' => $request->user()]);
         return $next($request);
+
     }
 }
