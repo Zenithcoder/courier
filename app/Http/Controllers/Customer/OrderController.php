@@ -66,92 +66,73 @@ class OrderController extends Controller
 
 
     }
-    public function store(Request $request,User $user ){
-        $order= new Order;
-        $this->validate($request,[
-            /**
-             *
-            $table->increments('id');
-            $table->text('pickup_address');
-            $table->unsignedInteger('pickup_lga_id');
-            $table->text('drop_off_address');
-            $table->unsignedInteger('drop_off_lga_id');
-            $table->double('amount');
-            $table->enum('status', ['PENDING', 'EN_ROUTE', 'DELIVERED', 'CANCELLED',])->default('PENDING');
-            $table->text('description');
-            $table->double('weight')->nullable()->comment('weight in KG');
-            $table->string('tracking_number')->unique()->nullable();
-            $table->string('recipient_name', 80);
-            $table->string('recipient_phone_number', 15);
-            $table->enum('payment_status', ['PAID' , 'FAIL'])->nullable();
-            $table->unsignedInteger('rider_id')->nullable()->comment('A rider is user with role - rider');
-            $table->unsignedInteger('customer_id')->comment('A customer is user with role - customer');;
-            $table->date("expected_delivery_date")->nullable();
-             */
-            'pickup'=>'required',
-            'dropoff'=>'required',
-            'recipient_name'=>'required',
-            'recipient_phone_num'=>'required',
-            'lga_id'=>'required',
-            'state_id'=>'required',
-            'type'=>'required',
 
+
+    public function store(Request $request){
+        $this->validate($request,[
+            'pickup_address' => 'required',
+            'pickup_lga_id' => 'required|exists:lgas,id',
+            'drop_off_address' => 'required',
+            'drop_off_lga_id' => 'required|exists:lgas,id',
+            'description' => 'required',
+            'recipient_name' => 'required',
+            'recipient_phone_number' => 'required',
         ]);
 
-        $order->pickup=$request->pickup;
-        $order->dropoff=$request->dropoff;
-        $order->recipient_name=$request->recipient_name;
-        $order->recipient_phone_num=$request->recipient_phone_num;
-        $order->lga_id=$request->lga_id;
-        $order->state_id=$request->state_id;
-        $order->type=$request->type;
-        $order->user_id=auth()->user()->id;
+        Order::create($request->all());
 
-        $order->save();
-        return redirect('/dashboard')->with('success','YOu have successfully requested for a pickup');
+        return redirect('/dashboard')->with('success','You have successfully requested for a pickup');
 
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-//
+        if(!$customer = $request->get('customer')) {
+            $orders = User::customer()->findOrFail($id)->customer_orders()->paginate(getPaginateSize());
+        } else {
+            $orders = $customer->customer_orders()->paginate(getPaginateSize());
+        }
+
+        return view('admin.orders.index')->with('orders', $orders);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return void
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-//
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param Order $order
+     * @return Order
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-//
+        return $order;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return void
      */
-    public function destroy($id)
+    public function cancel(Order $order)
     {
 //
     }

@@ -123,9 +123,9 @@ Route::prefix('customers')->name('customers.')->namespace('Customer')->group(fun
             Route::get('', 'OrderController@index2')->name('index2');
             Route::get('create', 'OrderController@create')->name('create');
             Route::post('', 'OrderController@store')->name('store');
-            Route::get('{id}/edit', 'OrderController@edit')->name('edit');
-            Route::put('{id}', 'OrderController@update')->name('update');
-            Route::put('{id}/cancel', 'OrderController@cancel')->name('cancel');
+            Route::get('{order}/edit', 'OrderController@edit')->name('edit');
+            Route::put('{order}', 'OrderController@update')->name('update');
+            Route::put('{order}/cancel', 'OrderController@cancel')->name('cancel');
         });
 
         Route::middleware(['auth', 'auth.admin.customer'])->group(function () {

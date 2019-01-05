@@ -8,8 +8,13 @@ class Role extends Model
 {
     //
 
-    public function users()
+    public function user()
     {
      return $this->belongsToMany(User::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
     }
 }
