@@ -57,10 +57,10 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-
-        // custom
-        'auth.rider.admin' => \App\Http\Middleware\Custom\Auth\RiderAdmin::class,
+        'auth.admin' => \App\Http\Middleware\Custom\Auth\Admin::class,
         'auth.customer' => \App\Http\Middleware\Custom\Auth\Customer::class,
-        'isAdmin' => \App\Http\Middleware\Custom\Auth\AdminMiddleware::class,
+        'auth.rider' => \App\Http\Middleware\Custom\Auth\Rider::class,
+        'auth.admin.customer' => \App\Http\Middleware\Custom\Auth\AdminCustomer::class,
+        'auth.admin.rider' => \App\Http\Middleware\Custom\Auth\AdminRider::class,
     ];
 }

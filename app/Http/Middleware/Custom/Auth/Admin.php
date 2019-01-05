@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 
 
-class AdminMiddleware
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,8 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-
+        $request->user()->authorizeRoles('admin');
+        $request->attributes->add(['admin' => $request->user()]);
         return $next($request);
 
     }

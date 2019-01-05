@@ -176,7 +176,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
 
@@ -232,5 +231,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
     ],
+
+    'paginate_size' => env('PAGINATE_SIZE', 50),
 
 ];

@@ -14,14 +14,17 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
 
-    $lga = \App\Lga::all()->random();
+    $lgas = \App\Lga::all();
+    $pickup_lga = $lgas->random();
+    $drop_off_lga = $lgas->random();
+
     $customer = \App\User::all()->random();
 
     return [
         'pickup_address' => $faker->address,
-        'pickup_lga_id' => $lga->id,
+        'pickup_lga_id' => $pickup_lga->id,
         'drop_off_address' => $faker->address,
-        'drop_off_lga_id' => $lga->id,
+        'drop_off_lga_id' => $drop_off_lga->id,
         'amount' => $faker->randomFloat(2, 2000, 10000),
         'description' => $faker->text(200),
         'recipient_name' => $faker->name,

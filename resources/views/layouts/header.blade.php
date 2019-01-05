@@ -43,7 +43,7 @@
             <div class="page-title">
                 <div class="menu-switch"><i class="fa fa-bars"></i></div>
                 <i class="fa fa-list-alt"></i>
-                <span>Web Forms</span>
+                <span>XYZ Couriers</span>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
