@@ -28,8 +28,18 @@ Route::get('/orders_tracking/{order_activity}', 'Customer\OrderActivityControlle
 Route::get('/pickupform', 'Customer\OrderController@pickup');
 Route::post('/pickupform', 'Customer\OrderController@create')->middleware('auth');
 
-Route::middleware(['auth', 'auth.customer'])->prefix('customers')->namespace('customer')->group(function () {
-    Route::resource('orders', 'OrderController');
+
+// user module
+Route::prefix('user')->namespace('user')->group(function () {
+
+});
+
+
+// customer module
+Route::prefix('customers')->namespace('customer')->group(function () {
+    Route::middleware(['auth', 'auth.customer'])->group(function () {
+        Route::resource('orders', 'OrderController');
+    });
 });
 
 Auth::routes();

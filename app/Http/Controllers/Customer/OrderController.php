@@ -16,10 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = auth()->user()->customer_orders()->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'
-        ])->paginate('5'); // returns the logged in user's (customer) orders
-//
-//        return $orders;
+        $orders = auth()->user()->customer_orders()
+            ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
+            ->paginate('5'); // returns the logged in user's (customer) orders
+
         return view('/user/dashboard', compact("orders"));
     }
     public function pickup()

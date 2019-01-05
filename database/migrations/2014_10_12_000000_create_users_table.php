@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->unsignedInteger('lga_id');
-            $table->tinyInteger('status')->default(1);
+            $table->boolean('is_status')->default(1);
             $table->string('pic')->nullable();
-            $table->string('phone_num')->nullable();
+            $table->string('phone_number')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

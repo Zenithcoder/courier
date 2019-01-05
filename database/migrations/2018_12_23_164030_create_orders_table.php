@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->text('drop_off_address');
             $table->unsignedInteger('drop_off_lga_id');
             $table->double('amount');
-            $table->enum('status', ['PENDING', 'EN_ROUTE', 'DELIVERED', 'CANCELLED',])->default('PENDING');
+            $table->enum('status', ['PENDING', 'EN_ROUTE', 'DELIVERED', 'CANCELLED'])->default('PENDING');
             $table->text('description');
             $table->double('weight')->nullable()->comment('weight in KG');
             $table->string('tracking_number')->unique()->nullable();
