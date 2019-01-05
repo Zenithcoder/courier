@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Order;
 use Auth;
 use App\User;
+use App\Role;
+
 
 class OrderController extends Controller
 {
@@ -16,12 +18,12 @@ class OrderController extends Controller
      */
     public function index(User $user)
     {
-        $order = $user->order;
-        if (Auth::user()->role_id == 3) {
-            return view('/admin.orders.index',compact('order'));
-        } else {
-            return view('/user.pickupform',compact('order'));
+
+        $orders = $user->order;
+        if (Auth::user()->role_id != 3) {
+            return view('/user.pickupform', compact('order'));
         }
+        return view('/admin.orders.index')->with('orders', $orders);
     }
 
     /**
@@ -77,9 +79,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $orders = Order::all();
+        return view('/admin.orders.index')->with('orders', $orders);
     }
 
     /**
@@ -91,6 +94,17 @@ class OrderController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function assign()
+    {
+        $roles = Role::all();//
     }
 
     /**

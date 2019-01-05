@@ -19,4 +19,8 @@ class Order extends Model
          return $this->belongsTo(Rider::class);
      }
 
+    protected function Role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

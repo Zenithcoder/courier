@@ -5,8 +5,7 @@
 @section('content')
 
     <div class="col-lg-10 col-lg-offset-1">
-        <h1><i class="fa fa-users"></i> Order List <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>
-            <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a></h1>
+        <h1><i class="fa fa-users"></i> Orders List</h1>
         <hr>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
@@ -19,24 +18,40 @@
                     <th>Type</th>
                     <th>Weight</th>
                     <th>Payment Status</th>
+                    <th>Assigned Status</th>
+                    <th>Customer's Name</th>
                     <th>Operations</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                @foreach ($order as $ord)
+                @foreach ($orders as $order)
                     <tr>
 
-                        <td>{{ $ord->pickup }}</td>
-                        <td>{{ $ord->dropoff }}</td>
-                        <td>{{ $ord->amount }}</td>
-                        <td>{{ $ord->type }}</td>
-                        <td>{{ $ord->weight }}</td>
-                        <td>{{ $ord->payment_status }}</td>
+                        <td>{{ $order->pickup }}</td>
+                        <td>{{ $order->dropoff }}</td>
+                        <td>{{ $order->amount }}</td>
+                        <td>{{ $order->type }}</td>
+                        <td>{{ $order->weight }}</td>
                         <td>
-                            <a href="{{ route('order.edit', $user->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                            @if ($order->payment_status == 1)
+                                Paid
+                            @else
+                                Not Paid
+                            @endif
+                        </td>
+                        <td>
+                            @if ($order->assign == 1)
+                                Yes
+                            @else
+                                No
+                            @endif
+                        </td>
+                        <td>{{ $order->user['name'] }}</td>
+                        <td>
+                            <a href="{{ route('order.edit', $order->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['order.destroy', $user->id] ]) !!}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['order.destroy', $order->id] ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
 
@@ -48,7 +63,8 @@
             </table>
         </div>
 
-        <a href="{{ route('users.create') }}" class="btn btn-success">Add User</a>
+        <a href="" class="btn btn-success">Assign</a>
+
 
     </div>
 
