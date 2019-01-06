@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Order;
 use App\User;
+use Paginate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -68,7 +69,8 @@ class OrderController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(Request $request, User $user){
+        $order=new Order;
         $this->validate($request,[
             'pickup_address' => 'required',
             'pickup_lga_id' => 'required|exists:lgas,id',
@@ -77,11 +79,20 @@ class OrderController extends Controller
             'description' => 'required',
             'recipient_name' => 'required',
             'recipient_phone_number' => 'required',
+            'customer_id'=>'auth()->user()->id',
+
         ]);
+        $order->recipient_name=$request->recipient_name;
+        $order->recipient_phone_number=$request->recipient_phone_number;
+        $order->pickup_address=$request->pickup_address;
+        $order->pickup_lga_id=$request->pickup_lga_id;
+        $order->drop_off_address=$request->drop_off_address;
+        $order->drop_off_lga_id=$request->drop_off_lga_id;
+        $order->description=$request->description;
+        $order->customer_id=auth()->user()->id;
 
-        Order::create($request->all());
-
-        return redirect('/dashboard')->with('success','You have successfully requested for a pickup');
+        $order->save();
+        return redirect()->route('customers.orders.index2')->with('success','YOu have successfully requested for a pickup');
 
     }
 

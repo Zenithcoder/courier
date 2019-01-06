@@ -291,7 +291,7 @@
                                 {{ csrf_field() }}
                                 <div class="form-group"><input type="text" placeholder="Name" name="name" class="form-control"></div>
                                 <div class="form-group"><input type="text" placeholder="Email" name="email" address" class="form-control"></div>
-                                <div class="form-group"><input type="text" placeholder="Phone Number" name="phone_num" class="form-control"></div>
+                                <div class="form-group"><input type="text" placeholder="Phone Number" name="phone_number" class="form-control"></div>
                                 <div class="form-group"><input type="password" placeholder="Password" name="password" class="form-control"></div>
                                 <div class="form-group"><input type="password" name="password_confirmation" placeholder="Confirm Password" class="form-control"></div>
                                 <div class="form-group">

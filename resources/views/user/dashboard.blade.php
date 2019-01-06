@@ -20,7 +20,7 @@ DashBoard
                     <div class="col-sm-4">
                         <ol class="breadcrumb-menubar list-inline">
                             <li><a href="#" class="gray-clr">Hello {{auth::user()->name}}</a></li>
-                           <a href="pickupform"> <button class="btn-1">Request Pickup</button></a>
+                           <a href="{{route ('customers.orders.create')}}"> <button class="btn-1">Request Pickup</button></a>
 
                         </ol>
                     </div>
@@ -113,7 +113,7 @@ DashBoard
                             <td>{{$order->drop_off_address}}</td>
                             <td>{{$order->status}}</td>
                             <td>{{$order->updated_at->diffForHumans()}}</td>
-                            <td><a href="/orders_tracking/{{$order->id}}">View</a></td>
+                            <td><a href="/customers/orders/{id}">View</a></td>
                         </tr>
                         @endforeach
                         {{--<tr>--}}
