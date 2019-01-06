@@ -37,7 +37,7 @@ class OrderController extends Controller
             ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
             ->paginate(getPaginateSize());
 
-        return view('dashboard', compact("orders"));
+        return view('user.dashboard', compact("orders"));
     }
 
     public function pickup()
