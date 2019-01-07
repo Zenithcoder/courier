@@ -17,4 +17,9 @@ class Role extends Model
     {
         return $this->belongsToMany(Order::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

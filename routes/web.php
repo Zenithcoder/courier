@@ -98,7 +98,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
     // Rider sub module
     Route::prefix('riders')->middleware(['auth', 'auth.admin'])->name('riders.')->group(function () {
-       Route::get('', 'RiderController@index')->name('index');
+       Route::get('index', 'RiderController@index')->name('index');
        Route::get('create', 'RiderController@create')->name('create');
        Route::post('', 'RiderController@store')->name('store');
        Route::get('{id}', 'RiderController@show')->name('show');

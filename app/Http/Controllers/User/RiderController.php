@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\User;
 
+use Auth;
+use App\User;
+use Paginate;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class RiderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'auth.admin']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,13 @@ class RiderController extends Controller
      */
     public function index()
     {
-        //
+//        $riders = Role::where('name', 'rider')->first()->user()->get();
+        $riders = User::whereHas('roles', function($q)
+        {
+            $q->where('name', 'rider');
+        })->get();
+        dd($riders);
+        return view('admin.users.riders.index')->with('riders', $riders);
     }
 
     /**
@@ -35,7 +49,28 @@ class RiderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+                'name' => 'required|string|max:191',
+                'email' => 'required|string|email|max:191|unique:users',
+                'password' => 'required|string|min:6'
+        ]);
+
+        $user = User::create($request->only('name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_num'));
+
+        $roles = $request['roles'];
+
+        if (isset($roles)) {
+
+            foreach ($roles as $role) {
+                $role_r = Role::where('id', '=', $role)->firstOrFail();
+                $user->assignRole($role_r);
+            }
+        }
+
+        return redirect()->route('users.riders.index ')
+            ->with('flash_message',
+                'Rider successfully added.');
     }
 
     /**
@@ -46,7 +81,8 @@ class RiderController extends Controller
      */
     public function show($id)
     {
-        //
+        $riders = Role::where('name', 'rider')->first()->user()->find($id);
+        return view('admin.users.riders.show')->with('riders', $riders);
     }
 
     /**
@@ -57,7 +93,10 @@ class RiderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Role::where('name', 'rider')->first()->user()->findOrFail($id);
+        $roles = Role::get();
+
+        return view('admin.users.riders.edit', compact('user', 'roles'));
     }
 
     /**
@@ -67,9 +106,12 @@ class RiderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        return redirect()->route('users.riders.index')
+            ->with('flash_message',
+                'Rider account updated successfully.');
     }
 
     /**
@@ -80,6 +122,12 @@ class RiderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Find a user with a given id and delete
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.riders.index')
+            ->with('flash_message',
+                'Rider successfully deleted.');
     }
 }
