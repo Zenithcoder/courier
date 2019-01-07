@@ -117,6 +117,9 @@ Route::prefix('administrators')->name('administrators.')->namespace('Administrat
 // customer Module
 Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {
 
+    // Dashboard
+    Route::get('dashboard', 'DashboardController@index')->middleware('auth.customer')->name('dashboard.index');
+
     // Order sub module
     Route::prefix('orders')->middleware('auth.admin')->name('orders.')->group(function () {
         Route::get('{id}/orders', 'OrderController@index')->name('index');
@@ -137,6 +140,9 @@ Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('C
         });
 
     });
+
+
+
 });
 
 
