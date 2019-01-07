@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Rider;
 
 use App\Order;
 use App\User;
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -32,7 +34,20 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->rider_orders()->paginate(getPaginateSize());
 
-        return $orders;
+       // dd($orders);
+      //  return $orders;
+      return view('riders.riders_orders', compact('orders'));
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index3()
+    {
+      
+      return view('riders.index');
     }
 
     /**
@@ -62,9 +77,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($order)
     {
-        //
+        $order = Order::find($order);
+     //   dd($order);
+     return view('riders.show', compact('order'));
     }
 
     /**
@@ -73,9 +90,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($order)
     {
-        //
+        $order = Order::find($order);
+    
+     return view('riders.update_order', compact('order'));
     }
 
     /**
@@ -85,9 +104,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    
+    public function update(Request $request, Order $order)
     {
-        //
+         $order->update($request->all());
+        return back();
     }
 
     /**
@@ -120,5 +141,12 @@ class OrderController extends Controller
         $order->save();
 
         return "Done";
+    }
+
+     public function getLogout(Request $request){
+      Session::flush();
+      Auth::logout();
+            
+      return  redirect()->to('/');
     }
 }

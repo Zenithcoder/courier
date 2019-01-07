@@ -69,8 +69,7 @@ class OrderController extends Controller
     }
 
 
-    public function store(Request $request, User $user){
-        $order=new Order;
+    public function store(Request $request){
         $this->validate($request,[
             'pickup_address' => 'required',
             'pickup_lga_id' => 'required|exists:lgas,id',
@@ -79,20 +78,10 @@ class OrderController extends Controller
             'description' => 'required',
             'recipient_name' => 'required',
             'recipient_phone_number' => 'required',
-            'customer_id'=>'auth()->user()->id',
-
         ]);
-        $order->recipient_name=$request->recipient_name;
-        $order->recipient_phone_number=$request->recipient_phone_number;
-        $order->pickup_address=$request->pickup_address;
-        $order->pickup_lga_id=$request->pickup_lga_id;
-        $order->drop_off_address=$request->drop_off_address;
-        $order->drop_off_lga_id=$request->drop_off_lga_id;
-        $order->description=$request->description;
-        $order->customer_id=auth()->user()->id;
+        auth()->user()->customer_orders()->create($request->all());
 
-        $order->save();
-        return redirect()->route('customers.orders.index2')->with('success','YOu have successfully requested for a pickup');
+        return redirect()->route('customers.orders.index2')->with('success','You have successfully requested for a pickup');
 
     }
 
@@ -135,7 +124,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        return $order;
+        //
     }
 
     /**
