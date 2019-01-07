@@ -151,8 +151,11 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
 
     Route::prefix('orders')->middleware('auth.rider')->name('orders.')->group(function () {
         Route::get('', 'OrderController@index2')->name('index2');
+        Route::get('dash', 'OrderController@index3')->name('index3');
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
-        Route::put('{order}', 'OrderController@update')->name('update');
+        Route::post('{order}', 'OrderController@update')->name('update');
+       Route::get('{order}/show', 'OrderController@show')->name('show');  
+       Route::get('logout', 'OrderController@getLogout')->name('logout'); 
     });
 
 });
