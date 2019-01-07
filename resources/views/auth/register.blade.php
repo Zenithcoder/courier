@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
 <div class="container">
@@ -49,7 +49,7 @@
                             <label for="phone_num" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input id="phone_num" type="number" class="form-control" name="phone_num" value="{{ old('phone_num') }}" required>
+                                <input id="phone_num" type="number" class="form-control" name="phone_number" value="{{ old('phone_num') }}" required>
 
                                 @if ($errors->has('phone_num'))
                                     <span class="help-block">

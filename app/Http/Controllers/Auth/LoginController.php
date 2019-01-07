@@ -42,11 +42,12 @@ class LoginController extends Controller
     {
         $user = auth()->user();
         if($user){
-            if($user->hasRole('customer')) return '/dashboard';
-            elseif($user->hasRole('rider')) return '/';
+            if($user->hasRole('customer')) return '/customers/orders';
+            elseif($user->hasRole('rider')) return '/riders/orders';
+             elseif($user->hasRole('admin')) return '/administrators';
         }
 
 
-        return "/home";
+        return "/";
     }
 }

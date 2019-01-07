@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/pickupform', function () {
+    return view('/user/pickupform');
+});
+
+
 
 /*
 Route::get('/users/orders/search/', 'Customer\OrderController@search')->name('user.order.search');
@@ -53,9 +58,9 @@ Route::resource('roles', 'RoleController');
 
 Route::resource('orders', 'OrderController');
 
-Route::resource('permissions', 'PermissionController');*/
+Route::resource('permissions', 'PermissionController');
 
-
+*/
 Auth::routes();
 
 // User Module
@@ -108,7 +113,6 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 Route::prefix('administrators')->name('administrators.')->namespace('Administrator')->group(function () {
 
 });
-
 
 // customer Module
 Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {

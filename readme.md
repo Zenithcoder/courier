@@ -1,7 +1,7 @@
 
 ## About Courier
-composer install
-php artisan migrate:refresh --seed
+	- composer install
+	- php artisan migrate:refresh --seed
 
 
 ## Login section not working for some reason. please check
