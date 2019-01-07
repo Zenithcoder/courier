@@ -23,7 +23,7 @@ class OrderController extends Controller
             ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
             ->paginate(getPaginateSize());
 
-        return view('admin.customers.order', compact("orders"));
+        return view('user.order_tracking', compact("orders"));
     }
 
     /**
@@ -103,15 +103,16 @@ class OrderController extends Controller
      * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, User $user, $id)
     {
-        if(!$customer = $request->get('customer')) {
-            $orders = User::customer()->findOrFail($id)->customer_orders()->paginate(getPaginateSize());
-        } else {
-            $orders = $customer->customer_orders()->paginate(getPaginateSize());
-        }
-
-        return view('admin.orders.index')->with('orders', $orders);
+//        if(!$customer = $request->get('customer')) {
+//            $orders = User::customer()->findOrFail($id)->customer_orders()->paginate(getPaginateSize());
+//        } else {
+//            $orders = $customer->customer_orders()->paginate(getPaginateSize());
+//        }
+        $orders = order::find($id);
+//        return $orders;
+        return view('user.show-order')->with('orders', $orders);
     }
 
     /**

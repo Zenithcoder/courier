@@ -15,6 +15,13 @@ DashBoard
                         <div class="title-wrap">
                             <h2 class="section-title no-margin"> <strong>My Shipments</strong> </h2>
                             <p class="fs-16 no-margin"> A list of all Your Shipments</p>
+                            <p>@if($message =Session::get('success'))
+                                    <div class="alert alert-success">
+                            <p>
+                                {{$message}}<i class="fas fa-check"></i>
+                            </p>
+                        </div>
+                        @endif</p>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -93,8 +100,10 @@ DashBoard
                             <th class="col-lg-3">Pickup </th>
                             <th class="col-lg-3">DropOff</th>
                             <th class="col-lg-2">Status</th>
-                            <th class="col-lg-2">Delivery Date</th>
-                            <th class="col-lg-2">Travel History</th>
+                            <th class="col-lg-2">Date Created</th>
+                            <th class="col-lg-2"></th>
+                            <th class="col-lg-2"></th>
+                            <th class="col-lg-2"></th>
                         </tr>
                         </thead>
 
@@ -113,7 +122,9 @@ DashBoard
                             <td>{{$order->drop_off_address}}</td>
                             <td>{{$order->status}}</td>
                             <td>{{$order->updated_at->diffForHumans()}}</td>
-                            <td><a href="/customers/orders/{id}">View</a></td>
+                            <td><a href="/customers/orders/{id}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="/customers/orders/{id}"><i class="fas fa-trash-alt"></i></a></td>
+                            <td><a href="/customers/orders/{{$order->id}}"><i class="fas fa-eye"></i></a></td>
                         </tr>
                         @endforeach
                         {{--<tr>--}}
