@@ -14,7 +14,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.orders_tracking');
     }
 
     /**
