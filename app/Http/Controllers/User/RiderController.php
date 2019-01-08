@@ -26,8 +26,7 @@ class RiderController extends Controller
         $riders = User::whereHas('roles', function($q)
         {
             $q->where('name', 'rider');
-        })->get();
-        dd($riders);
+        })->get()->paginate(getPaginateSize());
         return view('admin.users.riders.index')->with('riders', $riders);
     }
 
@@ -38,7 +37,8 @@ class RiderController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::where('name', 'rider')->first()->user()->get();
+        return view('admin.riders.create', ['roles'=>$roles]);
     }
 
     /**
@@ -81,7 +81,8 @@ class RiderController extends Controller
      */
     public function show($id)
     {
-        $riders = Role::where('name', 'rider')->first()->user()->find($id);
+        $riders = Role::where('name', 'rider')->first()->user()->find($id)
+                ->paginate(getPaginateSize());
         return view('admin.users.riders.show')->with('riders', $riders);
     }
 
@@ -94,7 +95,6 @@ class RiderController extends Controller
     public function edit($id)
     {
         $user = Role::where('name', 'rider')->first()->user()->findOrFail($id);
-        $roles = Role::get();
 
         return view('admin.users.riders.edit', compact('user', 'roles'));
     }
@@ -122,7 +122,6 @@ class RiderController extends Controller
      */
     public function destroy($id)
     {
-        //Find a user with a given id and delete
         $user = User::findOrFail($id);
         $user->delete();
 
