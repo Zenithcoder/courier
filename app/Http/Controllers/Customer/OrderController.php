@@ -113,6 +113,9 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
 
+
+        return view('user.order-edit',compact('order'));
+
     }
 
     /**
@@ -124,7 +127,18 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $this->validate($request,[
+            'pickup_address' => 'required',
+            'pickup_lga_id' => 'required|exists:lgas,id',
+            'drop_off_address' => 'required',
+            'drop_off_lga_id' => 'required|exists:lgas,id',
+            'description' => 'required',
+            'recipient_name' => 'required',
+            'recipient_phone_number' => 'required',
+        ]);
+        $order->update($request->all());
+
+        return redirect()->route('customers.orders.index2')->with('success','You have successfully requested for a pickup');
     }
 
     /**

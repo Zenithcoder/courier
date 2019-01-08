@@ -122,7 +122,7 @@ DashBoard
                             <td>{{$order->drop_off_address}}</td>
                             <td>{{$order->status}}</td>
                             <td>{{$order->updated_at->diffForHumans()}}</td>
-                            <td><a href="/customers/orders/{id}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="/customers/orders/{{$order->id}}/edit"><i class="fas fa-edit"></i></a></td>
                             <td><a href="/customers/orders/{id}"><i class="fas fa-trash-alt"></i></a></td>
                             <td><a href="/customers/orders/{{$order->id}}"><i class="fas fa-eye"></i></a></td>
                         </tr>
