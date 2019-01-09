@@ -82,4 +82,10 @@ class CustomerController extends Controller
     {
         //
     }
+
+    public function myProfile(Request $request) {
+        $customer = $request->get('customer');
+
+        return $customer;
+    }
 }

@@ -84,7 +84,7 @@ class User extends Authenticatable
 
     /**
      * @param string
-     * ring|array $roles
+     * String|array $roles
      * @return bool
      */
     public function authorizeRoles($roles)

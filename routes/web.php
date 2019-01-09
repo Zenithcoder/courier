@@ -79,6 +79,12 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
     // Customer sub module
     Route::prefix('customers')->name('customers.')->group(function () {
+        Route::middleware(['auth', 'auth.customer'])->group(function () {
+            Route::get('my-profile', 'CustomerController@myProfile')->name('myProfile');
+            Route::get('edit', 'CustomerController@edit')->name('edit');
+            Route::put('', 'CustomerController@update')->name('update');
+        });
+
         Route::middleware(['auth', 'auth.admin'])->group(function () {
             Route::get('', 'CustomerController@index')->name('index');
             Route::get('{id}', 'CustomerController@show')->name('show');
@@ -89,11 +95,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
             Route::post('', 'CustomerController@store')->name('store');
         });
 
-        Route::middleware(['auth', 'auth.customer'])->group(function () {
-            Route::get('my-profile', 'CustomerController@myProfile')->name('myProfile');
-            Route::get('edit', 'CustomerController@edit')->name('edit');
-            Route::put('', 'CustomerController@update')->name('update');
-        });
+
     });
 
     // Rider sub module
