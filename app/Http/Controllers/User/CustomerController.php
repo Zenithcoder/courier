@@ -23,17 +23,6 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function myProfile()
-    {
-        return view('user.customer-profile');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -75,21 +64,19 @@ class CustomerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|exists:lgas,id',
             'phone_number' => 'required',
             'lga_id' => 'required|exists:lgas,id',
             'address' => 'required',
         ]);
-        dd();
-        $user->update($request->all());
+
+        $customer = $request->get('customer');
+        $customer->update($request->except('email'));
         return redirect()->route('customers.orders.index2')->with('success','You have successfully requested for a pickup');
 
 
@@ -106,9 +93,14 @@ class CustomerController extends Controller
         //
     }
 
-    public function myProfile(Request $request) {
-        $customer = $request->get('customer');
-
-        return $customer;
+    /**
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myProfile()
+    {
+        $customer = \request()->get('customer');
+        return view('user.customer-profile', compact('customer'));
     }
+
 }
