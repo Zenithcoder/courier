@@ -123,7 +123,13 @@ DashBoard
                             <td>{{$order->status}}</td>
                             <td>{{$order->updated_at->diffForHumans()}}</td>
                             <td><a href="/customers/orders/{{$order->id}}/edit"><i class="fas fa-edit"></i></a></td>
-                            <td><a href="/customers/orders/{id}"><i class="fas fa-trash-alt"></i></a></td>
+                            <td>
+                                {!! Form::open(['method' => 'PUT','route' => ['customers.orders.cancel', $order->id],'style'=>'display:inline']) !!}
+                                <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+                                {!! Form::close() !!}
+
+
+                            </td>
                             <td><a href="/customers/orders/{{$order->id}}"><i class="fas fa-eye"></i></a></td>
                         </tr>
                         @endforeach
