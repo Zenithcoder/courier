@@ -127,6 +127,8 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        if(!$order->isPending()) return back()->with('error', 'Only pending order can be updated.');
+
         $this->validate($request,[
             'pickup_address' => 'required',
             'pickup_lga_id' => 'required|exists:lgas,id',
@@ -145,10 +147,15 @@ class OrderController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Order $order
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function cancel(Order $order)
     {
+        if(!$order->isPending()) return back()->with('error', "This order cannot be cancelled because it's not pending");
+
+        $order->status = 'CANCELLED';
+        $order->save();
+        return back()->with('success', "You've successfully cancelled your order.");
 //
     }
 }

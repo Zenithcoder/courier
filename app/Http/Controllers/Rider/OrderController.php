@@ -34,20 +34,20 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->rider_orders()->paginate(getPaginateSize());
 
-       // dd($orders);
-      //  return $orders;
-      return view('riders.riders_orders', compact('orders'));
+        // dd($orders);
+        //  return $orders;
+        return view('riders.riders_orders', compact('orders'));
     }
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index3()
     {
-      
-      return view('riders.index');
+
+        return view('riders.index');
     }
 
     /**
@@ -74,40 +74,37 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Order $order
      * @return \Illuminate\Http\Response
      */
-    public function show($order)
+    public function show(Order $order)
     {
-        $order = Order::find($order);
-     //   dd($order);
-     return view('riders.show', compact('order'));
+        return view('riders.show', compact('order'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Order $order
      * @return \Illuminate\Http\Response
      */
-    public function edit($order)
+    public function edit(Order $order)
     {
-        $order = Order::find($order);
-    
-     return view('riders.update_order', compact('order'));
+
+        return view('riders.update_order', compact('order'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param Order $order
      * @return \Illuminate\Http\Response
      */
-    
+
     public function update(Request $request, Order $order)
     {
-         $order->update($request->all());
+        $order->update($request->all());
         return back();
     }
 
@@ -143,10 +140,10 @@ class OrderController extends Controller
         return "Done";
     }
 
-     public function getLogout(Request $request){
-      Session::flush();
-      Auth::logout();
-            
-      return  redirect()->to('/');
+    public function getLogout(Request $request){
+        Session::flush();
+        Auth::logout();
+
+        return  redirect()->to('/');
     }
 }

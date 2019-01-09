@@ -68,9 +68,9 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
     // Administrators sub module
     Route::prefix('administrators')->middleware(['auth', 'auth.admin'])->name('administrators.')->group(function () {
-        Route::get('', 'AdministratorController@index')->name('index');
+        Route::get('index', 'AdministratorController@index')->name('index');
         Route::get('create', 'AdministratorController@create')->name('create');
-        Route::post('', 'AdministratorController@store')->name('store');
+        Route::post('store', 'AdministratorController@store')->name('store');
         Route::get('{id}', 'AdministratorController@show')->name('show');
         Route::get('{id}/edit', 'AdministratorController@edit')->name('edit');
         Route::put('{id}', 'AdministratorController@update')->name('update');
@@ -101,7 +101,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
     Route::prefix('riders')->middleware(['auth', 'auth.admin'])->name('riders.')->group(function () {
        Route::get('index', 'RiderController@index')->name('index');
        Route::get('create', 'RiderController@create')->name('create');
-       Route::post('', 'RiderController@store')->name('store');
+       Route::post('store', 'RiderController@store')->name('store');
        Route::get('{id}', 'RiderController@show')->name('show');
        Route::get('{id}/edit', 'RiderController@edit')->name('edit');
        Route::put('{id}', 'RiderController@update')->name('update');
@@ -161,7 +161,7 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
         Route::get('dash', 'OrderController@index3')->name('index3');
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
         Route::post('{order}', 'OrderController@update')->name('update');
-       Route::get('{order}/show', 'OrderController@show')->name('show');  
+       Route::get('{order}', 'OrderController@show')->name('show');
        Route::get('logout', 'OrderController@getLogout')->name('logout'); 
     });
 
