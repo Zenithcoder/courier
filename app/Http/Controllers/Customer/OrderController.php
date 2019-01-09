@@ -138,7 +138,7 @@ class OrderController extends Controller
         ]);
         $order->update($request->all());
 
-        return redirect()->route('customers.orders.index2')->with('success','You have successfully requested for a pickup');
+        return redirect('/auth/user-profile-edit')->with('success','You have successfully updated your pickup');
     }
 
     /**

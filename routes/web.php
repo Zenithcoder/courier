@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('index');
-});
-Route::get('/pickupform', function () {
-    return view('/user/pickupform');
-});
+    return view('index');});
+
+//Route::get('/profile', function () {return view('user.customer-profile');}); /* returns the customer view... cant access the route rlating to this view */
+//Route::get('/profile', function () {return view('user.customer-profile');}); /* returns the customer view... cant access the route rlati
+//Route::get('/pickupform', function () {return view('/user/pickupform');});
 
 
 
@@ -91,6 +91,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
         Route::middleware(['auth', 'auth.customer'])->group(function () {
             Route::get('my-profile', 'CustomerController@myProfile')->name('myProfile');
+
             Route::get('edit', 'CustomerController@edit')->name('edit');
             Route::put('', 'CustomerController@update')->name('update');
         });
@@ -167,27 +168,3 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
 });
 
 
-// Order Module
-Route::prefix('orders')->middleware('auth')->name('orders.')->namespace('Order')->group(function () {
-
-    // Order Activity sub module
-    Route::name('activities.')->group(function () {
-        Route::prefix('{id}/activities')->group(function () {
-            Route::get('', 'ActivityController@index')->name('index')->middleware('auth.admin.customer');
-
-            Route::middleware('auth.admin')->group(function () {
-                Route::get('create', 'ActivityController@create')->name('create');
-                Route::post('', 'ActivityController@store')->name('store');
-            });
-        });
-
-        Route::prefix('activities/{id}')->middleware('auth.admin')->group(function () {
-            Route::get('edit', 'ActivityController@edit')->name('edit');
-            Route::put('', 'ActivityController@update')->name('update');
-        });
-    });
-
-
-    // Tracking sub module
-    Route::get('tracker', 'TrackingController@show')->name('tracking.show');
-});

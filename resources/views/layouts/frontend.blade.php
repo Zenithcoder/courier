@@ -22,6 +22,8 @@
         <!-- Main Css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/css/theme.css')}}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <!-- profile css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('homecss/css/customer-profile.css')}}">
 
 
         <!--[if lt IE 9]>
@@ -122,7 +124,7 @@
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="#">Submenu</a></li>
                                                                 <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>                                    
+                                                                <li><a href="#">Submenu</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -138,20 +140,19 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog-left.html">Blog Left</a></li>
-                                                <li><a href="single-blog.html">Single Post</a></li>                                    
+                                                <li><a href="single-blog.html">Single Post</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >pages </a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >My Profile </a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="get-quote.html"> Quote Page </a></li>
-                                                <li><a href="contact-us-2.html"> Contact-2 Page </a></li>
-                                                <li><a href="404.html"> Error Page </a></li> 
+                                                <li><a href="{{route('users.customers.myProfile')}}">My Profile </a></li>
+                                                <li><a href="404.html"> Error Page </a></li>
                                                 <li><a href="coming-soon.html"> Coming Soon Page </a></li>
                                             </ul>
-                                        </li>  
+                                        </li>
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
-                                    </ul>                                                      
+                                    </ul>
                                 </div>
                             </div>
                         </div>
