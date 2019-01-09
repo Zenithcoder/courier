@@ -23,10 +23,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function myProfile()
-    {
-        return view('user.customer-profile');
-    }
+//    public function myProfile()
+//    {
+//        return view('user.customer-profile');
+//    }
 
     /**
      * Display the specified resource.
@@ -83,12 +83,12 @@ class CustomerController extends Controller
 
         $this->validate($request,[
             'name' => 'required',
-            'email' => 'required|exists:lgas,id',
+            'email' => 'required',
             'phone_number' => 'required',
-            'lga_id' => 'required|exists:lgas,id',
+            'lga_id' => 'required',
             'address' => 'required',
         ]);
-        dd();
+
         $user->update($request->all());
         return redirect()->route('customers.orders.index2')->with('success','You have successfully requested for a pickup');
 
@@ -109,6 +109,6 @@ class CustomerController extends Controller
     public function myProfile(Request $request) {
         $customer = $request->get('customer');
 
-        return $customer;
+        return view('user.customer-profile', compact('customer'));
     }
 }
