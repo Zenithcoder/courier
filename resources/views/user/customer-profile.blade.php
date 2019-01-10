@@ -57,29 +57,29 @@
                                                         <tbody>
                                                         <tr>
                                                             <td>Name:</td>
-                                                            <td>{{auth::user()->name}}</td>
+                                                            <td>{{$customer->name}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Email Address</td>
-                                                            <td>{{auth::user()->email}}</td>
+                                                            <td>{{$customer->email}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Phone Number</td>
-                                                            <td>{{auth::user()->phone_number}}</td>
+                                                            <td>{{$customer->phone_number}}</td>
                                                         </tr>
 
                                                         <tr>
                                                         <tr>
                                                             <td>Address </td>
-                                                            <td>{{auth::user()->address}}</td>
+                                                            <td>{{$customer->address}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>LGA</td>
-                                                            <td>{{auth::user()->lga_id}}</td>
+                                                            <td>{{$customer->lga_id}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Account Created on</td>
-                                                            <td>{{auth::user()->created_at}}</td>
+                                                            <td>{{$customer->created_at}}</td>
                                                         </tr>
 
 

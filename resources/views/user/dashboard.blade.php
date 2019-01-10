@@ -43,7 +43,7 @@ DashBoard
                     <div class="col-md-8 col-md-offset-2 tracking-form wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
                         <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                         <div class="row">
-                            <form class="">
+
                                 <div class="col-md-7 col-sm-7">
                                     <div class="form-group">
                                         <input type="text" placeholder="Enter your product ID" required="" class="form-control box-shadow">
@@ -120,8 +120,13 @@ DashBoard
                             <th>{{$no++}}</th>
                             <th scope="row">{{$order->pickup_address}}</th>
                             <td>{{$order->drop_off_address}}</td>
-                            <td>{{$order->status}}</td>
-                            <td>{{$order->updated_at->diffForHumans()}}</td>
+                            @if (isset($order->status) && $order->status =='PENDING')
+                                <td class="info">{{$order->status}}</td>
+                            @else <td class="danger"> {{$order->status}} </td>
+                            @endif
+
+                                {{--<td>{{$order->status}}</td>--}}
+                                <td>{{$order->updated_at->diffForHumans()}}</td>
                             <td><a href="/customers/orders/{{$order->id}}/edit"><i class="fas fa-edit"></i></a></td>
                             <td>
                                 {!! Form::open(['method' => 'PUT','route' => ['customers.orders.cancel', $order->id],'style'=>'display:inline']) !!}
