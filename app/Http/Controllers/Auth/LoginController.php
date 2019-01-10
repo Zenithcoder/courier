@@ -44,7 +44,7 @@ class LoginController extends Controller
         if($user){
             if($user->hasRole('customer')) return '/customers/orders';
             elseif($user->hasRole('rider')) return '/riders/orders/dash';
-             elseif($user->hasRole('admin')) return '/administrators';
+             elseif($user->hasRole('admin')) return '/users/administrators/index';
         }
 
 

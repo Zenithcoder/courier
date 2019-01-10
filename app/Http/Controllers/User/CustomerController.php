@@ -14,7 +14,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-//        return view('user.customer-profile');
+        $customer = User::whereHas('roles', function($q)
+        {
+            $q->where('name', 'customer');
+        })->get();
+        return view('admin.users.customers.index')->with('customer', $customer);
     }
 
     /**

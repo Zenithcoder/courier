@@ -26,8 +26,8 @@ class AdministratorController extends Controller
         $admin = User::whereHas('roles', function($q)
         {
             $q->where('name', 'admin');
-        })->get()->paginate(getPaginateSize());
-        return view('admin.users.admin.index')->with('admin', $admin);
+        })->get();
+        return view('admin.users.administrators.index')->with('admin', $admin);
     }
 
     /**
@@ -38,7 +38,7 @@ class AdministratorController extends Controller
     public function create()
     {
         $roles = Role::where('name', 'admin')->first()->user()->get();
-        return view('admin.admin.create', ['roles'=>$roles]);
+        return view('admin.users.administrators.create', ['roles'=>$roles]);
     }
 
     /**
@@ -67,7 +67,7 @@ class AdministratorController extends Controller
             }
         }
 
-        return redirect()->route('users.admin.index ')
+        return redirect()->route('users.administrators.index')
             ->with('flash_message',
                 'Admin successfully added.');
     }
@@ -80,9 +80,8 @@ class AdministratorController extends Controller
      */
     public function show($id)
     {
-        $admin = Role::where('name', 'admin')->first()->user()->find($id)
-            ->paginate(getPaginateSize());
-        return view('admin.users.admin.show')->with('admin', $admin);
+        $user = User::find($id);
+        return view('admin.users.administrators.show')->with('user', $user);
     }
 
     /**
@@ -95,7 +94,7 @@ class AdministratorController extends Controller
     {
         $user = Role::where('name', 'admin')->first()->user()->findOrFail($id);
 
-        return view('admin.users.admin.edit', compact('user', 'roles'));
+        return view('admin.users.administrators.edit', compact('user', 'roles'));
     }
 
     /**
@@ -108,7 +107,7 @@ class AdministratorController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        return redirect()->route('users.riders.index')
+        return redirect()->route('users.administrators.index')
             ->with('flash_message',
                 'Admin account updated successfully.');
     }
@@ -124,7 +123,7 @@ class AdministratorController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.riders.index')
+        return redirect()->route('users.administrators.index')
             ->with('flash_message',
                 'Admin successfully deleted.');
     }

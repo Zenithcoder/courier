@@ -37,7 +37,12 @@ class RiderController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('name', 'rider')->first()->user()->get();
+//        $roles = Role::where('name', 'rider')->first()->user()->get();
+        $role = 'rider';
+        $roles = User::whereHas('roles', function($q) use ($role)
+        {
+            $q->where('roles.name', $role);
+        })->get();
         return view('admin.users.riders.create', ['roles'=>$roles]);
     }
 
@@ -81,9 +86,8 @@ class RiderController extends Controller
      */
     public function show($id)
     {
-        $riders = Role::where('name', 'rider')->first()->user()->find($id)
-                ->paginate(getPaginateSize());
-        return view('admin.users.riders.show')->with('riders', $riders);
+        $user = User::find($id);
+        return view('admin.users.riders.show')->with('user', $user);
     }
 
     /**
