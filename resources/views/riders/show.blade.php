@@ -102,6 +102,38 @@ Order Details
                                 </tr>
                                 
                             </tbody>
+                             <tbody class="grid grid-7"> 
+                                <tr>
+                                     <td><b>ORDER ACTIVITY</b></td>
+                                    <td> </td>
+                                </tr>
+
+                                <tr>
+                                     <td>Description</td>
+                                    <td> Current Location</td>
+                                    <td>Current LGA</td>
+                                    <td>Next Location</td>
+                                    <td>Next LGA</td>
+                                    <td> Expected Delivery</td>
+                                    <td></td>
+                                </tr>
+                                @if ($activities == null )
+                                    <tr> <td>No Activity</td></tr>
+                                @endif
+                                @foreach($activities as $activity)
+                                <tr>
+                                     <td>{{$activity->description}}</td>
+                                    <td>{{$activity->current_location}}</td>
+                                     <td>{{$activity->current_lga->name}}</td>
+                                      <td>{{$activity->next_location}}</td>
+                                    <td>{{$activity->next_lga->name}}</td>
+                                    <td>{{$activity->expected_delivery_date}}</td>
+                                    <td> <button class="btn btn-mini btn-info"><a href=" ">Edit</a></button> </td>
+                                </tr>
+                                @endforeach
+                                <tr><td> <button class="btn btn-mini btn-info"><a href=" {{route('orders.activity.create', $order->id)}}">Add</a></button> </td>
+                                 </tr>
+                             </tbody>
                         </table>
                         </div>
 

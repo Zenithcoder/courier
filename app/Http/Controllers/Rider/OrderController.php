@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use Auth;
-
+use App\OrderActivity;
 class OrderController extends Controller
 {
     /**
@@ -79,7 +79,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('riders.show', compact('order'));
+    //   $sd=  OrderActivity::find(1)->current_lga;
+        $activities = $order->order_activities;
+       // dd($sd);
+        return view('riders.show', compact('order','activities'));
     }
 
     /**
