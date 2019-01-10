@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Order;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Lga;
+use App\OrderActivity;
 
 class ActivityController extends Controller
 {
@@ -22,9 +24,10 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $lgas = Lga::all();
+        return view('riders.activity.create', compact('id', 'lgas'));
     }
 
     /**
@@ -35,7 +38,19 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //  dd($request); 
+        $this->validate($request,[
+            'description' => 'required',
+            'current_lga_id' => 'required|exists:lgas,id',
+            'current_location' => 'required',
+            'next_lga_id' => 'required|exists:lgas,id',
+            'next_location' => 'required',
+            'expected_delivery_date' => 'required'
+        ]);
+
+        OrderActivity::create($request->except('_token'));
+
+        return back()->with('success','You have successfully added an Activity');
     }
 
     /**
