@@ -28,6 +28,7 @@
                         <td>{{ $customers->phone_number }}</td>
 
                         <td>
+                            <a href="{{ route('users.customers.show', $customers->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
                             <a href="{{ route('users.administrators.edit', $customers->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
                             {{--{!! Form::open(['method' => 'DELETE', 'route' => ['users.customers.destroy', $customers->id] ]) !!}--}}

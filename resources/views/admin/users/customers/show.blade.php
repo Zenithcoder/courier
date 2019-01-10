@@ -1,11 +1,11 @@
 @extends('layouts.header')
 
-@section('title', '| Rider View')
+@section('title', '| Customer View')
 
 @section('content')
 
     <div class="col-lg-10 col-lg-offset-1">
-        <h1><i class="fa fa-users"></i> {!! $user->name !!} || Role: Rider</h1>
+        <h1><i class="fa fa-users"></i> {!! $user->name !!} || Role: Customer</h1>
         <hr>
         <div class="container">
 
@@ -52,7 +52,7 @@
 
         </div>
 
-        <a href="{{ route('users.riders.index') }}" class="btn btn-success">Back</a>
+        <a href="{{ route('users.customers.index') }}" class="btn btn-success">Back</a>
 
     </div>
 

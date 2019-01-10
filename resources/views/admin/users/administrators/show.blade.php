@@ -31,7 +31,13 @@
 
             <div class="form-group">
                 {!! Form::label('status', 'Status:') !!}
-                <p>{!! $user->is_status !!}</p>
+                <p>
+                    @if ($user->is_status == 1)
+                        Active
+                    @else
+                        Inactive
+                    @endif
+                </p>
             </div>
 
             <div class="form-group">
