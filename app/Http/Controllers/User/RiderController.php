@@ -26,7 +26,7 @@ class RiderController extends Controller
         $riders = User::whereHas('roles', function($q)
         {
             $q->where('name', 'rider');
-        })->get()->paginate(getPaginateSize());
+        })->get();
         return view('admin.users.riders.index')->with('riders', $riders);
     }
 
@@ -38,7 +38,7 @@ class RiderController extends Controller
     public function create()
     {
         $roles = Role::where('name', 'rider')->first()->user()->get();
-        return view('admin.riders.create', ['roles'=>$roles]);
+        return view('admin.users.riders.create', ['roles'=>$roles]);
     }
 
     /**

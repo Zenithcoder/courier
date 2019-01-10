@@ -15,7 +15,6 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Contact Number</th>
-                    <th>User Roles</th>
                     <th>Operations</th>
                 </tr>
                 </thead>
@@ -26,12 +25,12 @@
 
                         <td>{{ $rider->name }}</td>
                         <td>{{ $rider->email }}</td>
-                        <td>{{ $rider->phone_num }}</td>
+                        <td>{{ $rider->phone_number }}</td>
 
                         <td>
-                            <a href="{{ route('users.edit', $rider->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                            <a href="{{ route('users.riders.edit', $rider->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $rider->id] ]) !!}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.riders.destroy', $rider->id] ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
 
@@ -43,7 +42,7 @@
             </table>
         </div>
 
-        <a href="{{ route('riders.create') }}" class="btn btn-success">Add User</a>
+        <a href="{{ route('users.riders.create') }}" class="btn btn-success">Create Rider</a>
 
     </div>
 

@@ -12,9 +12,9 @@
             <li class="separator"><div></div><div></div><div></div></li>
             <li><a href="dashboard.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
             <li class="separator"><div></div><div></div><div></div></li>
-            <li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i><span>Users</span></a></li>
+            <li><a href="{{ route('users.riders.index') }}"><i class="fa fa-users"></i><span>Users</span></a></li>
             <li class="separator"><div></div><div></div><div></div></li>
-            <li><a href="{{ route('orders.index') }}"><i class="fa fa-bar-chart-o"></i><span>Orders</span></a></li>
+            <li><a href=""><i class="fa fa-bar-chart-o"></i><span>Orders</span></a></li>
             {{--<li class="separator"><div></div><div></div><div></div></li>--}}
             {{--<li class="sub">--}}
                 {{--<a href="#"><i class="fa fa-globe"></i><span>UI Elements</span></a>--}}
