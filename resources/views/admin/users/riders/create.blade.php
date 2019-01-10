@@ -1,12 +1,12 @@
 @extends('layouts.header')
 
-@section('title', '| Add User')
+@section('title', '| Add Rider')
 
 @section('content')
 
     <div class='col-lg-4 col-lg-offset-4'>
 
-        <h1><i class='fa fa-user-plus'></i> Add User</h1>
+        <h1><i class='fa fa-user-plus'></i> Create Rider</h1>
         <hr>
 
         {{ Form::open(array('url' => 'users')) }}
