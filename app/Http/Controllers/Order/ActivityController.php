@@ -75,7 +75,10 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        //
+          $lgas = Lga::all();
+      $activity = OrderActivity::find($id);
+   
+      return view('riders.activity.edit', compact('activity','lgas'));
     }
 
     /**
@@ -85,9 +88,10 @@ class ActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, OrderActivity $id)
     {
-        //
+         $id->update($request->all());
+       return back()->with('success','You have successfully updated an Activity');
     }
 
     /**

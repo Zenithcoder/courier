@@ -128,7 +128,7 @@ Order Details
                                       <td>{{$activity->next_location}}</td>
                                     <td>{{$activity->next_lga->name}}</td>
                                     <td>{{$activity->expected_delivery_date}}</td>
-                                    <td> <button class="btn btn-mini btn-info"><a href=" ">Edit</a></button> </td>
+                                    <td> <button class="btn btn-mini btn-info"><a href="{{route('orders.activity.edit',$activity->id )}} ">Edit</a></button> </td>
                                 </tr>
                                 @endforeach
                                 <tr><td> <button class="btn btn-mini btn-info"><a href=" {{route('orders.activity.create', $order->id)}}">Add</a></button> </td>
