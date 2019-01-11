@@ -63,8 +63,9 @@
                     <li><a href="{{route('riders.orders.index2')}}"><i class="fa fa-bar-chart-o"></i><span>My Orders</span></a></li>
                     <li class="separator"><div></div><div></div><div></div></li>
                     <li>
-                     <a href="{{route('riders.orders.logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
+                     <a href="{{route('orders.tracking.logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
                     </li>
+
                <!--     <li class="separator"><div></div><div></div><div></div></li>
                     <li class="sub">
                         <a href="#"><i class="fa fa-globe"></i><span>UI Elements</span></a>
