@@ -11,56 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');});
+Route::get('/', function () {return view('index');});
 
-//Route::get('/profile', function () {return view('user.customer-profile');}); /* returns the customer view... cant access the route rlating to this view */
-//Route::get('/profile', function () {return view('user.customer-profile');}); /* returns the customer view... cant access the route rlati
-//Route::get('/pickupform', function () {return view('/user/pickupform');});
-
-
-
-/*
-Route::get('/users/orders/search/', 'Customer\OrderController@search')->name('user.order.search');
-Route::get('/dashboard', 'Customer\OrderController@index')->middleware('auth');
-
-Route::get('/order_tracking', 'Customer\OrderActivityController@index')->middleware('auth');
-Route::get('/orders_tracking/{order_activity}', 'Customer\OrderActivityController@show')->middleware('auth');
-
-// pickupform from signed in user
-Route::get('/pickupform', 'Customer\OrderController@pickup');
-Route::post('/pickupform', 'Customer\OrderController@create')->middleware('auth');
-
-
-// user module
-Route::prefix('user')->namespace('user')->group(function () {
-
-});
-
-
-// customer module
-Route::prefix('customers')->namespace('customer')->group(function () {
-    Route::middleware(['auth', 'auth.customer'])->group(function () {
-        Route::resource('orders', 'OrderController');
-    });
-});
-
-
-
-Route::middleware(["auth", "auth.rider.admin"])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-
-});
-
-Route::resource('users', 'UserController');
-
-Route::resource('roles', 'RoleController');
-
-Route::resource('orders', 'OrderController');
-
-Route::resource('permissions', 'PermissionController');
-
-*/
 Auth::routes();
 
 // User Module
@@ -98,13 +50,13 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
     // Rider sub module
     Route::prefix('riders')->middleware(['auth', 'auth.admin'])->name('riders.')->group(function () {
-       Route::get('index', 'RiderController@index')->name('index');
-       Route::get('create', 'RiderController@create')->name('create');
-       Route::post('store', 'RiderController@store')->name('store');
-       Route::get('{id}', 'RiderController@show')->name('show');
-       Route::get('{id}/edit', 'RiderController@edit')->name('edit');
-       Route::put('{id}', 'RiderController@update')->name('update');
-       Route::delete('{id}', 'RiderController@destroy')->name('destroy');
+        Route::get('index', 'RiderController@index')->name('index');
+        Route::get('create', 'RiderController@create')->name('create');
+        Route::post('store', 'RiderController@store')->name('store');
+        Route::get('{id}', 'RiderController@show')->name('show');
+        Route::get('{id}/edit', 'RiderController@edit')->name('edit');
+        Route::put('{id}', 'RiderController@update')->name('update');
+        Route::delete('{id}', 'RiderController@destroy')->name('destroy');
     });
 });
 
@@ -138,11 +90,7 @@ Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('C
         Route::middleware('auth.admin.customer')->group(function () {
             Route::get('{id}', 'OrderController@show')->name('show');
         });
-
     });
-
-
-
 });
 
 
@@ -160,29 +108,29 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
         Route::get('dash', 'OrderController@index3')->name('index3');
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
         Route::post('{order}', 'OrderController@update')->name('update');
-       Route::get('{order}', 'OrderController@show')->name('show');
-       Route::get('logout', 'OrderController@getLogout')->name('logout'); 
+        Route::get('{order}', 'OrderController@show')->name('show');
+        Route::get('logout', 'OrderController@getLogout')->name('logout');
     });
 
-}); 
+});
 
 
 //Order Module
 Route::prefix('orders')->name('orders.')->namespace('Order')->middleware('auth')->group(function () {
 
-    // Acitivities sub module
+    // Activities sub module
     Route::middleware('auth.admin.customer')->group(function () {
         Route::get('{id}/activities', 'ActivityController@index')->name('activity.index');
     });
 
-     Route::middleware('auth.rider')->group(function () {
+    Route::middleware('auth.rider')->group(function () {
         Route::get('{id}/activities/create', 'ActivityController@create')->name('activity.create');
         Route::post('activities', 'ActivityController@store')->name('activity.store');
         Route::get('activities/{id}/edit', 'ActivityController@edit')->name('activity.edit');
         Route::put('activities/{id}', 'ActivityController@update')->name('activity.update');
     });
 
-     // Tracking sub module
+    // Tracking sub module
     Route::middleware('guest')->group(function () {
         Route::get('tracker', 'TrackingController@search')->name('tracking.search');
     });
