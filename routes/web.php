@@ -11,6 +11,8 @@
 |
 */
 
+use function foo\func;
+
 Route::get('/', function () {return view('index');});
 
 Auth::routes();
@@ -66,6 +68,7 @@ Route::prefix('administrators')->name('administrators.')->namespace('Administrat
 
 });
 
+
 // customer Module
 Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {
 
@@ -116,23 +119,23 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
 
 
 //Order Module
-Route::prefix('orders')->name('orders.')->namespace('Order')->middleware('auth')->group(function () {
+Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () {
 
-    // Activities sub module
-    Route::middleware('auth.admin.customer')->group(function () {
-        Route::get('{id}/activities', 'ActivityController@index')->name('activity.index');
-    });
+    // Authenticated routes
+    Route::middleware('auth')->group(function () {
+        // Activities sub module
+        Route::middleware('auth.admin.customer')->group(function () {
+            Route::get('{id}/activities', 'ActivityController@index')->name('activity.index');
+        });
 
-    Route::middleware('auth.rider')->group(function () {
-        Route::get('{id}/activities/create', 'ActivityController@create')->name('activity.create');
-        Route::post('activities', 'ActivityController@store')->name('activity.store');
-        Route::get('activities/{id}/edit', 'ActivityController@edit')->name('activity.edit');
-        Route::put('activities/{id}', 'ActivityController@update')->name('activity.update');
+        Route::middleware('auth.rider')->group(function () {
+            Route::get('{id}/activities/create', 'ActivityController@create')->name('activity.create');
+            Route::post('activities', 'ActivityController@store')->name('activity.store');
+            Route::get('activities/{id}/edit', 'ActivityController@edit')->name('activity.edit');
+            Route::put('activities/{id}', 'ActivityController@update')->name('activity.update');
+        });
     });
 
     // Tracking sub module
-    Route::middleware('guest')->group(function () {
-        Route::get('tracker', 'TrackingController@search')->name('tracking.search');
-    });
-
+    Route::get('tracker', 'TrackingController@search')->name('tracking.search');
 });

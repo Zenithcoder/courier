@@ -108,7 +108,7 @@ class OrderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Order $order
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Order $order)
     {
@@ -156,6 +156,5 @@ class OrderController extends Controller
         $order->status = 'CANCELLED';
         $order->save();
         return back()->with('success', "You've successfully cancelled your order.");
-//
     }
 }
