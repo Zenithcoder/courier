@@ -41,7 +41,6 @@ class Order extends Model
 
     public function scopePending($query) {
         return $query->whereStatus('PENDING');
-
     }
 
     public function scopeEnRoute($query) {

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Order;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use App\Order;
 use App\Lga;
 use App\OrderActivity;
-
 class ActivityController extends Controller
 {
     /**
@@ -14,9 +15,11 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Order $order)
     {
-        return view('user.orders_tracking');
+        $orders=  Order::whereTrackingNumber($request->get('tracking_number'))->first();
+        dd($orders);
+        return view('user.orders_tracking', compact('$orders'));
     }
 
     /**

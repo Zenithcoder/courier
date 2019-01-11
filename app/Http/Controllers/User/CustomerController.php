@@ -27,6 +27,8 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function show($id)
     {
         $user = User::find($id);
@@ -71,18 +73,19 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required',
             'phone_number' => 'required',
-            'lga_id' => 'required|exists:lgas,id',
+            'lga_id' => 'required',
             'address' => 'required',
         ]);
-
+        $user->update($request->all());
         $customer = $request->get('customer');
         $customer->update($request->except('email'));
-        return redirect()->route('customers.orders.index2')->with('success','You have successfully requested for a pickup');
+        return redirect()->route('customers.orders.index2')->with('success','You have successfully updated your profile');
 
 
     }
@@ -98,13 +101,10 @@ class CustomerController extends Controller
         //
     }
 
-    /**
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function myProfile()
     {
         $customer = \request()->get('customer');
+
         return view('user.customer-profile', compact('customer'));
     }
 

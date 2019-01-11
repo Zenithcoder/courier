@@ -108,7 +108,7 @@ class OrderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Order $order
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Order $order)
     {
@@ -140,7 +140,7 @@ class OrderController extends Controller
         ]);
         $order->update($request->all());
 
-        return redirect('/auth/user-profile-edit')->with('success','You have successfully updated your pickup');
+        return redirect('/customers/orders')->with('success','You have successfully updated your pickup');
     }
 
     /**
@@ -156,6 +156,5 @@ class OrderController extends Controller
         $order->status = 'CANCELLED';
         $order->save();
         return back()->with('success', "You've successfully cancelled your order.");
-//
     }
 }

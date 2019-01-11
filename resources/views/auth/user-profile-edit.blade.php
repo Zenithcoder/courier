@@ -15,7 +15,7 @@
                 @endif</p>
 
                 <div class="panel-body">
-                    {{ Form::model($user,['route'=>['users.customers.update',$user->id],'method'=>'PATCH']) }}
+                    {{ Form::model($user,['route'=>['users.customers.update',$user->id],'method'=>'put']) }}
                     @include ('auth.form-master');
                     {{ Form::close() }}
                 </div>

@@ -48,7 +48,7 @@
                                 <img alt="" src="assets/img/icons/icon-4.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Status </h2>
-                                    <p>You can edit or delete this pickup request because its still pending.</p>
+                                    <p>Your Current Pick up request Status is {{$orders->status}}</p>
                                 </div>
                             </li>
                             <li>
