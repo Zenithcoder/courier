@@ -9,6 +9,10 @@
         <hr>
         <div class="container">
 
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top" src="{{ $user->pic }}" alt="{!! $user->name !!} photo">
+            </div>
+
             <div class="form-group">
                 {!! Form::label('email', 'Email:') !!}
                 <p>{!! $user->email !!}</p>

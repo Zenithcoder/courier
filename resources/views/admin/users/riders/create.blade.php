@@ -9,7 +9,7 @@
         <h1><i class='fa fa-user-plus'></i> Create Rider</h1>
         <hr>
 
-        {{ Form::open(array('url' => 'users')) }}
+        {{ Form::open(array('url' => 'users/riders/store')) }}
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
@@ -21,23 +21,17 @@
             {{ Form::email('email', '', array('class' => 'form-control')) }}
         </div>
 
-        <div class='form-group'>
-            @foreach ($roles as $role)
-                {{ Form::checkbox('roles[]',  $role->id ) }}
-                {{ Form::label($role->name, ucfirst($role->name)) }}<br>
+        {{--<div class='form-group'>--}}
+            {{--@foreach ($roles as $role)--}}
+                {{--{{ Form::checkbox('roles[]',  $role->id ) }}--}}
+                {{--{{ Form::label($role->name, ucfirst($role->name)) }}<br>--}}
 
-            @endforeach
-        </div>
+            {{--@endforeach--}}
+        {{--</div>--}}
 
         <div class="form-group">
             {{ Form::label('password', 'Password') }}<br>
             {{ Form::password('password', array('class' => 'form-control')) }}
-
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('password', 'Confirm Password') }}<br>
-            {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
 
         </div>
 
@@ -49,6 +43,16 @@
         <div class="form-group">
             {{ Form::label('city', 'City') }}
             {{ Form::text('city', '', array('class' => 'form-control')) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('lga_id', 'LGA') }}
+            {{ Form::number('lga_id', '', array('class' => 'form-control')) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('is_status', 'Status') }}
+            {{ Form::number('is_status', '', array('class' => 'form-control')) }}
         </div>
 
         <div class="form-group">

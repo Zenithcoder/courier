@@ -37,8 +37,7 @@ class AdministratorController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('name', 'admin')->first()->user()->get();
-        return view('admin.users.administrators.create', ['roles'=>$roles]);
+        return view('admin.users.administrators.create');
     }
 
     /**
@@ -55,21 +54,40 @@ class AdministratorController extends Controller
             'password' => 'required|string|min:6'
         ]);
 
-        $user = User::create($request->only('name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_num'));
+        if($request->hasfile('pic'))
+        {
+            $file = $request->file('pic');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/', $name);
+        }
 
-        $roles = $request['roles'];
+        $user = User::create($request->only('name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number'));
 
-        if (isset($roles)) {
+        $currentPhoto = $user->pic;
 
-            foreach ($roles as $role) {
-                $role_r = Role::where('id', '=', $role)->firstOrFail();
-                $user->assignRole($role_r);
+        if ($request->pic != $currentPhoto) {
+            $name = time() . '.' . explode('/', explode(':', substr(
+                    $request->pic,
+                    0,
+                    strpos($request->pic, ';')
+                ))[1])[1];
+
+            \Image::make($request->pic)->save(public_path('images/') . $name);
+
+            $request->merge(['pic' => $name]);
+
+            $userPhoto = public_path('images/') . $currentPhoto;
+
+            if (file_exists($userPhoto)) {
+                @unlink($userPhoto);
             }
         }
 
+        $user->role()->attach(Role::where('name', 'admin')->first());
+
         return redirect()->route('users.administrators.index')
-            ->with('flash_message',
-                'Admin successfully added.');
+            ->with('success','Admin successfully added!');
+
     }
 
     /**
@@ -108,7 +126,7 @@ class AdministratorController extends Controller
     {
         $user->update($request->all());
         return redirect()->route('users.administrators.index')
-            ->with('flash_message',
+            ->with('success',
                 'Admin account updated successfully.');
     }
 
@@ -124,7 +142,7 @@ class AdministratorController extends Controller
         $user->delete();
 
         return redirect()->route('users.administrators.index')
-            ->with('flash_message',
+            ->with('success',
                 'Admin successfully deleted.');
     }
 }
