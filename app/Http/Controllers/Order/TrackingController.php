@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Auth;
+use Session;
 
 class TrackingController extends Controller
 {
@@ -34,5 +36,14 @@ class TrackingController extends Controller
 
 //        return $order;
         return view('/user/orders_tracking',compact('order'));
+    }
+
+
+     public function logout(){
+      //  dd(1);
+        Session::flush();
+        Auth::logout();
+
+        return  redirect()->to('/');
     }
 }

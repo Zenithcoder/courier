@@ -112,7 +112,7 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
         Route::post('{order}', 'OrderController@update')->name('update');
         Route::get('{order}', 'OrderController@show')->name('show');
-        Route::get('logout', 'OrderController@getLogout')->name('logout');
+    //    Route::any('logout', 'OrderController@getLogout')->name('logout');
     });
 
 });
@@ -138,4 +138,5 @@ Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () 
 
     // Tracking sub module
     Route::get('tracker', 'TrackingController@search')->name('tracking.search');
+    Route::get('logout', 'TrackingController@logout')->name('tracking.logout');
 });

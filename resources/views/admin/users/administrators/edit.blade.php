@@ -51,18 +51,6 @@
         {{--@endforeach--}}
         {{--</div>--}}
 
-        <div class="form-group">
-            {{ Form::label('password', 'Password') }}<br>
-            {{ Form::password('password', array('class' => 'form-control')) }}
-
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('password', 'Confirm Password') }}<br>
-            {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
-
-        </div>
-
         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

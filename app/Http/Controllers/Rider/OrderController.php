@@ -143,10 +143,11 @@ class OrderController extends Controller
         return "Done";
     }
 
-    public function getLogout(Request $request){
+  /*  public function getLogout(){
+        dd(1);
         Session::flush();
         Auth::logout();
 
         return  redirect()->to('/');
-    }
+    }*/
 }

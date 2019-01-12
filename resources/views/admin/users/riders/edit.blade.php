@@ -51,18 +51,8 @@
             {{--@endforeach--}}
         {{--</div>--}}
 
-        <div class="form-group">
-            {{ Form::label('password', 'Password') }}<br>
-            {{ Form::password('password', array('class' => 'form-control')) }}
 
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('password', 'Confirm Password') }}<br>
-            {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
-
-        </div>
-
+        <a href="{{ route('users.riders.update', $user->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">Update</a>
         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

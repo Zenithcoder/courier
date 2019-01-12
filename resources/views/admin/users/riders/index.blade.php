@@ -6,6 +6,7 @@
 
     <div class="col-lg-10 col-lg-offset-1">
         <h1><i class="fa fa-users"></i> Rider Management Panel </h1>
+
         <hr>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">

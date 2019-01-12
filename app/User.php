@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_num','address','lga_id'
+        'name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number'
     ];
 
     /**
@@ -44,6 +44,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
     }
 
     public function scopeAdmin($query)
