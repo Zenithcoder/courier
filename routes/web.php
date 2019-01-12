@@ -73,7 +73,7 @@ Route::prefix('administrators')->name('administrators.')->namespace('Administrat
 Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {
 
     // Dashboard
-    Route::get('dashboard', 'DashboardController@index')->middleware('auth.customer')->name('dashboard.index');
+//    Route::get('dashboard', 'DashboardController@index')->middleware('auth.customer')->name('dashboard.index');
 
     // Order sub module
     Route::prefix('orders')->middleware('auth.admin')->name('orders.')->group(function () {

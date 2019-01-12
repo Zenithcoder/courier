@@ -43,15 +43,16 @@ DashBoard
                     <div class="col-md-8 col-md-offset-2 tracking-form wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
                         <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                         <div class="row">
-
+                            <form method="GET" action="{{route('orders.tracking.search')}}">
                                 <div class="col-md-7 col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Enter your product ID" required="" class="form-control box-shadow">
+                                        <input type="text" name="tracking_number" placeholder="Enter your product ID" required="" class="form-control box-shadow">
                                     </div>
                                 </div>
                                 <div class="col-md-5 col-sm-5">
                                     <div class="form-group">
-                                        <button class="btn-1">track your product</button>
+                                        <button type="submit" class="btn-1">Track Shipment</button></a>
+                                        {{--<button class="btn-1">track your product</button>--}}
                                         <hr>
                                     </div>
                                 </div>
@@ -97,13 +98,14 @@ DashBoard
                         <thead class="thead-light">
                         <tr>
                             <th class="col-lg-1">S/N</th>
-                            <th class="col-lg-3">Pickup </th>
-                            <th class="col-lg-3">DropOff</th>
+                            <th class="col-lg-2">Pickup </th>
+                            <th class="col-lg-2">DropOff</th>
                             <th class="col-lg-2">Status</th>
-                            <th class="col-lg-2">Date Created</th>
-                            <th class="col-lg-2"></th>
-                            <th class="col-lg-2"></th>
-                            <th class="col-lg-2"></th>
+                            <th class="col-lg-1">Tracking Id</th>
+                            <th class="col-lg-1">Last Modified</th>
+                            <th class="col-sm-1"></th>
+                            <th class="col-sm-1"></th>
+                            <th class="col-sm-1"></th>
                         </tr>
                         </thead>
 
@@ -126,12 +128,13 @@ DashBoard
                             @endif
 
                                 {{--<td>{{$order->status}}</td>--}}
-                                <td>{{$order->updated_at->diffForHumans()}}</td>
+                            <td>{{$order->tracking_number}}</td>
+                            <td>{{$order->updated_at->diffForHumans()}}</td>
                             <td><a href="/customers/orders/{{$order->id}}/edit"><i class="fas fa-edit"></i></a></td>
                             <td>
-                                {!! Form::open(['method' => 'PUT','route' => ['customers.orders.cancel', $order->id],'style'=>'display:inline']) !!}
-                                <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
-                                {!! Form::close() !!}
+                            {!! Form::open(['method' => 'PUT','route' => ['customers.orders.cancel', $order->id],'style'=>'display:inline']) !!}
+                            <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+                            {!! Form::close() !!}
 
 
                             </td>

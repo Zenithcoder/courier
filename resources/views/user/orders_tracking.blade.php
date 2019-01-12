@@ -33,7 +33,7 @@ Tracking
                             <div class="col-md-8 col-md-offset-2 tracking-form wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
                                 <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                                 <div class="row">
-                                    <form class="" method="get" action="{{ route('user.order.search')}}">
+                                    <form class="" method="get" action="/order/tracker">
                                         <div class="col-md-7 col-sm-7">
                                             <div class="form-group">
                                                 <input type="text" placeholder="Enter your product ID" required=""  name='tracking_number' class="form-control box-shadow">
@@ -98,13 +98,13 @@ Tracking
                                     <td></td>
                                     <td></td>
                                   </tr>
-                                  @foreach($done as $key=>$dorder)
+                                  @foreach ($order->order_activities  as $key=>$dorder)
                                   <tr>
-                                    <th scope="row"> {{$dorder->created_at->diffForHumans()}}</th>
+                                    <th scope="row"> {{$order->created_at->diffForHumans()}}</th>
                                     <td>{{$dorder->description}}</td>
                                     <td>{{$dorder->current_location}}</td>
                                   </tr>
-                                  @endforeach
+                                    @endforeach
                                   <hr>
                                 </tbody>
                             </table>

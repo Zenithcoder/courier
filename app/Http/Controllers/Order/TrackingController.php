@@ -32,6 +32,7 @@ class TrackingController extends Controller
             throw new ValidationException($validator);
         }
 
-        return $order;
+//        return $order;
+        return view('/user/orders_tracking',compact('order'));
     }
 }
