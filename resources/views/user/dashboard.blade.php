@@ -41,23 +41,9 @@ DashBoard
             <div class="theme-container container ">
                 <div class="row pad-10">
                     <div class="col-md-8 col-md-offset-2 tracking-form wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                        <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
+                        <h2 class="title-1"> track your Shipment </h2> <span class="font2-light fs-12">Now you can track your parcel easily</span>
                         <div class="row">
-                            <form method="GET" action="{{route('orders.tracking.search')}}">
-                                <div class="col-md-7 col-sm-7">
-                                    <div class="form-group">
-                                        <input type="text" name="tracking_number" placeholder="Enter your product ID" required="" class="form-control box-shadow">
-                                    </div>
-                                </div>
-                                <div class="col-md-5 col-sm-5">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn-1">Track Shipment</button></a>
-                                        {{--<button class="btn-1">track your product</button>--}}
-                                        <hr>
-                                    </div>
-                                </div>
-                            </form>
-
+                            @include('/layouts.shipment-tracker')
                         </div>
                     </div>
                 </div>
@@ -98,10 +84,10 @@ DashBoard
                         <thead class="thead-light">
                         <tr>
                             <th class="col-lg-1">S/N</th>
-                            <th class="col-lg-2">Pickup </th>
-                            <th class="col-lg-2">DropOff</th>
+                            <th class="col-lg-2">Pickup Address </th>
+                            <th class="col-lg-2">DropOff Address</th>
                             <th class="col-lg-2">Status</th>
-                            <th class="col-lg-1">Tracking Id</th>
+                            <th class="col-lg-1">Tracking Number</th>
                             <th class="col-lg-1">Last Modified</th>
                             <th class="col-sm-1"></th>
                             <th class="col-sm-1"></th>

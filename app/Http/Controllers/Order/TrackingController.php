@@ -35,7 +35,7 @@ class TrackingController extends Controller
         }
 
 //        return $order;
-        return view('/user/orders_tracking',compact('order'));
+        return view('/user/orders_tracking',compact('order'))->with('success','Post Created Successfully');;
     }
 
 

@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+            <div class="panel panel-warning">
+                <div class="panel panel-warning">Register</div>
                   <p>@if($message =Session::get('success'))
     <div class="alert alert-success">
   <p>

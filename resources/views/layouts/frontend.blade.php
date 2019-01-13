@@ -143,14 +143,20 @@
                                                 <li><a href="single-blog.html">Single Post</a></li>
                                             </ul>
                                         </li>
+                                        @if(!Auth::guest())
                                         <li>
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >My Profile </a>
                                             <ul class="dropdown-menu">
+                                                <li><a href="/customers/orders">Dashboard</a></li>
                                                 <li><a href="{{route('users.customers.myProfile')}}">My Profile </a></li>
-                                                <li><a href="404.html"> Error Page </a></li>
-                                                <li><a href="coming-soon.html"> Coming Soon Page </a></li>
+                                                <li><a href="/customers/orders/create">Request Pickup</a></li>
+                                                {{--<li><a href="{{ route('logout') }}">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                                                            {{--{{ csrf_field() }}--}}
+                                                        {{--</form></li>--}}
+
                                             </ul>
                                         </li>
+                                        @endif
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>
                                 </div>

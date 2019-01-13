@@ -42,7 +42,7 @@
                                 <div class="col-md-12 col-sm-12 ">
 
 
-                                    <div class="panel panel-info">
+                                    <div class="panel panel-warning">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">{{auth::user()->name}}</h3>
                                         </div>
@@ -88,16 +88,14 @@
                                                         </tbody>
                                                     </table>
 
-                                                    <a href="{{route('users.customers.edit')}}" class="btn btn-primary">Edit Profile</a>
-                                                    <a href="#" class="btn btn-primary">Change Password</a>
+                                                    <a href="{{route('users.customers.edit')}}" class="btn btn-sm btn-warning">Edit Profile</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="panel-footer">
-                                            <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                                            <a href="{{route ('customers.orders.create')}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">Track Shipments</a>
                                             <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                            <a href="{{route ('customers.orders.create')}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit">Request Pickup</i></a>
                         </span>
                                         </div>
 
