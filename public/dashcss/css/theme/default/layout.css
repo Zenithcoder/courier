@@ -739,6 +739,7 @@ div.form-row div.label {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: black;
 }
 div.form-row div.input {
     margin-left: 25%;

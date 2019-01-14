@@ -29,7 +29,7 @@ Riders DashBoard
                         <div class="content">
                             <div class="sidebar overflow-none">
                                 <div class="sidebar-widget">
-                                    <div class="sidebar-widget-title">47,163</div>
+                                    <div class="sidebar-widget-title">{{$delivered}}</div>
                                     <div class="sidebar-widget-subtitle">Delivered Orders </div>
                                     <div class="project-contribution" id="github-commit">
                                         <div class="main"></div>
@@ -45,7 +45,7 @@ Riders DashBoard
                                     </div>
                                 </div>
                                 <div class="sidebar-widget">
-                                    <div class="sidebar-widget-title">13,528</div>
+                                    <div class="sidebar-widget-title">{{$pending}}</div>
                                     <div class="sidebar-widget-subtitle">Pending Orders</div>
                                     <div class="project-contribution project-contribution-alt" id="bitbucket-commit">
                                         <div class="main"></div>
@@ -61,12 +61,12 @@ Riders DashBoard
                                     </div>
                                 </div>
                             </div>
-                            <div class="sidebar-page">
+                        <!--    <div class="sidebar-page">
                                 <div id="dashboard-line-chart"></div>
                                 <div class="margin-container">
                                     <div class="divider-line"></div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="clearfix"></div>
                         </div>
                     </div>

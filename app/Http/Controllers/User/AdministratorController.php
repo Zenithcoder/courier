@@ -7,7 +7,9 @@ use App\User;
 use Paginate;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Lga;
 
 class AdministratorController extends Controller
 {
@@ -23,10 +25,14 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        $admin = User::whereHas('roles', function($q)
+       /* $admin = User::whereHas('roles', function($q)
         {
             $q->where('name', 'admin');
-        })->get();
+        })->get(); */
+
+         $admin =  DB::table('users')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',3)->get();
+    
         return view('admin.users.administrators.index')->with('admin', $admin);
     }
 
@@ -37,7 +43,8 @@ class AdministratorController extends Controller
      */
     public function create()
     {
-        return view('admin.users.administrators.create');
+        $local = Lga::all();
+        return view('admin.users.administrators.create',compact('local'));
     }
 
     /**
@@ -110,9 +117,10 @@ class AdministratorController extends Controller
      */
     public function edit($id)
     {
+      //  dd(1);
         $user = Role::where('name', 'admin')->first()->user()->findOrFail($id);
 
-        return view('admin.users.administrators.edit', compact('user', 'roles'));
+        return view('admin.users.administrators.edit', compact('user'));
     }
 
     /**

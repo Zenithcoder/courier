@@ -4,6 +4,12 @@
 
 @section('content')
 
+<div id="main">
+                 
+                <div class="margin-container">
+                    <!-- Project Contribution -->
+                     
+                    <div class="clearfix"></div>
     <div class='col-lg-4 col-lg-offset-4'>
 
         <h1><i class='fa fa-user-plus'></i> Edit {{$user->name}}</h1>
@@ -32,8 +38,15 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('lga', 'LGA') }}
-            {{ Form::text('lga_id', null, array('class' => 'form-control')) }}
+            <!--     {{ Form::label('lga_id', 'LGA') }}
+            {{ Form::number('lga_id', '', array('class' => 'form-control')) }} -->
+            {{ Form::label('lga_id', 'LGA') }}
+            <select class="selectpicker form-control" name="lga_id" data-live-search="true" data-width="100%"
+                data-toggle="tooltip" title="Dropoff LGA">
+            @foreach($local as $key=>$lga)
+                <option value="{{$lga->id}}">{{$lga->name}}</option>
+            @endforeach
+        </select>
         </div>
 
         <div class="form-group">
@@ -52,11 +65,12 @@
         {{--</div>--}}
 
 
-        <a href="{{ route('users.riders.update', $user->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">Update</a>
+      <!--  <a href="{{ route('users.riders.update', $user->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">Update</a> -->
         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}
 
     </div>
-
+</div>
+</div>
 @endsection

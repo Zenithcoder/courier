@@ -6,8 +6,10 @@ use Auth;
 use App\User;
 use Paginate;
 use App\Role;
+use App\Lga;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class RiderController extends Controller
 {
@@ -22,10 +24,13 @@ class RiderController extends Controller
      */
     public function index()
     {
-        $riders = User::whereHas('roles', function($q)
+      /*  $riders = User::whereHas('roles', function($q)
         {
             $q->where('name', 'rider');
-        })->get();
+        })->get(); */
+
+         $riders =  DB::table('users')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',2)->get();
         return view('admin.users.riders.index')->with('riders', $riders);
     }
 
@@ -36,8 +41,9 @@ class RiderController extends Controller
      */
     public function create()
     {
+         $local = Lga::all();
 
-        return view('admin.users.riders.create');
+        return view('admin.users.riders.create', compact('local'));
     }
 
     /**
@@ -106,8 +112,9 @@ class RiderController extends Controller
     {
 //        $user = Role::where('name', 'rider')->first()->user()->findOrFail($id);
         $user = User::find($id);
+          $local = Lga::all();
 
-        return view('admin.users.riders.edit', compact('user', 'roles'));
+        return view('admin.users.riders.edit', compact('user','local'));
     }
 
     /**
@@ -119,6 +126,7 @@ class RiderController extends Controller
      */
     public function update(Request $request, User $user)
     {
+       // dd($request);
         $this->validate($request,[
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',

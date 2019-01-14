@@ -4,6 +4,12 @@
 
 @section('content')
 
+<div id="main">
+                 
+                <div class="margin-container">
+                    <!-- Project Contribution -->
+                     
+                    <div class="clearfix"></div>
     <div class="col-lg-10 col-lg-offset-1">
         <h1><i class="fa fa-users"></i> Customer Management Panel </h1>
         <hr>
@@ -46,5 +52,7 @@
         {{--<a href="{{ route('users.customers.create') }}" class="btn btn-success">Create Admin</a>--}}
 
     </div>
+</div>
+</div>
 
 @endsection

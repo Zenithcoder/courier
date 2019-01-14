@@ -34,7 +34,7 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->rider_orders()->paginate(getPaginateSize());
 
-        // dd($orders);
+       //  dd($orders);
         //  return $orders;
         return view('riders.riders_orders', compact('orders'));
     }
@@ -46,8 +46,10 @@ class OrderController extends Controller
      */
     public function index3()
     {
-
-        return view('riders.index');
+       $delivered = auth()->user()->rider_orders()->Delivered()->count();
+        $pending = auth()->user()->rider_orders()->Pending()->count();
+       
+        return view('riders.index', compact('delivered','pending'));
     }
 
     /**

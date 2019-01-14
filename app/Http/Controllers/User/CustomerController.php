@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\User;
+
 class CustomerController extends Controller
 {
     /**
@@ -14,10 +16,13 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = User::whereHas('roles', function($q)
+     /*   $customer = User::whereHas('roles', function($q)
         {
             $q->where('name', 'customer');
-        })->get();
+        })->get();*/
+
+         $customer =  DB::table('users')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',1)->get();
         return view('admin.users.customers.index')->with('customer', $customer);
     }
 
