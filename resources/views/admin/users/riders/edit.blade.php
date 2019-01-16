@@ -64,7 +64,7 @@
             </select>
         </div>
 
-      <!--  <a href="{{ route('users.riders.update', $user->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">Update</a> -->
+        
         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

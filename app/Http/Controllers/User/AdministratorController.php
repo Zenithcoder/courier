@@ -145,10 +145,10 @@ class AdministratorController extends Controller
         $user->fill($input)->save();
 
         if (isset($roles)) {
-            $user->role()->sync($roles);
+            $user->roles()->sync($roles);
         }
         else {
-            $user->role()->detach();
+            $user->roles()->detach();
         }
         return redirect()->route('users.administrators.index')
             ->with('flash_message',

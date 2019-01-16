@@ -139,10 +139,10 @@ class RiderController extends Controller
         $user->fill($input)->save();
 
         if (isset($roles)) {
-            $user->role()->sync($roles);
+            $user->roles()->sync($roles);
         }
         else {
-            $user->role()->detach();
+            $user->roles()->detach();
         }
         return redirect()->route('users.riders.index')
             ->with('flash_message',
