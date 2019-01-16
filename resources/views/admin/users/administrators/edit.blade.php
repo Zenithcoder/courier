@@ -57,15 +57,15 @@
         <!--   <input type="text" name="phone_number" value="{{$user->phone_number}}" class ="form-control"> -->
         </div>
 
-        {{--<h5><b>Assign Role</b></h5>--}}
-
-        {{--<div class='form-group'>--}}
-        {{--@foreach ($roles as $role)--}}
-        {{--{{ Form::checkbox('roles[]',  $role->id, $user->roles ) }}--}}
-        {{--{{ Form::label($role->name, ucfirst($role->name)) }}<br>--}}
-
-        {{--@endforeach--}}
-        {{--</div>--}}
+        <div class="form-group">
+            {{ Form::label('name', 'Reassign Role') }}
+            <select class="selectpicker form-control" name="lga_id" data-live-search="true" data-width="100%"
+                    data-toggle="tooltip" title="Dropoff LGA">
+                @foreach($roles as $key=>$role)
+                    <option value="{{$role->id}}">{{$role->name}}</option>
+                @endforeach
+            </select>
+        </div>
 
         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
 

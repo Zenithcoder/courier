@@ -112,9 +112,10 @@ class RiderController extends Controller
     {
 //        $user = Role::where('name', 'rider')->first()->user()->findOrFail($id);
         $user = User::find($id);
-          $local = Lga::all();
+        $local = Lga::all();
+        $roles = Role::get();
 
-        return view('admin.users.riders.edit', compact('user','local'));
+        return view('admin.users.riders.edit', compact('user','local', 'roles'));
     }
 
     /**
@@ -124,13 +125,33 @@ class RiderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
+<<<<<<< HEAD
        $user->update($request->all());
+=======
+        $user = User::findOrFail($id);
 
+        $this->validate($request, [
+            'name'=>'required|max:120',
+            'email'=>'required|email|unique:users,email,'.$id,
+            'password'=>'required|min:6|confirmed'
+        ]);
+        $input = $request->only(['name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number']);
+        $roles = $request['roles'];
+        $user->fill($input)->save();
+>>>>>>> 685b9b7019494638adcf539a4172772b61f466ce
+
+        if (isset($roles)) {
+            $user->roles()->sync($roles);
+        }
+        else {
+            $user->roles()->detach();
+        }
         return redirect()->route('users.riders.index')
-            ->with('success',
+            ->with('flash_message',
                 'Rider successfully updated.');
+
     }
 
     /**
