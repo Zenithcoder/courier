@@ -126,17 +126,7 @@ class RiderController extends Controller
      */
     public function update(Request $request, User $user)
     {
-       // dd($request);
-        $this->validate($request,[
-            'name' => 'required|string|max:191',
-            'email' => 'required|string|email|max:191|unique:users',
-            'password' => 'required|string|min:6'
-        ]);
-
-
-        $user = User::create($request->only('name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number'));
-
-        $user->role()->attach(Role::where('name', 'rider')->first());
+       $user->update($request->all());
 
         return redirect()->route('users.riders.index')
             ->with('success',
@@ -151,8 +141,7 @@ class RiderController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        DB::table('users')->where('id',$id)->delete();
 
         return redirect()->route('users.riders.index')
             ->with('success',

@@ -25,7 +25,7 @@
                     <th>Type</th>
                     <th>Weight</th>
                     <th>Payment Status</th>
-                    <th>Assigned Status</th>
+                    <th>Rider Name</th>
                     <th>Customer's Name</th>
                     <th>tracking_number</th>
                 </tr>
@@ -48,11 +48,7 @@
                             @endif
                         </td>
                         <td>
-                            @if (is_null($order->rider_id))
-                                No
-                            @else
-                                Yes
-                            @endif
+                            {{ $order->rider->name }}
                         </td>
                         <td>{{ $order->recipient_name }}</td> 
                         <td>{{ $order->tracking_number }}

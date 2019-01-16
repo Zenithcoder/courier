@@ -51,7 +51,7 @@
                 <!-- Profile -->
                 <div class="profile">
                     <div class="avatar">
-                        <img src="{{asset('dashcss/images/profile/profile.png')}}" alt="profile" />
+                     <a href="{{route('administrators.orders.dashboard')}}">   <img src="{{asset('dashcss/images/profile/profile.png')}}" alt="profile" /> </a>
                     </div>
                 </div>
                 <!-- End -->
@@ -63,6 +63,8 @@
             <li><a href="{{ route('users.riders.index') }}"><i class="fa fa-users"></i><span>Riders</span></a></li>
             <li class="separator"><div></div><div></div><div></div></li>
             <li><a href="{{ route('users.customers.index') }}"><i class="fa fa-bar-chart-o"></i><span>Customers</span></a></li>
+             <li><a href="{{ route('administrators.orders.index') }}"><i class="fa fa-bar-chart-o"></i><span>All Orders</span></a></li>
+              <li><a href="{{ route('administrators.orders.index2') }}"><i class="fa fa-bar-chart-o"></i><span>Assigned Order</span></a></li>
                <li> <a href="{{route('orders.tracking.logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
                     </li>
 

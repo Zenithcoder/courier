@@ -123,4 +123,8 @@ class User extends Authenticatable
     public function setPasswordAttribute($value) {
         $this->attributes['password'] = bcrypt($value);
     }
+
+      public function lga(){
+        return $this->belongsTo(Lga::class, 'lga_id');
+    }
 }

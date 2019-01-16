@@ -43,6 +43,7 @@
             {{ Form::label('lga_id', 'LGA') }}
             <select class="selectpicker form-control" name="lga_id" data-live-search="true" data-width="100%"
                 data-toggle="tooltip" title="Dropoff LGA">
+                <option value="{{$user->lga_id}}">{{$user->lga->name}}</option>
             @foreach($local as $key=>$lga)
                 <option value="{{$lga->id}}">{{$lga->name}}</option>
             @endforeach

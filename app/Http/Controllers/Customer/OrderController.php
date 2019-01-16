@@ -157,4 +157,11 @@ class OrderController extends Controller
         $order->save();
         return back()->with('success', "You've successfully cancelled your order.");
     }
+
+    public function index3($id)
+    {   
+       $orders =  Order::where('customer_id',$id)->paginate(getPaginateSize());
+    //   dd($orders);
+        return view('admin.orders.index', compact("orders"));
+    }
 }

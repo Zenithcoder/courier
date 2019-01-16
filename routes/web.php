@@ -27,7 +27,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
         Route::post('store', 'AdministratorController@store')->name('store');
         Route::get('{id}', 'AdministratorController@show')->name('show');
         Route::get('{id}/edit', 'AdministratorController@edit')->name('edit');
-        Route::put('{id}', 'AdministratorController@update')->name('update');
+        Route::put('{user}', 'AdministratorController@update')->name('update');
         Route::delete('{id}', 'AdministratorController@destroy')->name('destroy');
     });
 
@@ -57,14 +57,21 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
         Route::post('store', 'RiderController@store')->name('store');
         Route::get('{id}', 'RiderController@show')->name('show');
         Route::get('{id}/edit', 'RiderController@edit')->name('edit');
-        Route::put('{id}', 'RiderController@update')->name('update');
+        Route::put('{user}', 'RiderController@update')->name('update');
         Route::delete('{id}', 'RiderController@destroy')->name('destroy');
     });
 });
 
 
-// Administrator Module
+// Administrator Module     
 Route::prefix('administrators')->name('administrators.')->namespace('Administrator')->group(function () {
+
+    // Order sub module
+    Route::prefix('orders')->middleware('auth.admin')->name('orders.')->group(function () {
+        Route::get('', 'AdministratorController@index')->name('index');
+         Route::get('index2', 'AdministratorController@index2')->name('index2');
+         Route::get('dashboard', 'AdministratorController@dashboard')->name('dashboard');
+    });
 
 });
 
@@ -73,11 +80,12 @@ Route::prefix('administrators')->name('administrators.')->namespace('Administrat
 Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {
 
     // Dashboard
-//    Route::get('dashboard', 'DashboardController@index')->middleware('auth.customer')->name('dashboard.index');
+//    Route::get('dashboard', 'DashboardController@index')->middleware('auth.customer')->name('dashboard.index'); 
 
     // Order sub module
     Route::prefix('orders')->middleware('auth.admin')->name('orders.')->group(function () {
         Route::get('{id}/orders', 'OrderController@index')->name('index');
+        Route::get('{id}/orders3', 'OrderController@index3')->name('index3');
     });
 
     Route::prefix('orders')->name('orders.')->group(function () {
@@ -97,8 +105,8 @@ Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('C
 });
 
 
-// Rider Module
-Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')->group(function () {
+// Rider Module   
+Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')->group(function () { 
 
     // Order sub module
     Route::middleware('auth.admin')->group(function () {

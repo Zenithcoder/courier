@@ -63,7 +63,7 @@
 
         </div>
 
-        <a href="{{ route('users.riders.index') }}" class="btn btn-success">Back</a>
+        <a href="{{ route('users.riders.index') }}" class="btn btn-success">Back</a>  <a href="{{ route('riders.orders.index', $user->id) }}" class="btn btn-success">Show All Orders</a>
 
     </div>
 </div>

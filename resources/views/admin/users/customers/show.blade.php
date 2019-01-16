@@ -57,7 +57,7 @@
 
         </div>
 
-        <a href="{{ route('users.customers.index') }}" class="btn btn-success">Back</a>
+        <a href="{{ route('users.customers.index') }}" class="btn btn-success">Back</a>  <a href="{{ route('customers.orders.index3', $user->id) }}" class="btn btn-success">Show All Orders</a>
 
     </div>
 </div>

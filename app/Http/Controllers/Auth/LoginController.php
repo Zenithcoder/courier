@@ -39,12 +39,12 @@ class LoginController extends Controller
     }
 
     protected function redirectTo()
-    {
+    { // /users/administrators/index
         $user = auth()->user();
         if($user){
             if($user->hasRole('customer')) return '/customers/orders';
             elseif($user->hasRole('rider')) return '/riders/orders/dash';
-             elseif($user->hasRole('admin')) return '/users/administrators/index';
+             elseif($user->hasRole('admin')) return '/administrators/orders/dashboard';  
         }
 
 

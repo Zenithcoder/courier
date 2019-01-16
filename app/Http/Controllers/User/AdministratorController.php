@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use Auth;
+//use Auth;
 use App\User;
 use Paginate;
 use App\Role;
@@ -146,8 +146,9 @@ class AdministratorController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        // $user = User::find($id);
+         DB::table('users')->where('id',$id)->delete();
+    //dd($id, $user);
 
         return redirect()->route('users.administrators.index')
             ->with('success',

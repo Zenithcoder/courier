@@ -135,14 +135,7 @@
                                         <li> <a href="tracking.html"> tracking </a> </li>
                                         <li> <a href="pricing-plans.html"> pricing </a> </li>
                                         <li> <a href="contact-us.html"> contact </a> </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Blog</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-left.html">Blog Left</a></li>
-                                                <li><a href="single-blog.html">Single Post</a></li>
-                                            </ul>
-                                        </li>
+                                        
                                         @if(!Auth::guest())
                                         <li>
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >My Profile </a>
@@ -157,7 +150,7 @@
                                             </ul>
                                         </li>
                                         @endif
-                                        <li><span class="search fa fa-search theme-clr transition"> </span></li>
+                                    <!--    <li><span class="search fa fa-search theme-clr transition"> </span></li> -->
                                     </ul>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@
         <h1><i class='fa fa-user-plus'></i> Edit {{$user->name}}</h1>
         <hr>
 
-        {{ Form::model($user, array('route' => array('users.riders.update', $user->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with user data --}}
+        {{ Form::model($user, array('route' => array('users.administrators.update', $user->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with user data --}}
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
@@ -44,6 +44,7 @@
 
             <select class="selectpicker form-control" name="lga_id" data-live-search="true" data-width="100%"
                 data-toggle="tooltip" title="Dropoff LGA">
+                 <option value="{{$user->lga_id}}">{{$user->lga->name}}</option>
             @foreach($local as $key=>$lga)
                 <option value="{{$lga->id}}">{{$lga->name}}</option>
             @endforeach
@@ -53,6 +54,7 @@
         <div class="form-group">
             {{ Form::label('phone_number', 'Contact Number') }}
             {{ Form::text('phone_number', null, array('class' => 'form-control')) }}
+        <!--   <input type="text" name="phone_number" value="{{$user->phone_number}}" class ="form-control"> -->
         </div>
 
         {{--<h5><b>Assign Role</b></h5>--}}

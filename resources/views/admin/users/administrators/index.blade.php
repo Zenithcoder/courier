@@ -12,7 +12,13 @@
 
     <div class="col-lg-10 col-lg-offset-1">
         <h1><i class="fa fa-users"></i> Administrator Management Panel </h1>
-
+              <p>@if($message =Session::get('success'))
+                        <div class="alert alert-success">
+                      <p>
+                        {{$message}}
+                      </p>
+                    </div>
+                    @endif</p>
         <hr>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">

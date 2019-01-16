@@ -12,6 +12,15 @@
                     <div class="clearfix"></div>
     <div class="col-lg-10 col-lg-offset-1">
         <h1><i class="fa fa-users"></i> Customer Management Panel </h1>
+
+        <p>@if($message =Session::get('success'))
+                        <div class="alert alert-success">
+                      <p>
+                        {{$message}}
+                      </p>
+                    </div>
+                    @endif</p>
+                    
         <hr>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
@@ -35,7 +44,7 @@
 
                         <td>
                             <a href="{{ route('users.customers.show', $customers->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
-                            <a href="{{ route('users.administrators.edit', $customers->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                        <!--    <a href="{{ route('users.customers.edit', $customers->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a> -->
 
                             {{--{!! Form::open(['method' => 'DELETE', 'route' => ['users.customers.destroy', $customers->id] ]) !!}--}}
                             {{--{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}

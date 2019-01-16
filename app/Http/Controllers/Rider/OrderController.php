@@ -20,9 +20,10 @@ class OrderController extends Controller
      */
     public function index($id)
     {
-        $orders = User::rider()->findOrFail($id)->rider_orders()->paginate(getPaginateSize());
-
-        return $orders;
+         $orders =  Order::where('rider_id',$id)->paginate(getPaginateSize());
+      //  $orders = User::rider()->findOrFail($id)->rider_orders()->paginate(getPaginateSize());
+        // dd($orders);
+        return view('admin.orders.riders_orders', compact('orders'));
     }
 
     /**
@@ -125,24 +126,27 @@ class OrderController extends Controller
     }
 
     public function assign(Order $order, Request $request) {
-        $this->validate($request, [
+
+      //  dd($order, $request);
+
+       $this->validate($request, [
             'rider_id' => [
                 'required',
-                Rule::exists('users')->where(function ($query) {
+               /* Rule::exists('users')->where(function ($query) {
                     $query->whereHas('roles', function ($q) {
                         $q->whereName('rider');
                     });
-                }),
+                }), */
             ]
-        ]);
+        ]); 
 
-        if(!$order->isPending) return "Only pending order can be assigned to a rider";
+        if(!$order->isPending()) return back()->with('success','Only pending order can be assigned to a rider');
 
         $order->rider_id = $request->get('rider_id');
         $order->status = 'EN_ROUTE';
         $order->save();
 
-        return "Done";
+        return back()->with('success','order assigned to a rider');
     }
 
   /*  public function getLogout(){
