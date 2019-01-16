@@ -119,8 +119,9 @@ class AdministratorController extends Controller
     {
       //  dd(1);
         $user = Role::where('name', 'admin')->first()->user()->findOrFail($id);
+        $roles = Role::get();
 
-        return view('admin.users.administrators.edit', compact('user'));
+        return view('admin.users.administrators.edit', compact('user', 'roles'));
     }
 
     /**
@@ -130,12 +131,28 @@ class AdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $user->update($request->all());
+        $user = User::findOrFail($id);
+
+        $this->validate($request, [
+            'name'=>'required|max:120',
+            'email'=>'required|email|unique:users,email,'.$id,
+            'password'=>'required|min:6|confirmed'
+        ]);
+        $input = $request->only(['name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number']);
+        $roles = $request['roles'];
+        $user->fill($input)->save();
+
+        if (isset($roles)) {
+            $user->role()->sync($roles);
+        }
+        else {
+            $user->role()->detach();
+        }
         return redirect()->route('users.administrators.index')
-            ->with('success',
-                'Admin account updated successfully.');
+            ->with('flash_message',
+                'Admin successfully updated.');
     }
 
     /**
