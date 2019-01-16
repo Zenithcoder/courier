@@ -92,8 +92,8 @@ class AdministratorController extends Controller
 
         $user->role()->attach(Role::where('name', 'admin')->first());
 
-        return redirect()->route('users.administrators.index')
-            ->with('success','Admin successfully added!');
+        return redirect()->route('users.customers.index')
+            ->with('success','Your account has been successfully created!');
 
     }
 

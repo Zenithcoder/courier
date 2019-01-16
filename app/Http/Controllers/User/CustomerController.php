@@ -58,7 +58,45 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users',
+            'password' => 'required|string|min:6'
+        ]);
+
+        if($request->hasfile('pic'))
+        {
+            $file = $request->file('pic');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/', $name);
+        }
+
+        $user = User::create($request->only('name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number'));
+
+        $currentPhoto = $user->pic;
+
+        if ($request->pic != $currentPhoto) {
+            $name = time() . '.' . explode('/', explode(':', substr(
+                    $request->pic,
+                    0,
+                    strpos($request->pic, ';')
+                ))[1])[1];
+
+            \Image::make($request->pic)->save(public_path('images/') . $name);
+
+            $request->merge(['pic' => $name]);
+
+            $userPhoto = public_path('images/') . $currentPhoto;
+
+            if (file_exists($userPhoto)) {
+                @unlink($userPhoto);
+            }
+        }
+
+        $user->role()->attach(Role::where('name', 'customer')->first());
+
+        return redirect()->route('users.administrators.index')
+            ->with('success','Admin successfully added!');
     }
 
     /**
