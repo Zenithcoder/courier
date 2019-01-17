@@ -20,42 +20,42 @@
                                 <img alt="" src="assets/img/icons/icon-2.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Recipient Name </h2>
-                                    <p>{{$orders->recipient_name}}</p>
+                                    <p>{{$order->recipient_name}}</p>
                                 </div>
                             </li>
                             <li>
                                 <img alt="" src="assets/img/icons/icon-2.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Recipient Phone </h2>
-                                    <p>{{$orders->recipient_phone_number}}</p>
+                                    <p>{{$order->recipient_phone_number}}</p>
                                 </div>
                             </li>
                             <li>
                                 <img alt="" src="assets/img/icons/icon-2.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Pick Up Address </h2>
-                                    <p>{{$orders->pickup_address}}</p>
+                                    <p>{{$order->pickup_address}}</p>
                                 </div>
                             </li>
                             <li>
                                 <img alt="" src="assets/img/icons/icon-3.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Drop Off address</h2>
-                                    <p>{{$orders->drop_off_address}}</p>
+                                    <p>{{$order->drop_off_address}}</p>
                                 </div>
                             </li>
                             <li>
                                 <img alt="" src="assets/img/icons/icon-4.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Status </h2>
-                                    <p>Your Current Pick up request Status is {{$orders->status}}</p>
+                                    <p>Your Current Pick up request Status is {{$order->status}}</p>
                                 </div>
                             </li>
                             <li>
                                 <img alt="" src="assets/img/icons/icon-4.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                 <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
                                     <h2 class="title-1">Item Decription </h2>
-                                    <p>{{$orders->description}}</p>
+                                    <p>{{$order->description}}</p>
                                 </div>
                             </li>
                         </ul>

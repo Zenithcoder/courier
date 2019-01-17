@@ -13,10 +13,6 @@ use App\Lga;
 
 class AdministratorController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'auth.admin']);
-    }
 
     /**
      * Display a listing of the resource.
@@ -25,15 +21,9 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-       /* $admin = User::whereHas('roles', function($q)
-        {
-            $q->where('name', 'admin');
-        })->get(); */
+        $admins = User::admins()->get();
 
-         $admin =  DB::table('users')
-            ->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',3)->get();
-    
-        return view('admin.users.administrators.index')->with('admin', $admin);
+        return view('admin.users.administrators.index', compact('admins'));
     }
 
     /**
@@ -105,7 +95,7 @@ class AdministratorController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::admins()->findOrFail($id);
         return view('admin.users.administrators.show')->with('user', $user);
     }
 
@@ -117,7 +107,6 @@ class AdministratorController extends Controller
      */
     public function edit($id)
     {
-      //  dd(1);
         $user = Role::where('name', 'admin')->first()->user()->findOrFail($id);
         $roles = Role::get();
 
@@ -133,7 +122,7 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = User::admins()->findOrFail($id);
 
         $this->validate($request, [
             'name'=>'required|max:120',
@@ -163,12 +152,8 @@ class AdministratorController extends Controller
      */
     public function destroy($id)
     {
-        // $user = User::find($id);
-         DB::table('users')->where('id',$id)->delete();
-    //dd($id, $user);
+        User::admins()->findOrFail($id)->delete();
 
-        return redirect()->route('users.administrators.index')
-            ->with('success',
-                'Admin successfully deleted.');
+        return redirect()->route('users.administrators.index')->with('success','Admin successfully deleted.');
     }
 }

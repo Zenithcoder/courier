@@ -55,6 +55,14 @@ class Order extends Model
         return $query->whereStatus('CANCELLED');
     }
 
+    public function scopeIsAssigned($query) {
+        return $query->whereNotNull('rider_id');
+    }
+
+    public function scopeNotAssigned($query) {
+        return $query->whereNull('rider_id');
+    }
+
     public function isPending() {
         return $this->status == 'PENDING';
     }

@@ -13,18 +13,20 @@ class ActivityController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     * @param Order $order
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, Order $order)
     {
         $orders=  Order::whereTrackingNumber($request->get('tracking_number'))->first();
-        dd($orders);
         return view('user.orders_tracking', compact('$orders'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function create($id)
@@ -41,7 +43,6 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-      //  dd($request); 
         $this->validate($request,[
             'description' => 'required',
             'current_lga_id' => 'required|exists:lgas,id',
@@ -75,10 +76,10 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-          $lgas = Lga::all();
-      $activity = OrderActivity::find($id);
-   
-      return view('riders.activity.edit', compact('activity','lgas'));
+        $lgas = Lga::all();
+        $activity = OrderActivity::find($id);
+
+        return view('riders.activity.edit', compact('activity','lgas'));
     }
 
     /**
@@ -90,8 +91,8 @@ class ActivityController extends Controller
      */
     public function update(Request $request, OrderActivity $id)
     {
-         $id->update($request->all());
-       return back()->with('success','You have successfully updated an Activity');
+        $id->update($request->all());
+        return back()->with('success','You have successfully updated an Activity');
     }
 
     /**

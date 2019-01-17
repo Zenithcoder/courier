@@ -51,21 +51,21 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
-    public function scopeAdmin($query)
+    public function scopeAdmins($query)
     {
         return $query->whereHas('roles', function ($q) {
             $q->whereName('admin');
         });
     }
 
-    public function scopeCustomer($query)
+    public function scopeCustomers($query)
     {
         return $query->whereHas('roles', function ($q) {
             $q->whereName('customer');
         });
     }
 
-    public function scopeRider($query)
+    public function scopeRiders($query)
     {
         return $query->whereHas('roles', function ($q) {
             $q->whereName('rider');

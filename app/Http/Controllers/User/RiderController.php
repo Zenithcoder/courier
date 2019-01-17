@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class RiderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'auth.admin']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -24,14 +20,7 @@ class RiderController extends Controller
      */
     public function index()
     {
-      /*  $riders = User::whereHas('roles', function($q)
-        {
-            $q->where('name', 'rider');
-        })->get(); */
-
-         $riders =  DB::table('users')
-            ->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',2)->get();
-        return view('admin.users.riders.index')->with('riders', $riders);
+        return view('admin.users.riders.index')->with('riders', User::riders()->get());
     }
 
     /**
@@ -41,7 +30,7 @@ class RiderController extends Controller
      */
     public function create()
     {
-         $local = Lga::all();
+        $local = Lga::all();
 
         return view('admin.users.riders.create', compact('local'));
     }
@@ -56,9 +45,9 @@ class RiderController extends Controller
     {
 
         $this->validate($request,[
-                'name' => 'required|string|max:191',
-                'email' => 'required|string|email|max:191|unique:users',
-                'password' => 'required|string|min:6'
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users',
+            'password' => 'required|string|min:6'
         ]);
 
         $user = User::create($request->only('name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number'));
@@ -98,8 +87,7 @@ class RiderController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('admin.users.riders.show')->with('user', $user);
+        return view('admin.users.riders.show')->with('rider', User::riders()->findOrFail($id));
     }
 
     /**
@@ -110,8 +98,7 @@ class RiderController extends Controller
      */
     public function edit($id)
     {
-//        $user = Role::where('name', 'rider')->first()->user()->findOrFail($id);
-        $user = User::find($id);
+        $user = User::riders()->findOrFail($id);
         $local = Lga::all();
         $roles = Role::get();
 
@@ -127,20 +114,19 @@ class RiderController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-       $user->update($request->all());
-=======
-        $user = User::findOrFail($id);
+
 
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users,email,'.$id,
             'password'=>'required|min:6|confirmed'
         ]);
+
         $input = $request->only(['name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number']);
         $roles = $request['roles'];
+
+        $user = User::riders()->findOrFail($id);
         $user->fill($input)->save();
->>>>>>> 685b9b7019494638adcf539a4172772b61f466ce
 
         if (isset($roles)) {
             $user->roles()->sync($roles);
@@ -162,10 +148,8 @@ class RiderController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id',$id)->delete();
+        User::riders()->findOrFail($id)->delete();
 
-        return redirect()->route('users.riders.index')
-            ->with('success',
-                'Rider successfully deleted.');
+        return redirect()->route('users.riders.index')->with('success', 'Rider successfully deleted.');
     }
 }

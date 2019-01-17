@@ -14,10 +14,6 @@ use App\Order;
 
 class AdministratorController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'auth.admin']);
-    }
 
     /**
      * Display a listing of the resource.
@@ -26,45 +22,40 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        $orders = Order::whereNull('rider_id')->orderBy('id', 'desc')->paginate(getPaginateSize());
-       $riders =  DB::table('users')->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',2)->get();
-     //  dd($riders);
+        $orders = Order::notAssigned()->latest()->paginate(getPaginateSize());
+        $riders = User::riders()->get();
         return view('admin.orders.all_orders',compact('orders', 'riders'));
     }
 
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index2()
     {
-        $orders = Order::whereNotNull('rider_id')->orderBy('id', 'desc')->paginate(getPaginateSize());
-     //   dd($orders);
-     //  $riders =  DB::table('users')->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',2)->get();
-     //  dd($riders);
+        $orders = Order::isAssigned()->with('rider')->latest()->paginate(getPaginateSize());
         return view('admin.orders.assigned_orders',compact('orders'));
     }
 
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function dashboard()
     {
-       // dd(1);
         $order = Order::count();
-        $pending =  Order::whereNull('rider_id')->count();
+        $pending =  Order::notAssigned()->count();
         $user = User::count();
-        $rider =  DB::table('users')->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',2)->count();
-        $delivered = Order::where('status','DELIVERED')->count();
-        $amount = Order::where('status','DELIVERED')->sum('amount');
+        $rider = User::riders()->count();
+        $delivered = Order::delivered()->count();
+        $amount = Order::delivered()->sum('amount');
 
         return view('admin.orders.dashboard',compact('order','pending','user','rider','delivered','amount'));
     }
 
-   
+
 }
