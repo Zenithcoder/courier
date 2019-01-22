@@ -14,6 +14,10 @@
 use function foo\func;
 
 Route::get('/', function () {return view('index');});
+Route::get('/about-us', function () {return view('about-us');});
+Route::get('/tracking', function () {return view('tracking');});
+Route::get('/pricing', function () {return view('pricing');});
+Route::get('/contact', function () {return view('contact');});
 
 Auth::routes();
 

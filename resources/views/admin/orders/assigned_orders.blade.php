@@ -12,13 +12,14 @@
                     <div class="clearfix"></div>
 
     <div class="col-lg-10 col-lg-offset-1">
-        <h1><i class="fa fa-users"></i> Orders List</h1>
+        <h1><i class="fa fa-users"></i> Assigned Order List</h1>
         <hr>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
 
                 <thead>
                 <tr>
+                    <td>S/N</td>
                     <th>Pickup</th>
                     <th>Dropoff</th>
                     <th>Amount</th>
@@ -32,9 +33,10 @@
                 </thead>
 
                 <tbody>
+                <?php $no= 1; ?>
                 @foreach ($orders as $order)
                     <tr>
-
+                        <td>{{$no ++}}</td>
                         <td>{{ $order->pickup_address }}</td>
                         <td>{{ $order->drop_off_address }}</td>
                         <td>{{ $order->amount }}</td>

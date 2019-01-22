@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="col-md-6 text-center">
-                    <img alt="" src="/homecss/img/block/pickup-man.jpg" class="effect animated fadeInRight" />
+                    <img alt="" src="/homecss/img/background/pickup.jpg" class="effect animated fadeInRight" />
                 </div>
             </div>
         </div>

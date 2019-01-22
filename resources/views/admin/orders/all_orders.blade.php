@@ -15,7 +15,7 @@
             <!-- Data Table -->
             <div class="dashboard-widget">
                 <div class="title">
-                    <i class="fa fa-users"></i>All Orders
+                    <i class="fa fa-users"></i>All Unassigned Orders
 
                 </div>
 
@@ -31,10 +31,12 @@
                     <table>
                         <tbody>
                         <tr>
-                            <th><i class="fa fa-sort"></i>Tracking No.</th><th><i class="fa fa-sort"></i>Pickup</th><th><i class="fa fa-sort"></i>Dropoff</th><th class="minor">status</th><th class="minor">Recipient_Name</th><th class="minor">Recipient_No</th><th class="minor">Payment_status</th><th class="minor">AssigningOrder</th> <th></th><th></th>
+                            <th><i class="fa fa-sort"></i>S/N</th><<th><i class="fa fa-sort"></i>Tracking No.</th><th><i class="fa fa-sort"></i>Pickup</th><th><i class="fa fa-sort"></i>Dropoff</th><th class="minor">status</th><th class="minor">Recipient_Name</th><th class="minor">Recipient_No</th><th class="minor">Payment_status</th><th class="minor">Assigning_Order</th> <th></th><th></th>
                         </tr>
+                        <?php $no=1?>
                         @foreach($orders as $order)
                             <tr>
+                                <td>{{$no ++}}</td>
                                 <td>{{$order->tracking_number}}</td><td>{{$order->pickup_address}}</td><td><span class="text-dollar">{{$order->drop_off_address}}</span></td><td class="minor"> {{$order->status}}</td><td>{{$order->recipient_name}}</td><td>{{$order->recipient_phone_number}}</td>
                                 <td>{{$order->payment_status}}</td>
                                 {{ Form::open(['route'=>['riders.orders.assign',$order->id],'method'=>'PUT', 'class' => 'form-horizontal']) }}

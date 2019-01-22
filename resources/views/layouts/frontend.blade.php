@@ -70,13 +70,12 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-5">
                                 <ul class="list-items fs-10">
-                                    <li><a href="#">sitemap</a></li>
-                                    <li class="active"><a href="#">Privacy</a></li>
-                                    <li><a href="#">Pricing</a></li>
+                                    <li><a href="#">Gl.Dynamic</a></li>
+                                    <li class="active"><a href="#">...we can be anything you want us to be</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-sm-7 fs-12">
-                                <p class="contact-num">  <i class="fa fa-phone"></i> Call us now: <span class="theme-clr"> +880-1756-390-370 </span> </p>
+                                <p class="contact-num">  <i class="fa fa-phone"></i> Call us now: <span class="theme-clr"> +234 81 25194-325 </span> </p>
                             </div>
                         </div>
                     </div>
@@ -107,34 +106,12 @@
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
                                     <ul class="navbar-nav theme-menu">
-                                        <li class="dropdown active">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Home </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="index.html">Home Page1</a></li>
-                                                <li><a href="index-2.html">Home Page2</a></li>
-                                                <li><a href="index-3.html">Home Page3</a></li>
-
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Submenu Level 1 </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">Submenu</a></li>
-                                                        <li><a href="#">Submenu</a></li>
-                                                        <li class="dropdown">
-                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Submenu Level 2</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li> <a href="about-us.html">about</a> </li>
-                                        <li> <a href="tracking.html"> tracking </a> </li>
-                                        <li> <a href="pricing-plans.html"> pricing </a> </li>
-                                        <li> <a href="contact-us.html"> contact </a> </li>
+                                        <li> <a href="/">Home</a> </li>
+                                        <li> <a href="/about-us">about</a> </li>
+                                        <li> <a href="/register"> Request Pickup </a> </li>
+                                        <li> <a href="/tracking"> tracking </a> </li>
+                                        <li> <a href="/pricing"> pricing </a> </li>
+                                        <li> <a href="/contact"> contact </a> </li>
                                         
                                         @if(!Auth::guest())
                                         <li>
@@ -168,57 +145,16 @@
 
             <!-- Footer -->
             <footer>
-                <div class="footer-main pad-120 white-clr">
-                    <div class="theme-container container">               
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <a href="#"> <img class="logo" alt="#" src="{{asset('homecss/img/logo/logo-white.png')}}" />  </a>
-                            </div>
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <h2 class="title-1 fw-900">quick links</h2>
-                                <ul>
-                                    <li> <a href="#">sitemap</a> </li>
-                                    <li> <a href="#">pricing</a> </li>
-                                    <li> <a href="#">payment method</a> </li>
-                                    <li> <a href="#">support</a> </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <h2 class="title-1 fw-900">important links</h2>
-                                <ul>
-                                    <li> <a href="#">themeforest</a> </li>
-                                    <li> <a href="#">envato</a> </li>
-                                    <li> <a href="#">audiojungle</a> </li>
-                                    <li> <a href="#">videohibe</a> </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <h2 class="title-1 fw-900">get in touch</h2>
-                                <ul class="social-icons list-inline">
-                                    <li class="" data-wow-offset="50" data-wow-delay=".20s"> <a href="#" class="fa fa-facebook"></a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".25s"> <a href="#" class="fa fa-twitter"></a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".30s"> <a href="#" class="fa fa-google-plus"></a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".35s"> <a href="#" class="fa fa-linkedin"></a> </li>
-                                </ul>
-                                <ul class="payment-icons list-inline">
-                                    <li class="" data-wow-offset="50" data-wow-delay=".20s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-1.png')}}" /> </a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".25s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-2.png')}}" /> </a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".30s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-3.png')}}" /> </a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".35s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-4.png')}}" /> </a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="footer-bottom">
                     <div class="theme-container container">               
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
-                                <p> © Copyright 2016, All rights reserved </p>                            
+                                <p> © Copyright 2019, All rights reserved </p>
                             </div>
                             <div class="col-md-6 col-sm-6 text-right">
-                                <p> Design and <span class="theme-clr fa fa-heart"></span>  by <a href="#" class="main-clr"> jThemes Studio </a> </p>
+                                <p> Developed   by <a href="https://dukeweb.com.ng" class="main-clr"> Duke Web Tech</a> </p>
                             </div>
                         </div>
                     </div>
