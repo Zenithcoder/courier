@@ -70,9 +70,9 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-5">
                                 <ul class="list-items fs-10">
-                                    <li><a href="#">sitemap</a></li>
+                                <!--    <li><a href="#">sitemap</a></li>
                                     <li class="active"><a href="#">Privacy</a></li>
-                                    <li><a href="#">Pricing</a></li>
+                                    <li><a href="#">Pricing</a></li> -->
                                 </ul>
                             </div>
                             <div class="col-md-6 col-sm-7 fs-12">
@@ -102,14 +102,14 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-logo" href="#"> <img src="{{asset('homecss/img/logo/logo-black.png')}}" alt="logo" /> </a>
+                                <a class="navbar-logo" href="#"> <img src="{{asset('homecss/img/logo/logo-black.png')}}" style="height: 93px;" alt="logo" /> </a>
                             </div>
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
                                     <ul class="navbar-nav theme-menu">
                                         <li class="dropdown active">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Home </a>
-                                            <ul class="dropdown-menu">
+                                    <!--        <ul class="dropdown-menu">
                                                 <li><a href="index.html">Home Page1</a></li>
                                                 <li><a href="index-2.html">Home Page2</a></li>
                                                 <li><a href="index-3.html">Home Page3</a></li>
@@ -129,11 +129,11 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                         <li> <a href="about-us.html">about</a> </li>
-                                        <li> <a href="tracking.html"> tracking </a> </li>
-                                        <li> <a href="pricing-plans.html"> pricing </a> </li>
+                                   <!--     <li> <a href="tracking.html"> tracking </a> </li>
+                                        <li> <a href="pricing-plans.html"> pricing </a> </li> -->
                                         <li> <a href="contact-us.html"> contact </a> </li>
                                         
                                         @if(!Auth::guest())
@@ -172,9 +172,9 @@
                     <div class="theme-container container">               
                         <div class="row">
                             <div class="col-md-3 col-sm-6 footer-widget">
-                                <a href="#"> <img class="logo" alt="#" src="{{asset('homecss/img/logo/logo-white.png')}}" />  </a>
+                                <a href="#"> <img class="logo" alt="#" style="height: 93px;" src="{{asset('homecss/img/logo/logo-white.png')}}" />  </a>
                             </div>
-                            <div class="col-md-3 col-sm-6 footer-widget">
+                       <!--     <div class="col-md-3 col-sm-6 footer-widget">
                                 <h2 class="title-1 fw-900">quick links</h2>
                                 <ul>
                                     <li> <a href="#">sitemap</a> </li>
@@ -191,7 +191,7 @@
                                     <li> <a href="#">audiojungle</a> </li>
                                     <li> <a href="#">videohibe</a> </li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <div class="col-md-3 col-sm-6 footer-widget">
                                 <h2 class="title-1 fw-900">get in touch</h2>
                                 <ul class="social-icons list-inline">
@@ -215,11 +215,11 @@
                     <div class="theme-container container">               
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
-                                <p> © Copyright 2016, All rights reserved </p>                            
+                                <p> © Copyright 2019, All rights reserved </p>                            
                             </div>
-                            <div class="col-md-6 col-sm-6 text-right">
+                        <!--    <div class="col-md-6 col-sm-6 text-right">
                                 <p> Design and <span class="theme-clr fa fa-heart"></span>  by <a href="#" class="main-clr"> jThemes Studio </a> </p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

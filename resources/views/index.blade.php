@@ -268,7 +268,7 @@ Home Page
                 <!-- /.Testimonial -->
 
                 <!-- Pricing & Plans -->
-                <section class="pricing-wrap pt-120">                
+            <!--    <section class="pricing-wrap pt-120">                
                     <div class="theme-container container">    
                         <span class="bg-text center wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> Pricing </span>
                         <div class="title-wrap text-center  pb-50">
@@ -340,7 +340,7 @@ Home Page
                             </div>
                         </div>
                     </div>               
-                </section>
+                </section> -->
                 <!-- /.Pricing & Plans -->
 
                 <!-- Contact us -->
