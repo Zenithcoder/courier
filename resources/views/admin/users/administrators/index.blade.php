@@ -33,18 +33,17 @@
                 </thead>
 
                 <tbody>
-                @foreach ($admin as $admins)
+                @foreach ($admins as $admin)
                     <tr>
-
-                        <td>{{ $admins->name }}</td>
-                        <td>{{ $admins->email }}</td>
-                        <td>{{ $admins->phone_number }}</td>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{ $admin->phone_number }}</td>
 
                         <td>
-                            <a href="{{ route('users.administrators.show', $admins->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
-                            <a href="{{ route('users.administrators.edit', $admins->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                            <a href="{{ route('users.administrators.show', $admin->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
+                            <a href="{{ route('users.administrators.edit', $admin->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.administrators.destroy', $admins->id] ]) !!}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.administrators.destroy', $admin->id] ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
 

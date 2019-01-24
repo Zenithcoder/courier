@@ -16,14 +16,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-     /*   $customer = User::whereHas('roles', function($q)
-        {
-            $q->where('name', 'customer');
-        })->get();*/
-
-         $customer =  DB::table('users')
-            ->join('role_user', 'users.id', '=', 'role_user.user_id')->where('role_user.role_id',1)->get();
-        return view('admin.users.customers.index')->with('customer', $customer);
+        $customers = User::customers()->get();
+        return view('admin.users.customers.index', compact('customers'));
     }
 
     /**
@@ -32,11 +26,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::customers()->findOrFail($id);
         return view('admin.users.customers.show')->with('user', $user);
     }
 
@@ -102,7 +94,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -129,8 +121,6 @@ class CustomerController extends Controller
         $customer = $request->get('customer');
         $customer->update($request->except('email'));
         return redirect()->route('customers.orders.index2')->with('success','You have successfully updated your profile');
-
-
     }
 
     /**

@@ -34,13 +34,11 @@ class TrackingController extends Controller
             throw new ValidationException($validator);
         }
 
-//        return $order;
-        return view('/user/orders_tracking',compact('order'))->with('success','Post Created Successfully');;
+        return view('/user/orders_tracking',compact('order'))->with('success','Post Created Successfully');
     }
 
 
      public function logout(){
-      //  dd(1);
         Session::flush();
         Auth::logout();
 

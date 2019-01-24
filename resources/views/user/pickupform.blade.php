@@ -11,7 +11,7 @@
         <div class="theme-container container ">
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <img src="/homecss/img/block/order-pickup.jpg" alt="" class="wow slideInLeft" data-wow-offset="50" data-wow-delay=".20s" />
+                    <img src="/homecss/img/background/request-pickup.png" alt="" class="wow slideInLeft" data-wow-offset="50" data-wow-delay=".20s" />
                 </div>
                 <div class="col-md-6">
                     <div class="pad-10"></div>

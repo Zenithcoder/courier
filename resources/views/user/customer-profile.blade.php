@@ -15,13 +15,13 @@
                     <div class="col-sm-8 pull-left">
                         <div class="title-wrap">
                             <h2 class="section-title no-margin"> Your Profile </h2>
-                            <p class="fs-16 no-margin">Welcome Mr {{auth::user()->name}} </p>
+                            <p class="fs-16 no-margin">Welcome {{auth::user()->name}} </p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <ol class="breadcrumb-menubar list-inline">
                             <li><a href="#" class="gray-clr">Home</a></li>
-                            <li class="active">contact</li>
+                            <li class="active">profile</li>
                         </ol>
                     </div>
                 </div>

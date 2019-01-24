@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css">        
+        <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css">
         <!-- Bootstrap Select Css -->
         <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css">
         <!-- Fonts Css -->
@@ -105,7 +105,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog-left.html">Blog Left</a></li>
-                                                <li><a href="single-blog.html">Single Post</a></li>                                    
+                                                <li><a href="../single-blog.html">Single Post</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown active">

@@ -35,16 +35,16 @@
                 </thead>
 
                 <tbody>
-                @foreach ($customer as $customers)
+                @foreach ($customers as $customer)
                     <tr>
 
-                        <td>{{ $customers->name }}</td>
-                        <td>{{ $customers->email }}</td>
-                        <td>{{ $customers->phone_number }}</td>
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->phone_number }}</td>
 
                         <td>
-                            <a href="{{ route('users.customers.show', $customers->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
-                        <!--    <a href="{{ route('users.customers.edit', $customers->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a> -->
+                            <a href="{{ route('users.customers.show', $customer->id) }}" class="btn btn-warning pull-left" style="margin-right: 3px;">View</a>
+                        <!--    <a href="{{ route('users.customers.edit', $customer->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a> -->
 
                             {{--{!! Form::open(['method' => 'DELETE', 'route' => ['users.customers.destroy', $customers->id] ]) !!}--}}
                             {{--{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}

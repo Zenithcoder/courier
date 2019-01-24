@@ -113,7 +113,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="get-quote.html"> Quote Page </a></li> 
                                                 <li><a href="contact-us-2.html"> Contact-2 Page </a></li>
-                                                <li><a href="404.html"> Error Page </a></li>
+                                                <li><a href="errors/404.html"> Error Page </a></li>
                                                 <li><a href="coming-soon.html"> Coming Soon Page </a></li>
                                             </ul>
                                         </li>  

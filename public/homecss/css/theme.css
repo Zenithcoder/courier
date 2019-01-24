@@ -731,20 +731,20 @@ textarea:focus:-ms-input-placeholder {
 /**-- Color-1 Light --**/
 .theme-clr, .hvr-clr:hover, .hvr-clr:focus, a:focus, a:hover, .theme-menu > li:hover > a::after, .theme-menu > li.active > a,
 .list-items li.active a, .header-main .theme-menu .dropdown-menu > li > a:hover, .header-main  .theme-menu .dropdown-menu > li > a:focus {
-    color: #f5ab35; 
+    color: #FFF234; 
 }
 .small, .theme-clr-bg, .btn-1, .btn-round:hover, .btn-round:focus, .owl-nav div:hover, .owl-nav div:focus, .theme-menu > li > a::after,
 .header-style3 .menu-bar, .pagintn > li a:hover, .pagintn > li a:focus, .widget-wrap.tag-cloud a:hover, .widget-wrap.tag-cloud a:focus {
-    background-color: #f5ab35;
+    background-color: #FFF234;
 }
 .clrbg-before:before, .clrbg-after:after, .social-icons li a:hover, .social-icons li a:focus,
 .pricing-box.active .btn-round {
-    background-color: #f5ab35;
+    background-color: #FFF234;
 }
-.banner { border-bottom: 5px solid #f5ab35; }
+.banner { border-bottom: 5px solid #FFF234; }
 .form-control:focus, .themeclr-border, .social-icons li a:hover, .social-icons li a:focus, 
 .btn-round:hover, .btn-round:focus, .pricing-box.active, .pricing-box.active .btn-round {
-    border-color: #f5ab35;
+    border-color: #FFF234;
 }
 
 
@@ -768,7 +768,7 @@ textarea:focus:-ms-input-placeholder {
     0% {
         -webkit-transform: scale(1);
         transform: scale(1);
-        background-color: #f5ab35;
+        background-color: #FFF234;
     }
     10% {
         -webkit-transform: scale(1.3);
@@ -782,12 +782,12 @@ textarea:focus:-ms-input-placeholder {
     25%{
         -webkit-transform: scale(1);
         transform: scale(1);
-        background-color: #f5ab35;
+        background-color: #FFF234;
     }
     100%{
         -webkit-transform: scale(1);
         transform: scale(1);
-        background-color: #f5ab35;
+        background-color: #FFF234;
     }
 }
 
@@ -795,7 +795,7 @@ textarea:focus:-ms-input-placeholder {
     0% {
         -webkit-transform: scale(1);
         transform: scale(1);
-        background-color: #f5ab35;
+        background-color: #FFF234;
     }
     10% {
         -webkit-transform: scale(1.3);
@@ -809,12 +809,12 @@ textarea:focus:-ms-input-placeholder {
     25%{
         -webkit-transform: scale(1);
         transform: scale(1);
-        background-color: #f5ab35;
+        background-color: #FFF234;
     }
     100%{
         -webkit-transform: scale(1);
         transform: scale(1);
-        background-color: #f5ab35;
+        background-color: #FFF234;
     }
 }
 /*------------------------1.7 Theme Colors Ends------------------------ */
@@ -1266,7 +1266,7 @@ textarea:focus:-ms-input-placeholder {
 
 /*-------------------- 3.5 - Steps Starts -------------------- */
 .steps-wrap {
-    background-image: url("../img/background/step-bg.jpg");
+    background-image: url("../img/background/1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

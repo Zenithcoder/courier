@@ -49,6 +49,7 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
     public function create(User $user){
@@ -64,8 +65,6 @@ class OrderController extends Controller
     public function search (Request $request ) {
         $orders=  Order::whereTrackingNumber($request->get('tracking_number'))->first();
         dd($orders);
-
-
     }
 
 
@@ -92,16 +91,14 @@ class OrderController extends Controller
      * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, User $user, $id)
+    public function show(Request $request, $id)
     {
-//        if(!$customer = $request->get('customer')) {
-//            $orders = User::customer()->findOrFail($id)->customer_orders()->paginate(getPaginateSize());
-//        } else {
-//            $orders = $customer->customer_orders()->paginate(getPaginateSize());
-//        }
-        $orders = order::find($id);
-//        return $orders;
-        return view('user.show-order')->with('orders', $orders);
+        if(!$customer = $request->get('customer')) {
+            $order = order::findOrFail($id);
+        } else {
+            $order = $customer->customer_orders()->findOrFail($id);
+        }
+        return view('user.show-order', compact('order'));
     }
 
     /**
@@ -112,10 +109,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-
-
         return view('user.order-edit',compact('order'));
-
     }
 
     /**
@@ -159,9 +153,8 @@ class OrderController extends Controller
     }
 
     public function index3($id)
-    {   
-       $orders =  Order::where('customer_id',$id)->paginate(getPaginateSize());
-    //   dd($orders);
+    {
+        $orders = User::customers()->findOrFail($id)->orders()->paginate(getPaginateSize());
         return view('admin.orders.index', compact("orders"));
     }
 }

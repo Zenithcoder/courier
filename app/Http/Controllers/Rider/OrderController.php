@@ -117,8 +117,8 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return void
      */
     public function destroy($id)
     {
@@ -126,34 +126,19 @@ class OrderController extends Controller
     }
 
     public function assign(Order $order, Request $request) {
-
-      //  dd($order, $request);
-
        $this->validate($request, [
-            'rider_id' => [
-                'required',
-               /* Rule::exists('users')->where(function ($query) {
-                    $query->whereHas('roles', function ($q) {
-                        $q->whereName('rider');
-                    });
-                }), */
-            ]
+            'rider_id' => 'required'
         ]); 
 
         if(!$order->isPending()) return back()->with('success','Only pending order can be assigned to a rider');
 
-        $order->rider_id = $request->get('rider_id');
+        if(!$rider = User::riders()->find($request->get('rider_id')))
+            return back()->with('success','Not a valid rider');
+
+        $order->rider_id = $rider->id;
         $order->status = 'EN_ROUTE';
         $order->save();
 
         return back()->with('success','order assigned to a rider');
     }
-
-  /*  public function getLogout(){
-        dd(1);
-        Session::flush();
-        Auth::logout();
-
-        return  redirect()->to('/');
-    }*/
 }
