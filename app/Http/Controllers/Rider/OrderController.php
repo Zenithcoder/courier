@@ -53,6 +53,8 @@ class OrderController extends Controller
         return view('riders.index', compact('delivered','pending'));
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,8 +62,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
-    }
+        dd(1);
+          }
 
     /**
      * Store a newly created resource in storage.
@@ -141,4 +143,8 @@ class OrderController extends Controller
 
         return back()->with('success','order assigned to a rider');
     }
+
+     
+    
+     
 }

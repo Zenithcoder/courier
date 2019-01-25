@@ -70,14 +70,14 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-5">
                                 <ul class="list-items fs-10">
-<<<<<<< HEAD
+ 
                                 <!--    <li><a href="#">sitemap</a></li>
                                     <li class="active"><a href="#">Privacy</a></li>
                                     <li><a href="#">Pricing</a></li> -->
-=======
+ 
                                     <li><a href="#">Gl.Dynamic</a></li>
                                     <li class="active"><a href="#">...we can be anything you want us to be</a></li>
->>>>>>> 88a24f9b4f2a6333cc61e5c74f26525aa3aa496b
+ 
                                 </ul>
                             </div>
                             <div class="col-md-6 col-sm-7 fs-12">
@@ -112,7 +112,7 @@
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
                                     <ul class="navbar-nav theme-menu">
-<<<<<<< HEAD
+ 
                                         <li class="dropdown active">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Home </a>
                                     <!--        <ul class="dropdown-menu">
@@ -137,18 +137,17 @@
                                                 </li>
                                             </ul> -->
                                         </li>
-                                        <li> <a href="about-us.html">about</a> </li>
-                                   <!--     <li> <a href="tracking.html"> tracking </a> </li>
+                                     <!--    <li> <a href="about-us.html">about</a> </li>
+                                       <li> <a href="tracking.html"> tracking </a> </li>
                                         <li> <a href="pricing-plans.html"> pricing </a> </li> -->
                                         <li> <a href="contact-us.html"> contact </a> </li>
-=======
-                                        <li> <a href="/">Home</a> </li>
+ 
                                         <li> <a href="/about-us">about</a> </li>
                                         <li> <a href="/register"> Request Pickup </a> </li>
                                         <li> <a href="/tracking"> tracking </a> </li>
                                         <li> <a href="/pricing"> pricing </a> </li>
                                         <li> <a href="/contact"> contact </a> </li>
->>>>>>> 88a24f9b4f2a6333cc61e5c74f26525aa3aa496b
+ 
                                         
                                         @if(!Auth::guest())
                                         <li>
@@ -182,7 +181,7 @@
 
             <!-- Footer -->
             <footer>
-<<<<<<< HEAD
+ 
                 <div class="footer-main pad-120 white-clr">
                     <div class="theme-container container">               
                         <div class="row">
@@ -225,27 +224,25 @@
                         </div>
                     </div>
                 </div>
-=======
-
->>>>>>> 88a24f9b4f2a6333cc61e5c74f26525aa3aa496b
+ 
 
                 <div class="footer-bottom">
                     <div class="theme-container container">               
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
+ 
                                 <p> © Copyright 2019, All rights reserved </p>                            
                             </div>
                         <!--    <div class="col-md-6 col-sm-6 text-right">
                                 <p> Design and <span class="theme-clr fa fa-heart"></span>  by <a href="#" class="main-clr"> jThemes Studio </a> </p>
                             </div> -->
-=======
+ 
                                 <p> © Copyright 2019, All rights reserved </p>
                             </div>
                             <div class="col-md-6 col-sm-6 text-right">
                                 <p> Developed   by <a href="https://dukeweb.com.ng" class="main-clr"> Duke Web Tech</a> </p>
                             </div>
->>>>>>> 88a24f9b4f2a6333cc61e5c74f26525aa3aa496b
+ 
                         </div>
                     </div>
                 </div>

@@ -56,13 +56,14 @@
         @endif
     </div>
 </div>
+<!-- @if(!Auth::guest()) {{Auth::user()->lga_idS}} @endif-->
 <div class="form-group{{ $errors->has('lga_id') ? ' has-error' : '' }}">
-    <label for="email" class="col-md-4 control-label">LGA</label>
+    <label for="lga_id" class="col-md-4 control-label">LGA</label>
 
     <div class="col-md-6">
         <select class="form-control" name="lga_id">
             @foreach($local as $key=>$lga)
-                <option value="@if(!Auth::guest()) {{Auth::user()->lga_idS}} @endif">{{$lga->name}}</option>
+                <option value="{{$lga->id}}">{{$lga->name}}</option>
             @endforeach</select>
         @if ($errors->has('lga_id'))
             <span class="help-block">

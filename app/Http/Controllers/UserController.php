@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 //Importing laravel-permission models
 use Spatie\Permission\Models\Role;
@@ -16,14 +17,40 @@ use Session;
 class UserController extends Controller {
 
     public function __construct() {
-        $this->middleware(['auth', 'auth.admin']); //isAdmin middleware lets only users with a //specific permission to access these resources
+      //  $this->middleware(['auth', 'auth.admin']); //isAdmin middleware lets only users with a //specific permission to access these resources
     }
+
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     **/
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function contactUsPost(Request $request) {
+     
+     $email = 'admin@gld.ng';
+    // dd($request);
+     Mail::send('emails.contact',  array( 
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+        ), function ($message) use ($email) {
+                $message->to($email);
+                 $message->from('info@gld.ng', 'Contact US');
+                $message->subject('GLD');
+            });
+        return back()->with('success','Submitted Successfully');
+    }
+
+    /*
     public function index() {
         //Get all users and pass it to the view
         $users = User::all();
@@ -34,7 +61,7 @@ class UserController extends Controller {
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     
     public function create() {
         //Get all roles and pass it to the view
         $roles = Role::get();
@@ -46,7 +73,7 @@ class UserController extends Controller {
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     
     public function store(Request $request) {
         //Validate name, email and password fields
         $this->validate($request, [
@@ -77,7 +104,7 @@ class UserController extends Controller {
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     
     public function show($id) {
         return redirect('users');
     }
@@ -87,7 +114,7 @@ class UserController extends Controller {
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     
     public function edit($id) {
         $user = User::findOrFail($id); //Get user with specified id
         $roles = Role::get(); //Get all roles
@@ -103,7 +130,7 @@ class UserController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     
     public function update(Request $request, $id) {
         $user = User::findOrFail($id); //Get role specified by id
 
@@ -133,7 +160,7 @@ class UserController extends Controller {
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     
     public function destroy($id) {
         //Find a user with a given id and delete
         $user = User::findOrFail($id);
@@ -142,5 +169,7 @@ class UserController extends Controller {
         return redirect()->route('users.index')
             ->with('flash_message',
                 'User successfully deleted.');
-    }
+    } */
+
+
 }

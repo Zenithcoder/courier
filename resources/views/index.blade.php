@@ -144,7 +144,7 @@ Home Page
                 <!-- /.Product Delivery -->
 
 
-<<<<<<< HEAD
+ 
                 <!-- Pricing & Plans -->
             <!--    <section class="pricing-wrap pt-120">                
                     <div class="theme-container container">    
@@ -220,10 +220,7 @@ Home Page
                     </div>               
                 </section> -->
                 <!-- /.Pricing & Plans -->
-=======
 
-
->>>>>>> 88a24f9b4f2a6333cc61e5c74f26525aa3aa496b
 
                 <!-- Contact us -->
                 <section class="contact-wrap pad-120">

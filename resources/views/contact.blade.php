@@ -27,7 +27,13 @@
             </div>
         </section>
         <!-- /.Breadcrumb -->
-
+                <p>@if($message =Session::get('success'))
+                            <div class="alert alert-success">
+                    <p>
+                        {{$message}}
+                    </p>
+                </div>
+                @endif</p>
         <!-- Contact Us -->
         <section class="contact-page pad-30">
             <div class="theme-container container">
@@ -39,9 +45,10 @@
                         </ul>
                     </div>
 
-                    <div class="col-md-5 col-sm-6 col-md-offset-1 contact-form">
+                    <div class="col-md-5 col-sm-6 col-md-offset-1 contact-form"> 
                         <div class="calculate-form">
-                            <form class="row" id="contact-form">
+                            <form class="row" id="contact-form" method="POST" action="{{route('contactuspost')}}">
+                                 {{ csrf_field() }}
                                 <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
                                     <div class="col-sm-3"> <label class="title-2"> Name: </label></div>
                                     <div class="col-sm-9"> <input type="text" name="Name" id="Name" required placeholder="" class="form-control"> </div>

@@ -116,6 +116,7 @@ DashBoard
                                 {{--<td>{{$order->status}}</td>--}}
                             <td>{{$order->tracking_number}}</td>
                             <td>{{$order->updated_at->diffForHumans()}}</td>
+                             @if (isset($order->status) && $order->status !=='CANCELLED')
                             <td><a href="/customers/orders/{{$order->id}}/edit"><i class="fas fa-edit"></i></a></td>
                             <td>
                             {!! Form::open(['method' => 'PUT','route' => ['customers.orders.cancel', $order->id],'style'=>'display:inline']) !!}
@@ -125,6 +126,7 @@ DashBoard
 
                             </td>
                             <td><a href="/customers/orders/{{$order->id}}"><i class="fas fa-eye"></i></a></td>
+                             @endif
                         </tr>
                         @endforeach
                         {{--<tr>--}}

@@ -37,7 +37,7 @@ class OrderController extends Controller
         $orders = auth()->user()->customer_orders()
             ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
             ->paginate(getPaginateSize());
-
+    
         return view('user.dashboard', compact("orders"));
     }
 
