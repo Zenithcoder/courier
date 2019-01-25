@@ -19,6 +19,10 @@ Route::get('/tracking', function () {return view('tracking');});
 Route::get('/pricing', function () {return view('pricing');});
 Route::get('/contact', function () {return view('contact');});
 Route::post('contactUsPost', 'UserController@contactUsPost')->name('contactuspost');
+
+Route::get('cost-calculator', 'UserController@create')->name('cost.calculator');
+Route::post('cost-calculatorP', 'UserController@createP')->name('cost.calculatorP');
+
 Auth::routes();
 
 // User Module 
@@ -125,7 +129,7 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
         Route::post('{order}', 'OrderController@update')->name('update');
         Route::get('{order}', 'OrderController@show')->name('show');
-        Route::get('create', 'OrderController@create')->name('create');
+        Route::get('create', 'OrderController@createxs')->name('create');
     //    Route::any('logout', 'OrderController@getLogout')->name('logout');
     });
 

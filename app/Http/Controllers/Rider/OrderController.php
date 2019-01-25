@@ -63,7 +63,7 @@ class OrderController extends Controller
     public function create()
     {
         dd(1);
-          }
+   }
 
     /**
      * Store a newly created resource in storage.

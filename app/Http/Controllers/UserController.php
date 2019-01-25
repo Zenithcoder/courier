@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 //Importing laravel-permission models
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 use Session;
 
@@ -50,6 +52,46 @@ class UserController extends Controller {
         return back()->with('success','Submitted Successfully');
     }
 
+ public function create()
+    {
+        return view('riders.cost');
+   }
+
+   public function createP(Request $request)
+    {
+        $client = new Client();
+
+        if($request->from == 'null' || $request->to == 'null' )
+        {
+            return back();
+        }
+         
+        $response = $client->get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial', [
+            'query' => [
+                'origins' => $request->from,
+                'destinations' => $request->to,
+                'key' =>  getGoogleKey(),
+            ],
+        ]);
+
+
+        $response = json_decode($response->getBody(), true);
+        $pickup = $response['origin_addresses'][0];
+        $drop = $response['destination_addresses'][0] ;
+        $time = $response['rows'][0]['elements'][0]['duration']['text'];
+        $distance2 = $response['rows'][0]['elements'][0]['distance']['text'];
+
+        $weight =  $request->weight;
+      //  $firstIndex = stripos($distance, 'k');
+      //  $second = $firstIndex +1;
+       $distance = trim(substr($distance2,0,-2));
+       //dd($distance2);
+         $price = ($distance * 200) + ($weight * 300);
+     //   Session::put(['pickup'=> $pickup, 'drop'=> $drop , 'distance'=> $distance, 'time'=> $time]);
+         
+
+        return back()->with('success',$price);
+   }
     /*
     public function index() {
         //Get all users and pass it to the view

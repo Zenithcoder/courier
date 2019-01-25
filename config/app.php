@@ -233,5 +233,6 @@ return [
     ],
 
     'paginate_size' => env('PAGINATE_SIZE', 50),
+    'google_key' => env('GOOGLE_KEY', ''),
 
 ];

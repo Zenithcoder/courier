@@ -15,54 +15,36 @@ Cost Calculator
 
     <div class='col-lg-4 col-lg-offset-4'>
 
-        <h1><i class='fa fa-user-plus'></i> Add Administrator</h1>
+        <p>@if($message =Session::get('success'))
+                        <div class="alert alert-success">
+                      <p>
+                      EStimate Cost is N{{$message}}
+                      </p>
+                    </div>
+                    @endif</p>
+
+
+        <h1><i class='fa fa-user-plus'></i> Cost Estimator</h1>
         <hr>
 
-        {{ Form::open(array('url' => 'users/administrators/store')) }}
+        {{ Form::open(array('url' => 'cost-calculatorP')) }}
 
         <div class="form-group">
-            {{ Form::label('name', 'Name') }}
-            {{ Form::text('name', '', array('class' => 'form-control')) }}
+            {{ Form::label('from', 'From') }}
+            {{ Form::text('from', '55 Moleye Street, Yaba', array('class' => 'form-control')) }}
         </div>
 
         <div class="form-group">
-            {{ Form::label('email', 'Email') }}
-            {{ Form::email('email', '', array('class' => 'form-control')) }}
+            {{ Form::label('to', 'To') }}
+            {{ Form::text('to', '', array('class' => 'form-control')) }}
+        </div>
+
+         <div class="form-group">
+            {{ Form::label('weight', 'Weight') }} <b>(Kg)</b>
+            {{ Form::text('weight', '', array('class' => 'form-control')) }}
         </div>
 
          
-
-        <div class="form-group">
-            {{ Form::label('password', 'Password') }}<br>
-            {{ Form::password('password', array('class' => 'form-control')) }}
-
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('address', 'Address') }}
-            {{ Form::text('address', '', array('class' => 'form-control')) }}
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('city', 'City') }}
-            {{ Form::text('city', '', array('class' => 'form-control')) }}
-        </div>
-
-        <div class="form-group">
-            <!--   {{ Form::label('is_status', 'Status') }}
-            {{ Form::number('is_status', '', array('class' => 'form-control')) }} -->
-            <input type="hidden" name="is_status" value="1">
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('pic', 'Profile Photo') }}
-            {{ Form::file('pic') }}
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('phone_num', 'Phone Number') }}
-            {{ Form::text('phone_num', '', array('class' => 'form-control')) }}
-        </div>
 
         {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
 
