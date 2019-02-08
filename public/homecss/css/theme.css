@@ -233,7 +233,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     background: #ffffff;
-    color: #acacac;
+    color: #444444;
     -webkit-font-kerning: auto;
     -webkit-font-smoothing: antialiased;
     -webkit-backface-visibility: visible !important;  
@@ -319,8 +319,7 @@ img{
     letter-spacing: 2px;
 }
 .section-title, .title-1, .title-2, .title-3, .post-title, .widget-title, .font2-title1 {
-    color: #222222;  
-    text-transform: uppercase;  
+    color: #222222;
     letter-spacing: 1px;
 }
 .section-title { font-size: 28px; }
@@ -332,7 +331,6 @@ img{
     color: #f6f6f6;
     font-size: 114px;    
     position: absolute;
-    text-transform: uppercase;
     top: 8%;
     left: -2%;
 }
@@ -375,7 +373,6 @@ img{
     display: inline-block;
     margin: 0 5px;
     position: relative;
-    text-transform: uppercase;
 }
 .list-items{ margin-bottom: 0; margin-left: -5px;}
 .black-arrow i,.white-arrow i{   
@@ -521,8 +518,7 @@ h2,h3,h4,h5,h6{
     padding: 10px;
     font-size: 14px;
     border-radius: 3px;
-    color: #ffffff;
-    text-transform: uppercase;
+    color: #222222;
 
     transition: all 0.4s ease-in-out;    
     -webkit-transition: all 0.4s ease-in-out;
@@ -531,6 +527,7 @@ h2,h3,h4,h5,h6{
 }
 .btn-1:hover, .btn-1:focus {
     background-color: #222222;
+    color: #ffffff;
 }
 .btn-1.dark:hover, .btn-1.dark:focus {
     background-color: #c7c7c7;
@@ -544,7 +541,6 @@ h2,h3,h4,h5,h6{
     padding: 10px;
     font-size: 14px;    
     color: #222;
-    text-transform: uppercase;
     letter-spacing: 1px;
     min-width: 200px;
 
@@ -577,13 +573,12 @@ label{
     height: 46px;    
     padding: 10px 20px;
     font-weight: 300;
-    text-transform: uppercase;
 }
 textarea.form-control {
     height: auto;
 }
 .bootstrap-select .btn {
-    text-transform: uppercase;
+
 }
 .form-control.submit-btn{
     height: auto;
@@ -1565,10 +1560,31 @@ textarea:focus:-ms-input-placeholder {
     top: 11%;
 }
 .contact-wrap {
-    background-image: url("../img/background/MAP.png");
     background-position: right center;
     background-repeat: no-repeat;
     position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.contact-overlay {
+    background-image: url("../img/background/MAP.png");
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 50%;
+    bottom: 0;
+}
+
+@media all and (max-width: 991px) {
+
+    .contact-overlay {
+        opacity: 0.3;
+    }
+
+    .contact-wrap {
+        background: none;
+    }
 }
 .contact-detail p {
     text-transform: none;
@@ -2220,7 +2236,9 @@ textarea:focus:-ms-input-placeholder {
     7 - FOOTER CSS STARTS 
 ********************************/
 .footer-main {
-    background-image: url(../img/pattern/footer-top-bg.png);
+    background: #222222;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 .footer-widget ul li a {
     font-size: 12px;
@@ -2230,11 +2248,9 @@ textarea:focus:-ms-input-placeholder {
     padding: 5px 0;
 }
 .footer-widget ul {
-    margin: 25px 0 0;
+    margin: 5px 0 0;
 }
-.footer-widget .logo {
-    margin-top: 60px;
-}
+
 .social-icons li a {
     border: 2px solid #656565;
     border-radius: 50%;
@@ -2248,17 +2264,44 @@ textarea:focus:-ms-input-placeholder {
     width: 35px;
 }
 .social-icons li a:hover, .social-icons li a:focus {
-    color: #ffffff;
+    color: #000000;
 }
 .payment-icons > li {
     padding-right: 3px;
 }
 .footer-bottom {
-    background-color: #222222;
-    padding: 20px 0;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 0;
 }
-.footer-bottom p {
-    margin: 0;
+
+.footer-bottom__details {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-bottom__copyright {
+    margin-right: 20px
+}
+
+.footer-bottom__developer {
+    margin-left: 20px;
+}
+
+
+@media all and (max-width: 991px) {
+    .footer-bottom__details {
+        flex-direction: column;
+    }
+
+    .footer-bottom__copyright {
+        margin-right: 0px;
+    }
+
+    .footer-bottom__developer {
+        margin-left: 0px;
+    }
+
 }
 
 /******************************* 

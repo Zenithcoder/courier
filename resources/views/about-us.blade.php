@@ -36,10 +36,12 @@
                     <div class="col-md-6">
                         <div class="about-us pt-10">
                             <p class="fs-16 wow fadeInUp" data-wow-offset="50" data-wow-delay=".25s">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                                nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-                                erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-                                tation ullamcorper suscipit lobortis nisl ut aliquip.
+                                Gl-Dynamic logistics is a global service company that is specialized in
+                                forwarding your Shipments from all destination, our goal is to provide
+                                quality service with high speed to our highly esteemed	customers while
+                                ensuring the safety of their shipment. We have put a lot in place to
+                                ensure our customers needs are met and questions and complaints are answered
+                                with our 24 hours live Customer support.Some Reasons why our clients choose us includes
                             </p>
                             <ul class="feature">
                                 <li>

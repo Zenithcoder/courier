@@ -184,7 +184,7 @@
         var element = $(stickyElement);
         var stickyWrapper = element.parent();
         if (stickyWrapper) {
-          stickyWrapper.css('height', element.outerHeight());
+          stickyWrapper.css('height', element.outerHeight() - 50);
         }
       },
 
