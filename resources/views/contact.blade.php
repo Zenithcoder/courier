@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
                                     <div class="col-sm-9 col-xs-12 pull-right">
-                                        <button name="submit" id="submit_btn" class="btn-1"> send message </button>
+                                        <button name="submit" id="submit_btn" class="btn-1"> Send message </button>
                                     </div>
                                 </div>
                             </form>

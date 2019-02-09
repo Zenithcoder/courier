@@ -13,7 +13,7 @@ Home Page
             <div class="row">
                 <div class="col-sm-8 pull-left">
                     <div class="title-wrap">
-                        <h2 class="section-title no-margin"> product tracking </h2>
+                        <h2 class="section-title no-margin"> Product Tracking </h2>
                         <p class="fs-16 no-margin"> Track your product & see the current condition </p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ Home Page
         <div class="theme-container container ">
             <div class="row pad-10">
                 <div class="col-md-8 col-md-offset-2 tracking-form wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                    <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
+                    <h2 class="title-1"> Track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                     <div class="row">
                         @include('/layouts.shipment-tracker')                    </div>
                 </div>

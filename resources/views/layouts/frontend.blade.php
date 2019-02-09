@@ -73,20 +73,21 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-logo" href="#"> <img src="{{asset('homecss/img/logo/gld-logo.png')}}" style="height: 93px;" alt="logo" /> </a>
+                                <a class="navbar-logo" href="'/">
+                                    <img src="{{asset('homecss/img/logo/gld-logo.png')}}" alt="logo" />
+                                </a>
                             </div>
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
                                     <ul class="navbar-nav theme-menu">
  
-                                        <li class="dropdown active">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Home </a>
+                                        <li class="active">
+                                            <a href="/">Home </a>
                                         </li>
  
                                         <li> <a href="/about-us">About</a> </li>
-                                        <li> <a href="/register"> Request Pickup </a> </li>
+                                        <li> <a data-toggle="modal" href="#login-popup">Request Pickup </a> </li>
                                         <li> <a href="/tracking"> Tracking </a> </li>
-                                        <li> <a href="/pricing"> Pricing </a> </li>
                                         <li> <a href="/contact"> Contact </a> </li>
 
                                         @if(!Auth::guest())
@@ -168,7 +169,7 @@
                         
                 <div class="modal-content">   
                     <div class="login-wrap text-center">                        
-                        <h2 class="title-3"> sign in </h2>
+                        <h2 class="title-3"> SIGN IN </h2>
                         <p> Sign in to <strong> GO </strong> for getting all details </p>                        
 
                         <div class="login-form clrbg-before">
@@ -191,10 +192,10 @@
                                 @endif
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn-1 " type="submit"> Sign in now </button>
+                                    <button class="btn-1 " type="submit"> Sign in</button>
                                 </div>
                             </form>
-                            <a href="#" class="gray-clr"> Forgot Passoword? </a>                            
+                            <a href="#" class="gray-clr"> Forgot Password? </a>
                         </div>                        
                     </div>
                     <div class="create-accnt">

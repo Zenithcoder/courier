@@ -725,7 +725,7 @@ textarea:focus:-ms-input-placeholder {
 /*---------------------------------- 1.7 Theme Colors Starts -------------------------------- */
 /**-- Color-1 Light --**/
 .theme-clr, .hvr-clr:hover, .hvr-clr:focus, a:focus, a:hover, .theme-menu > li:hover > a::after, .theme-menu > li.active > a,
-.list-items li.active a, .header-main .theme-menu .dropdown-menu > li > a:hover, .header-main  .theme-menu .dropdown-menu > li > a:focus {
+.list-items .header-main .theme-menu .dropdown-menu > li > a:hover, .header-main  .theme-menu .dropdown-menu > li > a:focus {
     color: #FFF234; 
 }
 .small, .theme-clr-bg, .btn-1, .btn-round:hover, .btn-round:focus, .owl-nav div:hover, .owl-nav div:focus, .theme-menu > li > a::after,

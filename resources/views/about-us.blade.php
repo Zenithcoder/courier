@@ -33,7 +33,7 @@
             <span class="bg-text"> About </span>
             <div class="theme-container container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-xs-12">
                         <div class="about-us pt-10">
                             <p class="fs-16 wow fadeInUp" data-wow-offset="50" data-wow-delay=".25s">
                                 Gl-Dynamic logistics is a global service company that is specialized in
@@ -47,29 +47,39 @@
                                 <li>
                                     <img alt="" src="/homecss/img/icons/icon-2.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                     <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
-                                        <h2 class="title-1">Fast delivery</h2>
-                                        <p>Duis autem vel eum iriure dolor</p>
+                                        <h2 class="title-1">Speed</h2>
+                                        <p>
+                                            We ensure that every item arrives at it’s destination at the shortest time possible
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
                                     <img alt="" src="/homecss/img/icons/icon-3.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                     <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
-                                        <h2 class="title-1">secured service</h2>
-                                        <p>Duis autem vel eum iriure dolor in hendrerit</p>
+                                        <h2 class="title-1">Safety</h2>
+                                        <p>
+                                            We have put a lot in place to ensure all shipments and parcels are safe,
+                                            all our staff are security and safety inclined to ensure every
+                                            shipment arrives their expected drop-off location.
+
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
                                     <img alt="" src="/homecss/img/icons/icon-4.png" class="wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s" />
                                     <div class="feature-content wow rotateInDownRight" data-wow-offset="50" data-wow-delay=".30s">
-                                        <h2 class="title-1">worldwide shipping</h2>
-                                        <p>Eum iriure dolor in hendrerit in vulputa</p>
+                                        <h2 class="title-1">Service</h2>
+                                        <p>
+                                            We have a 24/7 live customer support, we are always ready to
+                                            assist our esteemed customers
+                                        </p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <img alt="" src="/homecss/img/block/about-img.png" class="effect animated fadeInRight" />
+                    <div class="col-md-6 col-xs-12 text-center">
+                        <img alt="" src="/homecss/img/block/about-img.png" class="effect img img-responsive animated fadeInRight" />
                     </div>
                 </div>
             </div>
