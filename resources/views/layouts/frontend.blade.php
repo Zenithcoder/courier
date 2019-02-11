@@ -5,26 +5,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Bootstrap Css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('homecss/plugins/bootstrap-3.3.6/css/bootstrap.min.css')}}">        
-        <!-- Bootstrap Select Css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('homecss/plugins/bootstrap-3.3.6/css/bootstrap.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css')}}">
-        <!-- Fonts Css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/plugins/font-awesome-4.6.1/css/font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/plugins/font-elegant/elegant.css')}}">
-        <!-- OwlCarousel2 Slider Css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/plugins/owl.carousel.2/assets/owl.carousel.css')}}">
-
-
-        <!-- Animate Css -->       
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/css/animate.css')}}">
-
-        <!-- Main Css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/css/theme.css')}}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <!-- profile css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('homecss/css/customer-profile.css')}}">
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('homecss/css/custom.css') }}">
 
         <!--[if lt IE 9]>
         <script src="assets/plugins/iesupport/html5shiv.js"></script>
@@ -32,31 +22,6 @@
         <![endif]-->
     </head>
     <body id="home">
-        <!-- Preloader 
-        <div id="preloader">
-
-            <div class="small1">
-                <div class="small ball smallball1"></div>
-                <div class="small ball smallball2"></div>
-                <div class="small ball smallball3"></div>
-                <div class="small ball smallball4"></div>
-            </div>
-
-
-            <div class="small2">
-                <div class="small ball smallball5"></div>
-                <div class="small ball smallball6"></div>
-                <div class="small ball smallball7"></div>
-                <div class="small ball smallball8"></div>
-            </div>
-
-            <div class="bigcon">
-                <div class="big ball"></div>
-            </div>
-
-        </div>  
-        <!-- /.Preloader -->    
-
 
         <!-- Main Wrapper -->        
         <main class="wrapper">
@@ -71,22 +36,23 @@
                             <div class="col-md-6 col-sm-5">
                                 <ul class="list-items fs-10">
  
-                                <!--    <li><a href="#">sitemap</a></li>
-                                    <li class="active"><a href="#">Privacy</a></li>
-                                    <li><a href="#">Pricing</a></li> -->
- 
                                     <li><a href="#">Gl.Dynamic</a></li>
                                     <li class="active"><a href="#">...we can be anything you want us to be</a></li>
  
                                 </ul>
                             </div>
                             <div class="col-md-6 col-sm-7 fs-12">
-                                <p class="contact-num">  <i class="fa fa-phone"></i> Call us now: <span class="theme-clr"> +234 81 25194-325 </span> </p>
+                                <p class="contact-num">
+                                    <i class="fa fa-phone"></i>
+                                    <span class="theme-clr"> +234-81-2519-4385 </span>
+                                </p>
                             </div>
                         </div>
                     </div>
-                      @if (Auth::guest())
-                    <a data-toggle="modal" href="#login-popup" class="sign-in fs-12 theme-clr-bg"> sign in </a> 
+                    @if (Auth::guest())
+                        <a data-toggle="modal" href="#login-popup" class="sign-in fs-12 theme-clr-bg">
+                            <font color="black">Sign in </font>
+                        </a>
                     @else
                     <a href="{{ route('logout') }}" class="sign-in fs-12 theme-clr-bg" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Logout</a>
@@ -107,48 +73,23 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-logo" href="#"> <img src="{{asset('homecss/img/logo/logo-black.png')}}" style="height: 93px;" alt="logo" /> </a>
+                                <a class="navbar-logo" href="'/">
+                                    <img src="{{asset('homecss/img/logo/gld-logo.png')}}" alt="logo" />
+                                </a>
                             </div>
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
                                     <ul class="navbar-nav theme-menu">
  
-                                        <li class="dropdown active">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Home </a>
-                                    <!--        <ul class="dropdown-menu">
-                                                <li><a href="index.html">Home Page1</a></li>
-                                                <li><a href="index-2.html">Home Page2</a></li>
-                                                <li><a href="index-3.html">Home Page3</a></li>
-
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Submenu Level 1 </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">Submenu</a></li>
-                                                        <li><a href="#">Submenu</a></li>
-                                                        <li class="dropdown">
-                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Submenu Level 2</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul> -->
+                                        <li class="active">
+                                            <a href="/">Home </a>
                                         </li>
-                                     <!--    <li> <a href="about-us.html">about</a> </li>
-                                       <li> <a href="tracking.html"> tracking </a> </li>
-                                        <li> <a href="pricing-plans.html"> pricing </a> </li> -->
-                                        <li> <a href="contact-us.html"> contact </a> </li>
  
-                                        <li> <a href="/about-us">about</a> </li>
-                                        <li> <a href="/register"> Request Pickup </a> </li>
-                                        <li> <a href="/tracking"> tracking </a> </li>
-                                        <li> <a href="/pricing"> pricing </a> </li>
-                                        <li> <a href="/contact"> contact </a> </li>
- 
-                                        
+                                        <li> <a href="/about-us">About</a> </li>
+                                        <li> <a data-toggle="modal" href="#login-popup">Request Pickup </a> </li>
+                                        <li> <a href="/tracking"> Tracking </a> </li>
+                                        <li> <a href="/contact"> Contact </a> </li>
+
                                         @if(!Auth::guest())
                                         <li>
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >My Profile </a>
@@ -182,45 +123,21 @@
             <!-- Footer -->
             <footer>
  
-                <div class="footer-main pad-120 white-clr">
-                    <div class="theme-container container">               
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <a href="#"> <img class="logo" alt="#" style="height: 93px;" src="{{asset('homecss/img/logo/logo-white.png')}}" />  </a>
-                            </div>
-                       <!--     <div class="col-md-3 col-sm-6 footer-widget">
-                                <h2 class="title-1 fw-900">quick links</h2>
-                                <ul>
-                                    <li> <a href="#">sitemap</a> </li>
-                                    <li> <a href="#">pricing</a> </li>
-                                    <li> <a href="#">payment method</a> </li>
-                                    <li> <a href="#">support</a> </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <h2 class="title-1 fw-900">important links</h2>
-                                <ul>
-                                    <li> <a href="#">themeforest</a> </li>
-                                    <li> <a href="#">envato</a> </li>
-                                    <li> <a href="#">audiojungle</a> </li>
-                                    <li> <a href="#">videohibe</a> </li>
-                                </ul>
-                            </div> -->
-                            <div class="col-md-3 col-sm-6 footer-widget">
-                                <h2 class="title-1 fw-900">get in touch</h2>
-                                <ul class="social-icons list-inline">
-                                    <li class="" data-wow-offset="50" data-wow-delay=".20s"> <a href="#" class="fa fa-facebook"></a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".25s"> <a href="#" class="fa fa-twitter"></a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".30s"> <a href="#" class="fa fa-google-plus"></a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".35s"> <a href="#" class="fa fa-linkedin"></a> </li>
-                                </ul>
-                                <ul class="payment-icons list-inline">
-                                    <li class="" data-wow-offset="50" data-wow-delay=".20s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-1.png')}}" /> </a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".25s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-2.png')}}" /> </a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".30s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-3.png')}}" /> </a> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".35s"> <a href="#"> <img alt="#" src="{{asset('homecss/img/icons/payment-4.png')}}" /> </a> </li>
-                                </ul>
-                            </div>
+                <div class="footer-main white-clr">
+                    <div class="theme-container container">
+                        <div class="col-md-3 col-sm-6 footer-widget">
+                            <a href="#"> <img class="logo" alt="#" style="height: 93px;" src="{{asset('homecss/img/logo/logo-white.png')}}" />  </a>
+                            <ul class="social-icons list-inline">
+                                <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".20s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
+                                    <a href="https://web.facebook.com/gl.dynamics.5" style="color:white;" class="fab fa-facebook"></a>
+                                </li>
+                                <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeIn;">
+                                    <a href="#" style="color:white;" class="fab fa-twitter"></a>
+                                </li>
+                                <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".30s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
+                                    <a href="https://www.instagram.com/gl_dynamic/" style="color:white;" class="fab fa-instagram"></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -228,21 +145,13 @@
 
                 <div class="footer-bottom">
                     <div class="theme-container container">               
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
- 
-                                <p> © Copyright 2019, All rights reserved </p>                            
+                        <div class="footer-bottom__details">
+                            <div class="footer-bottom__copyright">
+                                <p> &copy; Copyright {{ Date('Y') }}, All rights reserved </p>
                             </div>
-                        <!--    <div class="col-md-6 col-sm-6 text-right">
-                                <p> Design and <span class="theme-clr fa fa-heart"></span>  by <a href="#" class="main-clr"> jThemes Studio </a> </p>
-                            </div> -->
- 
-                                <p> © Copyright 2019, All rights reserved </p>
-                            </div>
-                            <div class="col-md-6 col-sm-6 text-right">
+                            <div class="footer-bottom__developer">
                                 <p> Developed   by <a href="https://dukeweb.com.ng" class="main-clr"> Duke Web Tech</a> </p>
                             </div>
- 
                         </div>
                     </div>
                 </div>
@@ -253,9 +162,6 @@
         </main>
         <!-- / Main Wrapper -->
 
-        <!-- Top -->
-        <div class="to-top theme-clr-bg transition"> <i class="fa fa-angle-up"></i> </div>
-
          <!-- Popup: Login -->
         <div class="modal fade login-popup" id="login-popup" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-md">                
@@ -263,7 +169,7 @@
                         
                 <div class="modal-content">   
                     <div class="login-wrap text-center">                        
-                        <h2 class="title-3"> sign in </h2>
+                        <h2 class="title-3"> SIGN IN </h2>
                         <p> Sign in to <strong> GO </strong> for getting all details </p>                        
 
                         <div class="login-form clrbg-before">
@@ -286,10 +192,10 @@
                                 @endif
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn-1 " type="submit"> Sign in now </button>
+                                    <button class="btn-1 " type="submit"> Sign in</button>
                                 </div>
                             </form>
-                            <a href="#" class="gray-clr"> Forgot Passoword? </a>                            
+                            <a href="#" class="gray-clr"> Forgot Password? </a>
                         </div>                        
                     </div>
                     <div class="create-accnt">
@@ -308,7 +214,7 @@
 
                 <div class="modal-content">   
                     <div class="login-wrap text-center">                        
-                        <h2 class="title-3"> sign up </h2>
+                        <h2 class="title-3"> Sign Up </h2>
                         <p> Sign Up to <strong> Request For Pickup </strong></p>                        
 
                         <div class="login-form clrbg-before">

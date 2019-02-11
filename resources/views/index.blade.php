@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-Home Page
+Gl-dynamic - home
 @endsection
 
 @section('content')
@@ -10,11 +10,13 @@ Home Page
                 <section class="banner mask-overlay pad-120 white-clr">
                     <div class="container theme-container rel-div">
                         <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">
-                            <li><a href="#">fast</a></li>
-                            <li><a href="#">secured</a></li>
-                            <li><a href="#">worldwide</a></li>
+                            <li><a href="#">Fast</a></li>
+                            <li><a href="#">Secured</a></li>
+                            <li><a href="#">Worldwide</a></li>
                         </ul>
-                        <h2 class="section-title fs-48 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> We Can Be   <br> <span class="theme-clr"> Anything </span>  <span class="theme-clr">  </span> You want Us to be  </h2>
+                        <h2 class="section-title fs-48 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">
+                            WE CAN BE   <br> <span class="theme-clr"> ANYTHING </span>  <span class="theme-clr">  </span> YOU WANT US TO BE
+                        </h2>
                     </div>
                     <div class="pad-50 visible-lg"></div>
                 </section>
@@ -32,7 +34,7 @@ Home Page
                                 </p>
                             </div>
                             @endif</p>
-                                <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
+                                <h2 class="title-1"> Track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                                 <div class="row">
                                    @include('/layouts.shipment-tracker')
                                 </div>
@@ -50,27 +52,42 @@ Home Page
                             <div class="col-md-6">
                                 <div class="about-us">
                                     <h2 class="section-title pb-10" data-wow-offset="50" data-wow-delay=".20s">  Welcome to GL.Dynamic Logistics</h2>
-                                    <p class="fs-16" data-wow-offset="50" data-wow-delay=".25s">.Welcome to the Nigerian leading Logistics company, we are known for speed, safety service and security</p>
+                                    <p class="fs-16" data-wow-offset="50" data-wow-delay=".25s">
+                                        Gl-Dynamic logistics is a global service company that is specialized in forwarding your Shipments from all destination,
+                                        our goal is to provide quality service with high speed to our highly esteemed customers while
+                                        ensuring the safety of their shipment. We have put a lot in place to ensure our
+                                        customers needs are met and questions and complaints are answered with our 24 hours
+                                        live Customer support. Some Reasons why our clients choose us includes
+                                    </p>
                                     <ul class="feature">
                                         <li>
                                             <img alt="" src="/homecss/img/icons/icon-2.png" class="" data-wow-offset="50" data-wow-delay=".20s" />
                                             <div class="feature-content" data-wow-offset="50" data-wow-delay=".30s">
                                                 <h2 class="title-1">Speed</h2>
-                                                <p>Duis autem vel eum iriure dolor</p>
+                                                <p>
+                                                    We ensure that every item arrives at it’s destination at the shortest time possible
+                                                </p>
                                             </div>
                                         </li>
                                         <li>
                                             <img alt="" src="/homecss/img/icons/icon-3.png" class="" data-wow-offset="50" data-wow-delay=".20s" />
                                             <div class="feature-content" data-wow-offset="50" data-wow-delay=".30s">
                                                 <h2 class="title-1">Safety</h2>
-                                                <p>Duis autem vel eum iriure dolor in hendrerit</p>
+                                                <p>
+                                                    We have put a lot in place to ensure all shipments and parcels are
+                                                    safe, all our staff are security and safety inclined to ensure
+                                                    every shipment arrives their expected drop-off location.
+                                                </p>
                                             </div>
                                         </li>
                                         <li>
                                             <img alt="" src="/homecss/img/icons/icon-4.png" class="" data-wow-offset="50" data-wow-delay=".20s" />
                                             <div class="feature-content" data-wow-offset="50" data-wow-delay=".30s">
                                                 <h2 class="title-1">Service</h2>
-                                                <p>Eum iriure dolor in hendrerit in vulputa</p>
+                                                <p>
+                                                    We have a 24/7 live customer support,
+                                                    we are always ready to assist our esteemed customers
+                                                </p>
                                             </div>
                                         </li>
 
@@ -92,31 +109,30 @@ Home Page
                 <!-- Steps -->
                 <section class="steps-wrap mask-overlay pad-80">
                     <div class="theme-container container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
+                        <div class="steps">
+                            <div class="steps__col">
                                 <div class="font-2 fs-50" data-wow-offset="50" data-wow-delay=".20s"> 1. </div>
-                                <div class="steps-content" data-wow-offset="50" data-wow-delay=".25s">
+                                <div class="steps__content" data-wow-offset="50" data-wow-delay=".25s">
                                     <h2 class="title-3">Request Pickup</h2>
-                                    <p class="gray-clr">Duis autem vel eum iriur <br> hendrerit in vulputate</p>
+                                    <p>You need to have an account to request a pickup</p>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="steps__col">
                                 <div class="font-2 fs-50" data-wow-offset="50" data-wow-delay=".20s"> 2. </div>
-                                <div class="steps-content" data-wow-offset="50" data-wow-delay=".25s">
+                                <div class="steps__content" data-wow-offset="50" data-wow-delay=".25s">
                                     <h2 class="title-3">Track Parcel </h2>
-                                    <p class="gray-clr">Duis autem vel eum iriur <br> hendrerit in vulputate</p>
+                                    <p>Know the status of your parcel by tracking it with the right tracking number</p>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="steps__col">
                                 <div class="font-2 fs-50" data-wow-offset="50" data-wow-delay=".20s"> 3. </div>
-                                <div class="steps-content" data-wow-offset="50" data-wow-delay=".25s">
+                                <div class="steps__content" data-wow-offset="50" data-wow-delay=".25s">
                                     <h2 class="title-3">Deliver</h2>
-                                    <p class="gray-clr">Duis autem vel eum iriur <br> hendrerit in vulputate</p>
+                                    <p>Your delivery status changes to delivered when the item gets to the drop off location</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="step-img wow slideInRight" data-wow-offset="50" data-wow-delay=".20s"> <img src="/homecss/img/block/van_1.jpg" alt="" /> </div>
                 </section>
                 <!-- /.Steps -->
 
@@ -127,15 +143,18 @@ Home Page
                             <div class="col-md-11 col-md-offset-1">
                                 <div class="pt-120 rel-div">
                                     <div class="pb-50 hidden-xs"></div>
-                                    <h2 class="section-title" data-wow-offset="50" data-wow-delay=".20s"> Get the <span class="theme-clr"> fastest </span> product delivery </h2>
-                                    <p class="fs-16" data-wow-offset="50" data-wow-delay=".25s">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <br>
-                                        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam <br>
-                                        erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci <br>
-                                        tation ullamcorper suscipit lobortis nisl ut aliquip.</p>
+                                    <div class="prod-delivery__content">
+                                        <h2 class="section-title" data-wow-offset="50" data-wow-delay=".20s"> Get the <span class="theme-clr"> fastest </span> product delivery </h2>
+                                        <p class="fs-16" data-wow-offset="50" data-wow-delay=".25s">
+                                            At Gl-Dynamic we ensure your shipments gets delivered in time and
+                                            in good condition. We are passionate about quality services to our customer,
+                                            that's why we are Nigerians fastest Logistics Company based in Abuja.
+                                        </p>
+                                    </div>
                                     <div class="pb-120 hidden-xs"></div>
                                 </div>
                                 <div class="delivery-img pt-10">
-                                    <img alt="" src="/homecss/img/block/delivery1.jpg" class="" data-wow-offset="50" data-wow-delay=".20s"/>
+                                    <img alt="" src="/homecss/img/block/delivery1.jpg" class="" data-wow-offset="50" data-wow-delay=".20s">
                                 </div>
                             </div>
                         </div>
@@ -223,19 +242,23 @@ Home Page
 
 
                 <!-- Contact us -->
-                <section class="contact-wrap pad-120">
+                <section class="contact-wrap">
+                    <div class="contact-overlay"></div>
                     <span class="bg-text wow fadeInLeft" data-wow-offset="50" data-wow-delay=".20s"> Contact </span>
                     <div class="theme-container container">
                         <div class="row">
                             <div class="col-md-6 col-sm-8">
                                 <div class="title-wrap">
-                                    <h2 class="section-title" data-wow-offset="50" data-wow-delay=".20s">contact us</h2>
-                                    <p class="" data-wow-offset="50" data-wow-delay=".20s" >Get in touch with us easiky</p>
+                                    <h2 class="section-title" data-wow-offset="50" data-wow-delay=".20s">Contact us</h2>
+                                    <p class="" data-wow-offset="50" data-wow-delay=".20s" >Get in touch with us easily</p>
                                 </div>
                                 <ul class="contact-detail title-2">
-                                    <li class="" data-wow-offset="50" data-wow-delay=".20s"> <span>uk numbers:</span> <p class="gray-clr"> +001-2463-957 <br> +001-4356-643 </p> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".25s"> <span>usa numbers:</span> <p class="gray-clr"> +001-2463-957 <br> +001-4356-643 </p> </li>
-                                    <li class="" data-wow-offset="50" data-wow-delay=".30s"> <span>Email address:</span> <p class="gray-clr"> support@go.com <br> info@go.com </p> </li>
+                                    <li class="" data-wow-offset="50" data-wow-delay=".20s">
+                                        <span>Abuja:</span> <p class="gray-clr"> +234 81-4251-9325 <br/> +234 70-6706-6642 </p>
+                                    </li>
+                                    <li class="" data-wow-offset="50" data-wow-delay=".30s">
+                                        <span>Email address:</span> <p class="gray-clr"> info@gld.ng <br/> logistics@gld.ng </p>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
