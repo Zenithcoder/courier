@@ -11,6 +11,10 @@
     margin-top: -10px;
 }
 
+.form-control {
+    color: #676767 !important;
+}
+
 /**********************************                      *
 *   Homepage styles                *
  **********************************/
@@ -104,4 +108,37 @@
 .about-wrap img {
     max-width: 100%;
     width: auto;
+}
+
+/**********************************                      *
+*   Registration page styles       *
+ **********************************/
+
+.registration-container {
+    background: #f7f7f7;
+    padding: 50px 80px;
+}
+
+.registration-form {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.panel-heading__auth {
+    background: #000000 !important;
+    color: #ffffff !important;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.input-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media all and (max-width: 600px) {
+    .registration-container {
+        padding: 40px;
+    }
 }
