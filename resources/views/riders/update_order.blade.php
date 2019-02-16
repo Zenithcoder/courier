@@ -30,6 +30,12 @@ Update Order
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="label">Amount:</div>
+                                <div class="input">
+                                   <input type="text" name ="amount" class="icon large"   value="{{$order->amount}}"  />
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="label">Status:</div>
                              
                                 <select class=" " name="status" >
@@ -47,12 +53,12 @@ Update Order
                             <div class="form-row">
                                 <div class="label">Weight:</div>
                                 <div class="input">
-                                   <input type="text" class="icon large"   value="{{$order->weight}}" />
+                                   <input type="text" name="weight" class="icon large"   value="{{$order->weight}}" />
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="label">Payment_Status:</div>
-                                 <select class=" " name="category" >
+                                <div class="label">Payment Status:</div>
+                                 <select class=" " name="payment_status" >
                                     <option disabled="true" >{{$order->payment_status}} </option>   
                                     <option value="FAIL">FAIL</option>
                                     <option value="PAID">PAID</option>
@@ -63,7 +69,7 @@ Update Order
                             <div class="form-row">
                                 <div class="label">Expected Delivery Date:</div>
                                 <div class="input">
-                                   <input type="text" class="icon large"  value="{{$order->expected_delivery_date}}" />
+                                   <input type="date" name="expected_delivery_date" class="icon large"  value="{{$order->expected_delivery_date}}" />
                                 </div>
                             </div>
                             

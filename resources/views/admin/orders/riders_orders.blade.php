@@ -22,7 +22,7 @@
                     <th>Pickup</th>
                     <th>Dropoff</th>
                     <th>Amount</th>
-                    <th>Type</th>
+                    <th>Status</th>
                     <th>Weight</th>
                     <th>Payment Status</th>
                     <th>Assigned Status</th>

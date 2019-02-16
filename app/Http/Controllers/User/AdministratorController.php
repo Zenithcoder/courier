@@ -126,19 +126,21 @@ class AdministratorController extends Controller
 
         $this->validate($request, [
             'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
-            'password'=>'required|min:6|confirmed'
+            'email'=>'required|email|unique:users,email,'.$id
+          //  'password'=>'required|min:6|confirmed'
         ]);
-        $input = $request->only(['name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number']);
+        $input = $request->only(['name', 'email', 'address', 'city', 'lga_id', 'phone_number']);
         $roles = $request['roles'];
         $user->fill($input)->save();
 
         if (isset($roles)) {
             $user->roles()->sync($roles);
         }
+        /*
         else {
             $user->roles()->detach();
-        }
+        }*/
+
         return redirect()->route('users.administrators.index')
             ->with('flash_message',
                 'Admin successfully updated.');

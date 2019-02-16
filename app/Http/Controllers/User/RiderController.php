@@ -113,16 +113,14 @@ class RiderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-
-
+    { dd()
         $this->validate($request, [
             'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
-            'password'=>'required|min:6|confirmed'
+            'email'=>'required|email|unique:users,email,'.$id
+          //  'password'=>'required|min:6|confirmed'
         ]);
 
-        $input = $request->only(['name', 'email', 'password', 'address', 'city', 'lga_id', 'is_status', 'pic', 'phone_number']);
+        $input = $request->only(['name', 'email', 'address', 'city', 'lga_id', 'phone_number']);
         $roles = $request['roles'];
 
         $user = User::riders()->findOrFail($id);
@@ -131,9 +129,9 @@ class RiderController extends Controller
         if (isset($roles)) {
             $user->roles()->sync($roles);
         }
-        else {
+     /*   else {
             $user->roles()->detach();
-        }
+        }*/
         return redirect()->route('users.riders.index')
             ->with('flash_message',
                 'Rider successfully updated.');

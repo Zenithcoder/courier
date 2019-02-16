@@ -112,6 +112,7 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
+      //  dd($request);
         $order->update($request->all());
         return back();
     }

@@ -31,7 +31,7 @@
                     <table>
                         <tbody>
                         <tr>
-                            <th><i class="fa fa-sort"></i>S/N</th><<th><i class="fa fa-sort"></i>Tracking No.</th><th><i class="fa fa-sort"></i>Pickup</th><th><i class="fa fa-sort"></i>Dropoff</th><th class="minor">status</th><th class="minor">Recipient_Name</th><th class="minor">Recipient_No</th><th class="minor">Payment_status</th><th class="minor">Assigning_Order</th> <th></th><th></th>
+                            <th><i class="fa fa-sort"></i>S/N</th><<th><i class="fa fa-sort"></i>Tracking No.</th><th><i class="fa fa-sort"></i>Pickup</th><th><i class="fa fa-sort"></i>Dropoff</th><th class="minor">status</th><th class="minor">Recipient Name</th><th class="minor">Recipient No</th><th class="minor">Payment status</th><th class="minor">Assigning Order</th> <th></th><th></th>
                         </tr>
                         <?php $no=1?>
                         @foreach($orders as $order)

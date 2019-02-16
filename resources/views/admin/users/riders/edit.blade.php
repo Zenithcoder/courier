@@ -55,15 +55,16 @@
             {{ Form::text('phone_number', null, array('class' => 'form-control')) }}
         </div>
 
-        <div class="form-group">
+    <!--    <div class="form-group">
             {{ Form::label('name', 'Reassign Role') }}
-            <select class="selectpicker form-control" name="lga_id" data-live-search="true" data-width="100%"
+            <select class="selectpicker form-control" name="roles" data-live-search="true" data-width="100%"
                     data-toggle="tooltip" title="Dropoff LGA">
+                    <option value=""></option>
                 @foreach($roles as $key=>$role)
                     <option value="{{$role->id}}">{{$role->name}}</option>
                 @endforeach
             </select>
-        </div>
+        </div> -->
 
         
         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
