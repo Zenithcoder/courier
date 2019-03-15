@@ -21,6 +21,9 @@
             </div>
             <div class="content">
                 <div class="data-table">
+                    <div class="left">
+                        <button class="btn btn-mini btn-info">New Rider</button>
+                    </div>
                     <table>
                         <tbody>
                         <tr>
@@ -56,9 +59,6 @@
                     </table>
                 </div>
                 <div class="divider"></div>
-                <div class="left">
-                    <button class="btn btn-mini btn-info">New Rider</button>
-                </div>
                 {{$riders->links()}}
                 <div class="clearfix"></div>
             </div>
