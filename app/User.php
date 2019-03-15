@@ -58,6 +58,13 @@ class User extends Authenticatable
         });
     }
 
+    public function scopeNotAdmins($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->where('name', '<>','admin');
+        });
+    }
+
     public function scopeCustomers($query)
     {
         return $query->whereHas('roles', function ($q) {
@@ -124,7 +131,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-      public function lga(){
+    public function getStatusAttribute() {
+        return $this->is_status == 1 ? "Active" : "Inactive";
+    }
+
+    public function lga(){
         return $this->belongsTo(Lga::class, 'lga_id');
     }
 }

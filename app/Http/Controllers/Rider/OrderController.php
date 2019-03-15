@@ -8,8 +8,6 @@ use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
-use Auth;
-use App\OrderActivity;
 class OrderController extends Controller
 {
     /**
@@ -18,12 +16,11 @@ class OrderController extends Controller
      * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
-    {
-         $orders =  Order::where('rider_id',$id)->paginate(getPaginateSize());
-      //  $orders = User::rider()->findOrFail($id)->rider_orders()->paginate(getPaginateSize());
-        // dd($orders);
-        return view('admin.orders.riders_orders', compact('orders'));
+    public function index($id){
+        $rider = User::riders()->findOrFail($id);
+        $orders = $rider->rider_orders()->paginate(getPaginateSize());
+
+        return view("modified.admin.rider.order.index", compact("rider", "orders"));
     }
 
     /**

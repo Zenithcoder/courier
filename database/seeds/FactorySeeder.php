@@ -11,7 +11,13 @@ class FactorySeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Order::class, 50)->create();
-        factory(\App\OrderActivity::class, 50)->create();
+        $roles = \App\Role::all();
+
+        factory(\App\User::class, 100)->create()->each(function ($user) use ($roles) {
+            $user->roles()->sync($roles->random());
+        });
+
+        factory(\App\Order::class, 100)->create();
+        factory(\App\OrderActivity::class, 200)->create();
     }
 }

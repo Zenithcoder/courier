@@ -16,8 +16,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = User::customers()->get();
-        return view('admin.users.customers.index', compact('customers'));
+        $customers = User::customers()->orderBy("name")->withCount("customer_orders")->paginate(getPaginateSize());
+        return view('modified.admin.user.customer.index', compact('customers'));
     }
 
     /**

@@ -18,12 +18,14 @@ class OrderController extends Controller
      */
     public function index($id)
     {
-        $orders = User::consumer()->findOrFail($id)
-            ->customer_orders()
-            ->with(['pickup_lga', 'pickup_lga.state', 'drop_off_lga', 'drop_off_lga.state'])
+        $customer = User::customers()->findOrFail($id);
+
+        $orders = $customer->customer_orders()
+            ->with(["pickup_lga", "pickup_lga.state", "drop_off_lga", "drop_off_lga.state"])
             ->paginate(getPaginateSize());
 
-        return view('user.order_tracking', compact("orders"));
+
+        return view('modified.admin.customer.order.index', compact("customer", "orders"));
     }
 
     /**

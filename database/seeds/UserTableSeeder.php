@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
         $role_admin  = Role::where('name', 'admin')->first();
 
         $user = User::create([
-            "name" => "user Name",
+            "name" => "Renny Young",
             "email" => "user@example.com",
             "password" => 'secret',
             "lga_id" => $lga->id,
@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
         $user->roles()->attach($role_user);
 
         $rider = User::create([
-            "name" => "Rider Name",
+            "name" => "Kelvin Andrews",
             "email" => "rider@example.com",
             "password" => 'secret',
             "lga_id" => $lga->id,
@@ -36,7 +36,7 @@ class UserTableSeeder extends Seeder
         $rider->roles()->attach($role_rider);
 
         $admin = User::create([
-            "name" => "Admin Name",
+            "name" => "Sylvester Gabriel",
             "email" => "admin@example.com",
             "password" => 'secret',
             "lga_id" => $lga->id,

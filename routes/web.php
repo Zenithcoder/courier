@@ -11,7 +11,6 @@
 |
 */
 
-use function foo\func;
 
 Route::get('/', function () {return view('index');});
 Route::get('/about-us', function () {return view('about-us');});
@@ -61,7 +60,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
     // Rider sub module
     Route::prefix('riders')->middleware(['auth', 'auth.admin'])->name('riders.')->group(function () {
-        Route::get('index', 'RiderController@index')->name('index');
+        Route::get('', 'RiderController@index')->name('index');
         Route::get('create', 'RiderController@create')->name('create');
         Route::post('store', 'RiderController@store')->name('store');
         Route::get('{id}', 'RiderController@show')->name('show');
@@ -92,9 +91,8 @@ Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('C
 //    Route::get('dashboard', 'DashboardController@index')->middleware('auth.customer')->name('dashboard.index'); 
 
     // Order sub module
-    Route::prefix('orders')->middleware('auth.admin')->name('orders.')->group(function () {
-        Route::get('{id}/orders', 'OrderController@index')->name('index');
-        Route::get('{id}/orders3', 'OrderController@index3')->name('index3');
+    Route::prefix('{id}/orders')->middleware('auth.admin')->name('orders.')->group(function () {
+        Route::get('', 'OrderController@index')->name('index');
     });
 
     Route::prefix('orders')->name('orders.')->group(function () {
@@ -118,10 +116,11 @@ Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('C
 Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')->group(function () { 
 
     // Order sub module
-    Route::middleware('auth.admin')->group(function () {
-        Route::get('{id}/orders', 'OrderController@index')->name('orders.index');
-        Route::put('orders/{order}/assign', 'OrderController@assign')->name('orders.assign');
+    Route::middleware('auth.admin')->name("orders.")->group(function () {
+        Route::get('{id}/orders', 'OrderController@index')->name("index");
+        Route::put('orders/{order}/assign', 'OrderController@assign')->name("assign");
     });
+
 
     Route::prefix('orders')->middleware('auth.rider')->name('orders.')->group(function () {
         Route::get('', 'OrderController@index2')->name('index2');
@@ -141,6 +140,9 @@ Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () 
 
     // Authenticated routes
     Route::middleware('auth')->group(function () {
+
+        Route::get("{order}", "OrderController@show")->name("show");
+
         // Activities sub module
         Route::middleware('auth.admin.customer')->group(function () {
             Route::get('{id}/activities', 'ActivityController@index')->name('activity.index');
@@ -158,4 +160,12 @@ Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () 
     Route::get('tracker', 'TrackingController@search')->name('tracking.search');
     Route::get('logout', 'TrackingController@logout')->name('tracking.logout');
 
+});
+
+
+
+
+
+Route::get("/blank", function () {
+    return view("modified.admin.blank");
 });

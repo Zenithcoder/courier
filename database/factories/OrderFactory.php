@@ -18,7 +18,7 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
     $pickup_lga = $lgas->random();
     $drop_off_lga = $lgas->random();
 
-    $customer = \App\User::all()->random();
+    $customer = \App\User::notAdmins()->get()->random();
 
     return [
         'pickup_address' => $faker->address,

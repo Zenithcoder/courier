@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use Auth;
 use App\User;
-use Paginate;
 use App\Role;
 use App\Lga;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
 class RiderController extends Controller
 {
@@ -20,7 +17,9 @@ class RiderController extends Controller
      */
     public function index()
     {
-        return view('admin.users.riders.index')->with('riders', User::riders()->get());
+        $riders = User::riders()->orderBy("name")->withCount("rider_orders")->paginate(getPaginateSize());
+
+        return view('modified.admin.user.rider.index')->with('riders', $riders);
     }
 
     /**
@@ -113,7 +112,7 @@ class RiderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { dd()
+    {
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users,email,'.$id
