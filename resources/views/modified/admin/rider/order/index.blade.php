@@ -6,17 +6,16 @@
 @section("content")
     <div class="page-title">
         <div class="menu-switch"><i class="fa fa-users"></i></div>
-        <i class="fa fa-users"></i>
-        <span>{{$rider->name}} Orders </span>
+        <i class="fa fa-shopping-cart"></i>
+        <span>Rider's Orders </span>
     </div>
 
     <div class="margin-container">
         <!-- Example -->
         <div class="dashboard-widget">
             <div class="title">
-                <i class="fa fa-users"></i> {{$rider->name}} Orders
+                <i class="fa fa-shopping-cart"></i> {{$rider->name}} Orders
                 <button class="toggle" title="Close"><i class="fa fa-chevron-down"></i></button>
-                <button class="setting" title="Setting"><i class="fa fa-cog"></i></button>
             </div>
             <div class="content">
                 <div class="data-table">

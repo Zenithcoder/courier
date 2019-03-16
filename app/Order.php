@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Custom\Traits\GlobalScopes;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    use GlobalScopes;
+
     protected $fillable = [
         'pickup_address', 'pickup_lga_id', 'drop_off_address', 'drop_off_lga_id', 'description', 'recipient_name', 'recipient_phone_number','amount','status','weight','payment_status','expected_delivery_date'
     ];

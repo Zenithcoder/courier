@@ -1,6 +1,6 @@
 @extends("modified.admin.layouts.main")
-@section("users_active") class="active" @endsection
-@section("customers_active") class="active" @endsection
+@section("user_active") class="active" @endsection
+@section("user_customer_active") class="active" @endsection
 @section("title") Customers @endsection
 
 @section("content")

@@ -29,7 +29,7 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 
     // Administrators sub module
     Route::prefix('administrators')->middleware(['auth', 'auth.admin'])->name('administrators.')->group(function () {
-        Route::get('index', 'AdministratorController@index')->name('index');
+        Route::get('', 'AdministratorController@index')->name('index');
         Route::get('create', 'AdministratorController@create')->name('create');
         Route::post('store', 'AdministratorController@store')->name('store');
         Route::get('{id}', 'AdministratorController@show')->name('show');
@@ -141,6 +141,7 @@ Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () 
     // Authenticated routes
     Route::middleware('auth')->group(function () {
 
+        Route::get("", "OrderController@index")->name("index");
         Route::get("{order}", "OrderController@show")->name("show");
 
         // Activities sub module

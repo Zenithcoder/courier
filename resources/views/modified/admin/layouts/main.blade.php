@@ -21,20 +21,7 @@
     <link rel="stylesheet" href="{{asset("modified/css/demo.css")}}">
 </head>
 <body>
-<!-- Theme Selector -->
-<div id="theme-selector">
-    <div class="icon"><i class="fa fa-cogs"></i></div>
-    <div class="theme" data-theme="colour"  style="background:#0B879E;"></div>
-    <div class="theme" data-theme="colour1" style="background:#980053;"></div>
-    <div class="theme" data-theme="colour2" style="background:#0F7C0F;"></div>
-    <div class="theme" data-theme="colour3" style="background:#692E00;"></div>
-    <div class="theme" data-theme="colour4" style="background:#CB252E;"></div>
-    <div class="theme" data-theme="colour5" style="background:#015077;"></div>
-    <div class="theme" data-theme="colour6" style="background:#CC4C25;"></div>
-    <div class="theme" data-theme="colour7" style="background:#91A244;"></div>
-    <div class="theme" data-theme="colour8" style="background:#444444;"></div>
-</div>
-<!-- End -->
+
 <!-- Portrait Detector -->
 <div id="portrait_mode_detector"></div>
 <!-- End -->
@@ -73,6 +60,12 @@
 <script src="{{asset("modified/js/demo.js")}}"></script>
 <!-- JavaScript Modules -->
 <script src="{{asset("modified/js/module/module.min.js")}}"></script>
+<script src="{{asset("modified/js/module/ui.js")}}"></script>
+<script src="{{asset("modified/js/module/tooltip.js")}}"></script>
+<script src="{{asset("modified/js/module/form.js")}}"></script>
+<script src="{{asset("modified/js/module/button.js")}}"></script>
+<script src="{{asset("modified/js/module/dialog.js")}}"></script>
+
 <!-- Third Party Plugins -->
 {{--<script src="http://maps.googleapis.com/maps/api/js?sensor=true&key=GOOGLE_MAP_API_KEY"></script>--}}
 <script src="{{asset("modified/plugins/flot/jquery.flot.min.js")}}"></script>
@@ -91,5 +84,8 @@
         spa: false
     });
 </script>
+
+@yield("custom_script")
+
 </body>
 </html>

@@ -21,9 +21,9 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        $admins = User::admins()->get();
+        $admins = User::admins()->paginate(getPaginateSize());
 
-        return view('admin.users.administrators.index', compact('admins'));
+        return view('modified.admin.user.admin.index', compact('admins'));
     }
 
     /**
