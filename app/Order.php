@@ -57,14 +57,16 @@ class Order extends Model
         unset($columns["assigned_status"]);
 
         foreach($columns as $column => $values){
-            foreach($values as $value) {
-                $query->orWhere($column, $value);
-            }
+            $query->where(function ($q) use ($values, $column){
+                foreach($values as $value) {
+                    $q->orWhere($column, $value);
+                }
+            });
         }
 
         switch ($assigned_status) {
             case "ASSIGNED" :
-                $query->orWhereNotNUll("rider_id");
+                $query->whereNotNUll("rider_id");
                 break;
             case "NOT_ASSIGNED" :
                 $query->whereNUll("rider_id");
@@ -119,5 +121,24 @@ class Order extends Model
         } while(static::whereTrackingNumber($tracking_number)->exists());
 
         return $tracking_number;
+    }
+
+    public function getStatusLabelAttribute() {
+        switch($this->attributes["status"]) {
+            case "PENDING" : $label = "status-error"; break;
+            case "EN_ROUTE" : $label = "status-info"; break;
+            case "DELIVERED" : $label = "status-success"; break;
+            case "CANCELLED" : $label = "status-default"; break;
+            default : $label = "status-error"; break;
+        }
+
+        return $label;
+    }
+    public function getPaymentStatusLabelAttribute() {
+        switch($this->attributes["payment_status"]) {
+            case "FAILED" : return "status-error";
+            case "PAID" : return "status-success";
+        }
+        return "";
     }
 }

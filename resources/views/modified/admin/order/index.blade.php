@@ -97,10 +97,10 @@
                                 <td>{{$order->tracking_number}}</td>
                                 <td>{{$order->pickup_address}}</td>
                                 <td>{{$order->drop_off_address}}</td>
-                                <td><label class="status status-error">{{$order->status}}</label></td>
+                                <td><label class="status {{$order->status_label}}">{{$order->status}}</label></td>
                                 <td>@if($order->rider)<a href="{{route("users.riders.show", $order->rider->id)}}" title="{{$order->rider->phone_number}}">{{$order->rider->name}}</a>@endif</td>
                                 <td><i class="fa fa-cas"></i> {{number_format($order->amount, 2)}}</td>
-                                <td>{{$order->payment_status}}</td>
+                                <td><label class="status {{$order->payment_status_label}}">{{$order->payment_status}}</label></td>
 
                                 <td align="right" class="minor">
                                     <button class="btn btn-mini btn-info" title="View" onclick='location.href = "{{route("orders.show", $order->id)}}"'><i class="fa fa-eye"></i> View</button>

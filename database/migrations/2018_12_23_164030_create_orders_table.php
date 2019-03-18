@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
             $table->string('tracking_number')->unique()->nullable();
             $table->string('recipient_name', 80);
             $table->string('recipient_phone_number', 15);
-            $table->enum('payment_status', ['PAID' , 'FAIL'])->nullable();
+            $table->enum('payment_status', ['PAID' , 'FAILED'])->nullable();
             $table->unsignedInteger('rider_id')->nullable()->comment('A rider user with role - rider');
             $table->unsignedInteger('customer_id')->comment('A customer user with role - customer');;
             $table->date("expected_delivery_date")->nullable();
