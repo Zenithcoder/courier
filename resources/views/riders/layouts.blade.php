@@ -65,7 +65,7 @@
                     <li><a href="{{route('cost.calculator')}}"><i class="fa fa-flask"></i><span>Cost Calculator</span></a></li>
                     <li class="separator"><div></div><div></div><div></div></li>
                     <li>
-                     <a href="{{route('orders.tracking.logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
+                     <a href="{{route('logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
                     </li>
 
                <!--     <li class="separator"><div></div><div></div><div></div></li>

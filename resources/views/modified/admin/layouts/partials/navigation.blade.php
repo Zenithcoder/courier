@@ -14,7 +14,7 @@
     <li><a href=""><i class="fa fa-user"></i><span>My Profile</span></a></li>
     <li class="separator"><div></div><div></div><div></div></li>
     <li><a href=""><i class="fa fa-cog"></i><span>Settings</span></a></li>
-    <li><a href=""><i class="fa fa-lock"></i><span>Logout</span></a></li>
+    <li><a href="{{route("logout")}}"><i class="fa fa-lock"></i><span>Logout</span></a></li>
 
 
 </ul>

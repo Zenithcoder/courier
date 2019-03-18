@@ -65,7 +65,7 @@
             <li><a href="{{ route('users.customers.index') }}"><i class="fa fa-bar-chart-o"></i><span>Customers</span></a></li>
              <li><a href="{{ route('administrators.orders.index') }}"><i class="fa fa-bar-chart-o"></i><span>Unassigned Orders</span></a></li>
               <li><a href="{{ route('administrators.orders.index2') }}"><i class="fa fa-bar-chart-o"></i><span>Assigned Order</span></a></li>
-               <li> <a href="{{route('orders.tracking.logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
+               <li> <a href="{{route('logout')}}" class="sign-in fs-12 theme-clr-bg"><i class="fa fa-map-marker"></i><span>Log Out</span></a>
                     </li>
 
                <!--     <li class="separator"><div></div><div></div><div></div></li>

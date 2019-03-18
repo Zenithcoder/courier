@@ -22,7 +22,11 @@ Route::post('contactUsPost', 'UserController@contactUsPost')->name('contactuspos
 Route::get('cost-calculator', 'UserController@create')->name('cost.calculator');
 Route::post('cost-calculatorP', 'UserController@createP')->name('cost.calculatorP');
 
+
+
 Auth::routes();
+
+Route::get("logout", "Auth\LoginController@logout")->name("logout");
 
 // User Module 
 Route::prefix('users')->name('users.')->namespace('User')->group(function () {
@@ -70,7 +74,6 @@ Route::prefix('users')->name('users.')->namespace('User')->group(function () {
     });
 });
 
-
 // Administrator Module     
 Route::prefix('administrators')->name('administrators.')->namespace('Administrator')->group(function () {
 
@@ -82,7 +85,6 @@ Route::prefix('administrators')->name('administrators.')->namespace('Administrat
     });
 
 });
-
 
 // customer Module
 Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('Customer')->group(function () {
@@ -111,7 +113,6 @@ Route::prefix('customers')->middleware('auth')->name('customers.')->namespace('C
     });
 });
 
-
 // Rider Module   
 Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')->group(function () { 
 
@@ -129,11 +130,9 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
         Route::post('{order}', 'OrderController@update')->name('update');
         Route::get('{order}', 'OrderController@show')->name('show');
         Route::get('create', 'OrderController@createxs')->name('create');
-    //    Route::any('logout', 'OrderController@getLogout')->name('logout');
     });
 
 });
-
 
 //Order Module
 Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () {
@@ -159,10 +158,7 @@ Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () 
 
     // Tracking sub module
     Route::get('tracker', 'TrackingController@search')->name('tracking.search');
-    Route::get('logout', 'TrackingController@logout')->name('tracking.logout');
-
 });
-
 
 
 

@@ -36,12 +36,4 @@ class TrackingController extends Controller
 
         return view('/user/orders_tracking',compact('order'))->with('success','Post Created Successfully');
     }
-
-
-     public function logout(){
-        Session::flush();
-        Auth::logout();
-
-        return  redirect()->to('/');
-    }
 }
