@@ -7,7 +7,6 @@ use App\User;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
 class OrderController extends Controller
 {
     /**
@@ -18,7 +17,7 @@ class OrderController extends Controller
      */
     public function index($id){
         $rider = User::riders()->findOrFail($id);
-        $orders = $rider->rider_orders()->paginate(getPaginateSize());
+        $orders = $rider->rider_orders()->filter()->globalSearch(['tracking_number'])->latest()->paginate(getPaginateSize());
 
         return view("modified.admin.rider.order.index", compact("rider", "orders"));
     }

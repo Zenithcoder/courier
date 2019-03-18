@@ -20,6 +20,8 @@
             </div>
             <div class="content">
                 <div class="data-table">
+                    @include("modified.admin.partials.order_filer_search")
+
                     <table>
                         <tbody>
                             <tr>
@@ -38,9 +40,9 @@
                             <td>{{str_limit($order->description)}}</td>
                             <td>{{$order->pickup_address}}</td>
                             <td>{{$order->drop_off_address}}</td>
-                            <td><label class="status status-inverse">{{$order->status}}</label></td>
+                            <td><label class="status {{$order->status_label}}">{{$order->status}}</label></td>
                             <td><i class="fa fa-cas"></i> {{number_format($order->amount, 2)}}</td>
-                            <td>{{$order->payment_status}}</td>
+                            <td><label class="status {{$order->payment_status_label}}">{{$order->payment_status}}</label></td>
                             <td align="right" class="minor">
                                 <button class="btn btn-mini btn-info" title="View" onclick='location.href = "{{route("orders.show", $order->id)}}"'><i class="fa fa-eye"></i> View</button>
                             </td>

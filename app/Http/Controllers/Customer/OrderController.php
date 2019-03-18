@@ -20,9 +20,9 @@ class OrderController extends Controller
     {
         $customer = User::customers()->findOrFail($id);
 
-        $orders = $customer->customer_orders()
+        $orders = $customer->customer_orders()->filter()->globalSearch(['tracking_number'])
             ->with(["pickup_lga", "pickup_lga.state", "drop_off_lga", "drop_off_lga.state"])
-            ->paginate(getPaginateSize());
+            ->latest()->paginate(getPaginateSize());
 
 
         return view('modified.admin.customer.order.index', compact("customer", "orders"));

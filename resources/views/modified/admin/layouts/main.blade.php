@@ -79,6 +79,10 @@
 <script src="{{asset("modified/plugins/google-code-prettify/prettify.js")}}"></script>
 <script src="{{asset("modified/plugins/ChartJS/Chart.min.js")}}"></script>
 <script src="{{asset("modified/plugins/easy-pie-chart/jquery.easy-pie-chart.js")}}"></script>
+
+<!-- Custom JS -->
+<script src="{{asset("modified/js/custom.js")}}"></script>
+
 <script>
     App.setOptions({
         spa: false
