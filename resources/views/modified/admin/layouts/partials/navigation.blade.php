@@ -1,6 +1,6 @@
 <ul class="navigation">
     <li class="separator"><div></div><div></div><div></div></li>
-    <li><a href="dashboard.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+    <li><a href="#"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
     <li class="sub">
         <a href="#" @yield("user_active")><i class="fa fa-users"></i><span>Users</span></a>
         <ul class="navigation-sub">
