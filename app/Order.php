@@ -13,6 +13,8 @@ class Order extends Model
         'pickup_address', 'pickup_lga_id', 'drop_off_address', 'drop_off_lga_id', 'description', 'recipient_name', 'recipient_phone_number','amount','status','weight','payment_status','expected_delivery_date'
     ];
 
+    private $filterKeys = ["status", "payment_status", "assigned_status"];
+
     static function boot()
     {
         static::creating(function ($order) {
@@ -40,6 +42,34 @@ class Order extends Model
 
     public function order_activities(){
         return $this->hasMany(OrderActivity::class);
+    }
+
+    public function scopeFilter($query){
+        $columns = request()->only($this->filterKeys);
+
+        $assigned_status = null;
+        if($columns["assigned_status"] != null) {
+            $assigned_status = $columns["assigned_status"];
+        }
+        if($columns["status"] === null) $columns["status"] = [];
+        if($columns["payment_status"] === null) $columns["payment_status"] = [];
+
+        unset($columns["assigned_status"]);
+
+        foreach($columns as $column => $values){
+            foreach($values as $value) {
+                $query->orWhere($column, $value);
+            }
+        }
+
+        switch ($assigned_status) {
+            case "ASSIGNED" :
+                $query->orWhereNotNUll("rider_id");
+                break;
+            case "NOT_ASSIGNED" :
+                $query->whereNUll("rider_id");
+                break;
+        }
     }
 
     public function scopePending($query) {

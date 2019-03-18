@@ -51,7 +51,6 @@
                                         <div class="form-row">
                                             <div class="label">Payment Status:</div>
                                             <div class="input">
-                                                {!! Form::checkbox('payment_status[]', 'PENDING', false, ["id" => "paymentStatusPending"]); !!}{!! Form::label('paymentStatusPending', 'Pending') !!}
                                                 {!! Form::checkbox('payment_status[]', 'PAID', false, ["id" => "paymentStatusPaid"]); !!}{!! Form::label('paymentStatusPaid', 'Paid') !!}
                                                 {!! Form::checkbox('payment_status[]', 'FAILED', false, ["id" => "paymentStatusFailed"]); !!}{!! Form::label('paymentStatusFailed', 'Failed') !!}
                                             </div>
@@ -59,14 +58,15 @@
                                         <div class="form-row">
                                             <div class="label">Assigned Status:</div>
                                             <div class="input">
-                                                {!! Form::checkbox('assigned_status[]', 'ASSIGNED', false, ["id" => "assignedStatusAssigned"]); !!}{!! Form::label('assignedStatusAssigned', 'Assigned') !!}
-                                                {!! Form::checkbox('assigned_status[]', 'NOT_ASSIGNED', false, ["id" => "assignedStatusNotAssigned"]); !!}{!! Form::label('assignedStatusNotAssigned', 'Not Assigned') !!}
+                                                {!! Form::radio('assigned_status', 'ASSIGNED', false, ["id" => "assignedStatusAssigned"]); !!}{!! Form::label('assignedStatusAssigned', 'Assigned') !!}
+                                                {!! Form::radio('assigned_status', 'NOT_ASSIGNED', false, ["id" => "assignedStatusNotAssigned"]); !!}{!! Form::label('assignedStatusNotAssigned', 'Not Assigned') !!}
                                             </div>
                                         </div>
                                         <div class="form-row ">
 
                                             <div class="input">
-                                                <button class="btn btn-mini btn-success" id="filter"><i class="fa fa-search"></i> Go</button>
+                                                <button class="btn btn-mini btn-success" id="filterGo"><i class="fa fa-search"></i> Go</button>
+                                                <button class="btn btn-mini btn-error" id="filterReset" type="reset"><i class="fa fa-eraser"></i> Clear</button>
 
                                             </div>
                                         </div>
@@ -128,7 +128,6 @@
         $(document).ready(function() {
             let toggleState = true;
             $('#filter').click(function () {
-
                 if(toggleState){
                     $('#filterForm').slideDown();
                     toggleState = false;
@@ -138,7 +137,14 @@
                     toggleState = true;
                     $('#filterIcon').removeClass("fa-chevron-up").addClass("fa-chevron-down")
                 }
-            })
+            });
+
+            $('#filterReset').click(function () {
+                $('#filterForm input').prop('checked', false);
+                return false;
+            });
+
+
         });
     </script>
 @endsection

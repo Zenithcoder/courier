@@ -141,7 +141,7 @@ Route::prefix('orders')->name('orders.')->namespace('Order')->group(function () 
     // Authenticated routes
     Route::middleware('auth')->group(function () {
 
-        Route::get("", "OrderController@index")->name("index");
+        Route::get("", "OrderController@index")->name("index")->middleware('auth.admin');
         Route::get("{order}", "OrderController@show")->name("show");
 
         // Activities sub module
