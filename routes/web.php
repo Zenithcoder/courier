@@ -28,6 +28,8 @@ Auth::routes();
 
 Route::get("logout", "Auth\LoginController@logout")->name("logout");
 
+Route::get("dashboard", "DashboardController@index")->name("dashboard.index")->middleware("auth");
+
 // User Module 
 Route::prefix('users')->name('users.')->namespace('User')->group(function () {
 

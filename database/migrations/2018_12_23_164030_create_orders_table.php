@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('rider_id')->nullable()->comment('A rider user with role - rider');
             $table->unsignedInteger('customer_id')->comment('A customer user with role - customer');;
             $table->date("expected_delivery_date")->nullable();
+            $table->date("delivery_date")->nullable();
             $table->timestamps();
 
             $table->foreign("rider_id")->references("id")->on("users");
