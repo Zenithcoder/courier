@@ -126,7 +126,7 @@ Route::prefix('riders')->name('riders.')->namespace('Rider')->middleware('auth')
 
 
     Route::prefix('orders')->middleware('auth.rider')->name('orders.')->group(function () {
-        Route::get('', 'OrderController@index2')->name('index2');
+        Route::get('', 'OrderController@lists')->name('lists');
         Route::get('dash', 'OrderController@index3')->name('index3');
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
         Route::post('{order}', 'OrderController@update')->name('update');

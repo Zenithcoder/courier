@@ -19,7 +19,15 @@ class OrderController extends Controller
         $rider = User::riders()->findOrFail($id);
         $orders = $rider->rider_orders()->filter()->globalSearch(['tracking_number'])->latest()->paginate(getPaginateSize());
 
-        return view("modified.admin.rider.order.index", compact("rider", "orders"));
+        return view("modified.admin.order.index", compact("rider", "orders"));
+    }
+
+    public function lists() {
+        $rider = auth()->user();
+
+        $orders = $rider->rider_orders()->filter()->globalSearch(['tracking_number'])->latest()->paginate(getPaginateSize());
+
+        return view("modified.admin.order.index", compact("rider", "orders"));
     }
 
     /**

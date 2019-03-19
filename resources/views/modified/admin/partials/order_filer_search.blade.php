@@ -46,8 +46,7 @@
 
                     <div class="input">
                         <button class="btn btn-mini btn-success" id="filterGo"><i class="fa fa-search"></i> Go</button>
-                        <button class="btn btn-mini btn-error" id="filterReset" type="reset"><i class="fa fa-eraser"></i> Clear</button>
-
+                        <button class="btn btn-mini btn-default" id="filterReset" type="reset"><i class="fa fa-power-off"></i> Clear</button>
                     </div>
                 </div>
             </div>

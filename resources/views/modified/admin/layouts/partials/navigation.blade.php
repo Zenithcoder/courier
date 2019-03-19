@@ -1,6 +1,7 @@
 <ul class="navigation">
     <li class="separator"><div></div><div></div><div></div></li>
     <li><a href="{{route("dashboard.index")}}" @yield("dashboard_active")><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+    @if(auth()->user()->isAdmin())
     <li class="sub">
         <a href="#" @yield("user_active")><i class="fa fa-users"></i><span>Users</span></a>
         <ul class="navigation-sub">
@@ -9,7 +10,9 @@
             <li><a href="{{route("users.customers.index")}}" @yield("user_customer_active")><i class="fa fa-users"></i><span>Customer</span></a></li>
         </ul>
     </li>
-    <li><a href="{{route("orders.index")}}" @yield("order_active")><i class="fa fa-shopping-cart"></i><span>Orders</span></a></li>
+    @endif
+
+    <li><a href="@if(auth()->user()->isAdmin()) {{route("orders.index")}} @else  {{route("riders.orders.lists")}}   @endif" @yield("order_active")><i class="fa fa-shopping-cart"></i><span>Orders</span></a></li>
     <li class="separator"><div></div><div></div><div></div></li>
     <li><a href=""><i class="fa fa-user"></i><span>My Profile</span></a></li>
     <li class="separator"><div></div><div></div><div></div></li>

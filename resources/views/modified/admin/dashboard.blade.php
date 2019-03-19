@@ -9,7 +9,6 @@
         <span>Dashboard</span>
     </div>
 
-
     <div class="margin-container">
         <div class="grid grid-responsive grid-6">
             <div class="dashboard-widget">
@@ -41,7 +40,7 @@
                             <div class="form-row">
                                 <div class="label">Account Status:</div>
                                 <div class="input">
-                                    <i class="fa fa-lock"></i><input type="text" class="icon large" value="{{$user->is_status ? "Active" : "Inactive"}}" disabled>
+                                    <i class="fa fa-thumbs-o-up"></i><input type="text" class="icon large" value="{{$user->is_status ? "Active" : "Inactive"}}" disabled>
                                 </div>
                             </div>
                             <div></div>
@@ -116,6 +115,7 @@
                     </div>
                 </div>
             </div>
+            @if($user->hasRole("admin"))
             <div class="grid grid-responsive grid-6">
                 <div class="dashboard-widget">
                     <div class="title">
@@ -137,6 +137,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
 
 
