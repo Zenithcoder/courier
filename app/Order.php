@@ -27,7 +27,7 @@ class Order extends Model
 
         static::saved(function($order) {
             Cache::forget("dashboard:summary");
-            Cache::forget("dashboard:summary".$order->rider->id);
+            if($order->rider !== null) Cache::forget("dashboard:summary".$order->rider->id);
         });
     }
 
