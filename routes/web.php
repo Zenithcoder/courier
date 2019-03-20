@@ -23,12 +23,11 @@ Route::get('cost-calculator', 'UserController@create')->name('cost.calculator');
 Route::post('cost-calculatorP', 'UserController@createP')->name('cost.calculatorP');
 
 
-
 Auth::routes();
 
 Route::get("logout", "Auth\LoginController@logout")->name("logout");
 
-Route::get("dashboard", "DashboardController@index")->name("dashboard.index")->middleware("auth");
+Route::get("dashboard", "DashboardController@index")->name("dashboard.index")->middleware(["auth", "auth.admin.rider"]);
 
 // User Module 
 Route::prefix('users')->name('users.')->namespace('User')->group(function () {
