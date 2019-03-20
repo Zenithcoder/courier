@@ -12,11 +12,13 @@
     </li>
     @endif
 
-    <li><a href="@if(auth()->user()->isAdmin()) {{route("orders.index")}} @else  {{route("riders.orders.lists")}}   @endif" @yield("order_active")><i class="fa fa-shopping-cart"></i><span>Orders</span></a></li>
+    <li><a href="@if(auth()->user()->isAdmin()) {{route("orders.index")}} @else {{route("riders.orders.lists")}} @endif" @yield("order_active")><i class="fa fa-shopping-cart"></i><span>Orders</span></a></li>
     <li class="separator"><div></div><div></div><div></div></li>
     <li><a href=""><i class="fa fa-user"></i><span>My Profile</span></a></li>
     <li class="separator"><div></div><div></div><div></div></li>
+    @if(auth()->user()->isAdmin())
     <li><a href=""><i class="fa fa-cog"></i><span>Settings</span></a></li>
+    @endif
     <li><a href="{{route("logout")}}"><i class="fa fa-lock"></i><span>Logout</span></a></li>
 
 
