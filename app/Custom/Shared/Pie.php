@@ -9,7 +9,7 @@
 namespace App\Custom\Shared;
 
 
-class Order
+class Pie
 {
     /**
      * @var OrderStatus
@@ -22,7 +22,7 @@ class Order
     private $today;
 
     /**
-     * Order constructor.
+     * Pie constructor.
      * @param OrderStatus $total
      * @param OrderStatus $today
      */

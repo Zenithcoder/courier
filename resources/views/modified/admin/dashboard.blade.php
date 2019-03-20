@@ -62,12 +62,14 @@
                         <div class="grid grid-6 grid-border-right">
                             <div><i class="fa fa-clock-o size28"></i></div>
                             <div class="lightcolour">Pending</div>
-                            <div class="size20">{{$summary["orders"]["total"]["pending"]}}</div>
+
+                            <div class="size20">{{$dashboardSummary->getOrder()->getTotal()->getPending()}}</div>
+
                         </div>
                         <div class="grid grid-6">
                             <div><i class="fa fa-money size28"></i></div>
                             <div class="lightcolour">En-Route</div>
-                            <div class="size20">{{$summary["orders"]["total"]["en_route"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getOrder()->getTotal()->getEnRoute()}}</div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -83,12 +85,12 @@
                         <div class="grid grid-6 grid-border-right">
                             <div><i class="fa fa-clock-o size28"></i></div>
                             <div class="lightcolour">Pending</div>
-                            <div class="size20">{{$summary["orders"]["today"]["pending"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getOrder()->getToday()->getPending()}}</div>
                         </div>
                         <div class="grid grid-6">
                             <div><i class="fa fa-money size28"></i></div>
                             <div class="lightcolour">En-Route</div>
-                            <div class="size20">{{$summary["orders"]["today"]["enRoute"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getOrder()->getToday()->getEnRoute()}}</div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -104,12 +106,12 @@
                         <div class="grid grid-6 grid-border-right">
                             <div><i class="fa fa-truck size28"></i></div>
                             <div class="lightcolour">Total Delivered</div>
-                            <div class="size20">{{$summary["orders"]["total"]["delivered"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getOrder()->getTotal()->getDelivered()}}</div>
                         </div>
                         <div class="grid grid-6">
                             <div><i class="fa fa-truck size28"></i></div>
                             <div class="lightcolour">Delivered Today</div>
-                            <div class="size20">{{$summary["orders"]["today"]["delivered"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getOrder()->getToday()->getDelivered()}}</div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -126,12 +128,12 @@
                         <div class="grid grid-6 grid-border-right">
                             <div><i class="fa fa-taxi size28"></i></div>
                             <div class="lightcolour">Riders</div>
-                            <div class="size20">{{$summary["users"]["riders"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getUser()->getRiders()}}</div>
                         </div>
                         <div class="grid grid-6">
                             <div><i class="fa fa-users size28"></i></div>
                             <div class="lightcolour">Customers</div>
-                            <div class="size20">{{$summary["users"]["customers"]}}</div>
+                            <div class="size20">{{$dashboardSummary->getUser()->getCustomers()}}</div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -180,16 +182,16 @@
     <script>
         var order = {
             total: [
-                {color: '#f3a076', label: 'Pending', data: "{{$summary["charts"]["pie"]["total"]["pending"]}}"},
-                {color: '#4484e1', label: 'En-Route', data: "{{$summary["charts"]["pie"]["total"]["en_route"]}}"},
-                {color: '#1eb300', label: 'Delivered', data: "{{$summary["charts"]["pie"]["total"]["delivered"]}}"},
-                {color: '#d5d5d5', label: 'Cancelled', data: "{{$summary["charts"]["pie"]["total"]["cancelled"]}}"}
+                {color: '#f3a076', label: 'Pending', data: "{{ $dashboardSummary->getChart()->getPie()->getTotal()->getPending() }}"},
+                {color: '#4484e1', label: 'En-Route', data: "{{ $dashboardSummary->getChart()->getPie()->getTotal()->getEnRoute() }}"},
+                {color: '#1eb300', label: 'Delivered', data: "{{ $dashboardSummary->getChart()->getPie()->getTotal()->getDelivered() }}"},
+                {color: '#d5d5d5', label: 'Cancelled', data: "{{ $dashboardSummary->getChart()->getPie()->getTotal()->getCancelled() }}"}
             ],
             today: [
-                {color: '#f3a076', label: 'Pending', data: "{{$summary["charts"]["pie"]["today"]["pending"]}}"},
-                {color: '#4484e1', label: 'En-Route', data: "{{$summary["charts"]["pie"]["today"]["en_route"]}}"},
-                {color: '#1eb300', label: 'Delivered', data: "{{$summary["charts"]["pie"]["today"]["delivered"]}}"},
-                {color: '#d5d5d5', label: 'Cancelled', data: "{{$summary["charts"]["pie"]["today"]["cancelled"]}}"}
+                {color: '#f3a076', label: 'Pending', data: "{{ $dashboardSummary->getChart()->getPie()->getToday()->getPending() }}"},
+                {color: '#4484e1', label: 'En-Route', data: "{{ $dashboardSummary->getChart()->getPie()->getToday()->getEnRoute() }}"},
+                {color: '#1eb300', label: 'Delivered', data: "{{ $dashboardSummary->getChart()->getPie()->getToday()->getDelivered()}}"},
+                {color: '#d5d5d5', label: 'Cancelled', data: "{{ $dashboardSummary->getChart()->getPie()->getToday()->getCancelled() }}"}
             ]
         };
 
